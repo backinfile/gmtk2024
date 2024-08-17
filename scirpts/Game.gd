@@ -33,6 +33,7 @@ func _ready():
 	ControlManager.scale(true)
 
 func _process(delta):
+	pass
 	
 	var dx = 0
 	var dy = 0
@@ -46,7 +47,7 @@ func _process(delta):
 		dy += 1
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
-	scale
+
 	if Input.is_action_just_pressed("SCALE_UP"):
 		ControlManager.scale(true)
 	elif Input.is_action_just_pressed("SCALE_DOWN"):
