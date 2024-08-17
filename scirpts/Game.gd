@@ -16,15 +16,15 @@ var curSelectedShape:ShapeObject;
 static var Instance:Game = self;
 
 func _ready():
-  gameMap = GameMap.new();
-  for index in range(curLevel.shapes.size()):
-    var shape = curLevel.shapes[index]
-    var count = curLevel.shapesCount[index]
-    var shapeObject = ShapeObject.new(shape)
-    selectPancel.add_child(Global.createShapeNode(shapeObject, count))
+	gameMap = GameMap.new();
+	for index in range(curLevel.shapes.size()):
+		var shape = curLevel.shapes[index]
+		var count = curLevel.shapesCount[index]
+		var shapeObject = ShapeObject.new(shape)
+		selectPancel.add_child(Global.createShapeNode(shapeObject, count))
 
 func _process(delta):
-  pass
+	pass
 	
 	var dx = 0
 	var dy = 0
@@ -38,7 +38,7 @@ func _process(delta):
 		dy += 1
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
-	
+
 	if Input.is_action_just_pressed("SCALE_UP"):
 		ControlManager.sacle(true)
 	elif Input.is_action_just_pressed("SCALE_DOWN"):

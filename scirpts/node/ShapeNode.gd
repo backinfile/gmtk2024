@@ -22,8 +22,8 @@ func recreateShape():
 	print("recreateShape ", custom_minimum_size)
 
 func _ready():
-  setDragState(true)
-  pass
+	setDragState(true)
+	pass
 
 func setDragState(draggable:bool, onDrag:Callable = func (d):pass, onDragUpdate:Callable = func ():pass):
 	self.draggable = draggable

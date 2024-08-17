@@ -10,5 +10,5 @@ area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1)])
 [resource]
 script = ExtResource("1_jwyh7")
 id = 1
-shapes = Array[ExtResource("2_8j6fl")]([SubResource("Resource_3x0ej")])
+shapes = [SubResource("Resource_3x0ej")]
 shapesCount = Array[int]([1])
