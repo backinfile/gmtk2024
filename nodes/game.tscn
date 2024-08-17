@@ -12,51 +12,48 @@ curLevel = ExtResource("2_hragj")
 [node name="WorkSpace" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 385.0
-offset_top = 170.0
-offset_right = 385.0
-offset_bottom = 170.0
-
-[node name="Control" type="Control" parent="WorkSpace"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 390.0
+offset_top = 110.0
+offset_right = 890.0
+offset_bottom = 610.0
 
 [node name="SelectPanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 45.0
-offset_top = 117.0
-offset_right = 45.0
-offset_bottom = 117.0
+offset_left = 190.0
+offset_top = 90.0
+offset_right = 280.0
+offset_bottom = 620.0
 
-[node name="Control" type="Control" parent="SelectPanel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="OptionPanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 885.0
-offset_top = 296.0
-offset_right = 885.0
-offset_bottom = 296.0
+offset_left = 980.0
+offset_top = 380.0
+offset_right = 1160.0
+offset_bottom = 620.0
 
-[node name="Control" type="Control" parent="OptionPanel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridContainer" type="GridContainer" parent="OptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
 
 [node name="Goal" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1054.0
-offset_top = 162.0
-offset_right = 1054.0
-offset_bottom = 162.0
-
-[node name="Control" type="Control" parent="Goal"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 950.0
+offset_top = 80.0
+offset_right = 1120.0
+offset_bottom = 260.0
