@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=3 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
+[ext_resource type="Resource" uid="uid://khsfe5fhstjc" path="res://resources/level1.tres" id="2_hragj"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ulm38")
+curLevel = ExtResource("2_hragj")
 
 [node name="WorkSpace" type="Control" parent="."]
 layout_mode = 3
@@ -15,6 +17,11 @@ offset_top = 170.0
 offset_right = 385.0
 offset_bottom = 170.0
 
+[node name="Control" type="Control" parent="WorkSpace"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="SelectPanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -22,6 +29,11 @@ offset_left = 45.0
 offset_top = 117.0
 offset_right = 45.0
 offset_bottom = 117.0
+
+[node name="Control" type="Control" parent="SelectPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="OptionPanel" type="Control" parent="."]
 layout_mode = 3
@@ -31,6 +43,11 @@ offset_top = 296.0
 offset_right = 885.0
 offset_bottom = 296.0
 
+[node name="Control" type="Control" parent="OptionPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Goal" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -38,3 +55,8 @@ offset_left = 1054.0
 offset_top = 162.0
 offset_right = 1054.0
 offset_bottom = 162.0
+
+[node name="Control" type="Control" parent="Goal"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

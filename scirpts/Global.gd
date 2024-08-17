@@ -1,15 +1,13 @@
 extends Node
 
-var SIZE = 11;
-
-func test(): 
-	print("test11")
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var UNIT_SIZE = 50;
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+@onready var shape_node_tscn:PackedScene = load("res://shape_node.tscn");
+
+func createShapeNode(shape:ShapeObject, count = 1):
+	var node:ShapeNode = shape_node_tscn.instantiate()
+	node.init(shape, count);
+	return node;
+	

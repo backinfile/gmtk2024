@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dew5ahio00lcf"]
+
+[ext_resource type="Script" path="res://scirpts/node/ShapeNode.gd" id="1_byg4t"]
+
+[node name="ShapeNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_byg4t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
