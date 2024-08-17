@@ -17,9 +17,10 @@ static func move(dx:int, dy:int):
 	# TODO update image
 
 
-static func sacle(up:bool):
-	var shape = Game.Instance.curSelectedShape;
-	if shape == null: return;
+static func scale(up:bool):
+	var shapeNode = Game.Instance.curSelectedShape;
+	if shapeNode == null: return;
+	var shape = shapeNode.shape
 	var size = shape.curShape.shapeSize()
 	var map = Game.Instance.gameMap;
 	var scale = shape.scale + (1 if up else -1)
@@ -29,7 +30,8 @@ static func sacle(up:bool):
 	# TODO check
 	
 	shape.curShape = result
-	shape.scale = sacle
+	shape.scale = scale
+	shapeNode.recreateShape()
 	
 	# TODO Update texture
 

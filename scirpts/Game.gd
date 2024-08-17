@@ -8,12 +8,15 @@ extends Control
 
 @export var curLevel:Level;
 var gameMap:GameMap;
-var curSelectedShape:ShapeObject;
+var curSelectedShape:ShapeNode;
 
 @onready var workSpace = $WorkSpace
-@onready var selectPancel = $SelectPanel/VBoxContainer
+@onready var selectPancel = $SelectPanel
 
-static var Instance:Game = self;
+static var Instance:Game;
+
+func _init():
+	Instance = self
 
 func _ready():
 	gameMap = GameMap.new();
@@ -21,7 +24,13 @@ func _ready():
 		var shape = curLevel.shapes[index]
 		var count = curLevel.shapesCount[index]
 		var shapeObject = ShapeObject.new(shape)
-		selectPancel.add_child(Global.createShapeNode(shapeObject, count))
+		var node = Global.createShapeNode(shapeObject, count)
+		print(node.shape.curShape.area)
+		curSelectedShape = node
+		selectPancel.add_child(node)
+	ControlManager.scale(true)
+	ControlManager.scale(true)
+	ControlManager.scale(true)
 
 func _process(delta):
 	
@@ -37,10 +46,10 @@ func _process(delta):
 		dy += 1
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
-	
+	scale
 	if Input.is_action_just_pressed("SCALE_UP"):
-		ControlManager.sacle(true)
+		ControlManager.scale(true)
 	elif Input.is_action_just_pressed("SCALE_DOWN"):
-		ControlManager.sacle(false)
+		ControlManager.scale(false)
 	pass
 	

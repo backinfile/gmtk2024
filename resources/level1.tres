@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_jwyh7"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_8j6fl"]
 
-[sub_resource type="Resource" id="Resource_3x0ej"]
+[sub_resource type="Resource" id="Resource_8k884"]
 script = ExtResource("2_8j6fl")
-area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1)])
+area = Array[Vector3i]([Vector3i(0, 0, 3)])
 
 [resource]
 script = ExtResource("1_jwyh7")
 id = 1
-shapes = Array[ExtResource("2_8j6fl")]([SubResource("Resource_3x0ej")])
+shapes = Array[ExtResource("2_8j6fl")]([SubResource("Resource_8k884")])
 shapesCount = Array[int]([1])

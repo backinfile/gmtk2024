@@ -20,7 +20,9 @@ func scaleUp(scale:int):
 		var s = Global.getShapesBySizeAndDur(scale, v[2])
 		for vv in s:
 			result.append(Vector3i(vv[0] + x * scale, vv[1] + y * scale, vv[2]))
-	return result
+	var shape = Shape.new()
+	shape.area.append_array(result)
+	return shape
 
 func shapeSize() -> Vector2:
 	if size.x < 0 || size.y < 0:
