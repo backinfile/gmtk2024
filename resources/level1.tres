@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://khsfe5fhstjc"]
+
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_jwyh7"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_8j6fl"]
+
+[resource]
+script = ExtResource("1_jwyh7")
+id = 1
+shapes = Array[ExtResource("2_8j6fl")]([null])
+shapesCount = Array[int]([])
