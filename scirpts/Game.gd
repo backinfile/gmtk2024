@@ -14,12 +14,12 @@ var curSelectedShape:ShapeObject;
 
 
 func _ready():
-	gameMap = GameMap.new();
-	for index in range(curLevel.shapes.size()):
-		var shape = curLevel.shapes[index]
-		var count = curLevel.shapesCount[index]
-		var shapeObject = ShapeObject.new(shape)
-		selectPancel.add_child(Global.createShapeNode(shapeObject, count))
+  gameMap = GameMap.new();
+  for index in range(curLevel.shapes.size()):
+    var shape = curLevel.shapes[index]
+    var count = curLevel.shapesCount[index]
+    var shapeObject = ShapeObject.new(shape)
+    selectPancel.add_child(Global.createShapeNode(shapeObject, count))
 
 func _process(delta):
-	pass
+  pass
