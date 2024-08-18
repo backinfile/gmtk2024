@@ -10,6 +10,7 @@ var onDrag = null;  # onDrag(bool dragStart)
 var onDragUpdate = null;
 #var onDragCancel = null; # onDragCancel
 
+var renderOnWorkspace = false;
 
 func init(shape:ShapeObject, count = -1):
 	self.shape = shape;
@@ -22,19 +23,22 @@ func updatePosition():
 func makeCopy():
 	return Global.createShapeNode(shape.makeCopy())
 
+var triangles = {}
+
 func recreateShape():
-	ShapeUtils.recreateShape(self)
+	triangles.clear()
+	#ShapeUtils.recreateShape(self)
+	var control:Control = get_node("shapes")
 	custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
+	control.custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
 	print("recreateShape ", custom_minimum_size)
-	for p in get_children():
-		if p is not ColorRect:
-			remove_child(p)
-			p.queue_free()
+	Global.clear_children(control)
 	for s in shape.curShape.area:
 		var p = getPolygonByDur(s[2])
 		#print("add Polygon ", p.polygon)
 		p.position = Vector2(s[0] * Global.UNIT_SIZE, s[1] * Global.UNIT_SIZE)
-		add_child(p)
+		control.add_child(p)
+		triangles[s] = p
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()

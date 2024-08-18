@@ -11,6 +11,7 @@ static func getMousePositionOnWorkspace():
 static func addNodeToWorkspace(shape:ShapeNode):
 	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
 	Objs.add_child(shape)
+	shape.renderOnWorkspace = true
 	var gameMap = Game.Instance.gameMap;
 	gameMap.map.append(shape)
 
@@ -48,3 +49,22 @@ static func refresh():
 	
 	
 	
+static func refreshShapeBoolean():
+	var shapeRenderCache = {}
+	for node in Game.Instance.gameMap.map:
+		var p = node.shape.position
+		for v in node.shape.curShape.area:
+			if keyOfV(v, p) in shapeRenderCache:
+				shapeRenderCache[keyOfV(v, p)] += 1
+			else:
+				shapeRenderCache[keyOfV(v, p)] = 1
+	for node in Game.Instance.gameMap.map:
+		var p = node.shape.position
+		var control = node.get_node("shapes")
+		for i in range(node.shape.curShape.area.size()):
+			var v = node.shape.curShape.area[i]
+			var triangle:Polygon2D = control.get_child(i)
+			triangle.visible = shapeRenderCache[keyOfV(v, p)] % 2 == 1
+			
+static func keyOfV(v:Vector3i, p:Vector2i) -> int:
+	return (v[1] + p.x) * 100 + (v[0] + p.y) + v[2] * 10000

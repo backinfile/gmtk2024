@@ -30,4 +30,10 @@ visible = false
 position = Vector2(212, 141)
 polygon = PackedVector2Array(0, 0, 100, 100, 200, 0)
 
+[node name="shapes" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

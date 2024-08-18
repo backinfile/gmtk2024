@@ -16,6 +16,7 @@ static func move(dx:int, dy:int):
 	shapeNode.updatePosition()
 	
 	# TODO update image
+	WorkspaceRenderManager.refreshShapeBoolean()
 
 static var drawing = false
 static var drawingPosition:Vector2i = Vector2i.ZERO;
@@ -33,6 +34,7 @@ static func onDrawStart(start):
 			Game.Instance.curOperationShape.updatePosition()
 			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
 			drawingPosition = mouse
+			WorkspaceRenderManager.refreshShapeBoolean()
 		return
 	else:
 		drawing = false
@@ -66,6 +68,8 @@ static func onDrawing():
 		position = Vector2i(position.x - (scale - 1) * shapeSize.x, position.y)
 	else:
 		return
+		
+	var changed = scale != shapeNode.shape.scale or position != shapeNode.shape.position
 	
 	if scale != shapeNode.shape.scale:
 		var scaled = shapeNode.shape.oriShape.scaleUp(scale)
@@ -75,7 +79,8 @@ static func onDrawing():
 	if position != shapeNode.shape.position:
 		shapeNode.shape.position = position
 		shapeNode.updatePosition()
-	
+	if changed:
+		WorkspaceRenderManager.refreshShapeBoolean()
 	
 	
 static func undo():
@@ -84,6 +89,7 @@ static func undo():
 	if map:
 		var node = map[map.size() - 1]
 		WorkspaceRenderManager.removeNodeFromWorkspace(node)
+	WorkspaceRenderManager.refreshShapeBoolean()
 		
 		
 
