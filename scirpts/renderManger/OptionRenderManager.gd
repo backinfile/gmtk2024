@@ -6,7 +6,7 @@ static var optionBtnList:Array[MeterialButton] = []
 
 static func refresh():
 	var optionPanel = Game.Instance.optionPanel
-	var vbox = optionPanel.get_child(0)
+	var vbox = optionPanel.get_child(0).get_child(0)
 	
 	optionShapeList.clear()
 	optionBtnList.clear()
@@ -61,4 +61,8 @@ static func modifyCurSelectCount(node:ShapeNode, modify:int):
 			Game.Instance.curSelectedShape = null
 			btn.selected = false
 			#ControlManager.onDrawStart(false)
-	
+	# repick last node
+	if modify > 0 and Game.Instance.curSelectedShape == null:
+		Game.Instance.curSelectedShape = node
+		btn.selected = true
+			
