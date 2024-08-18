@@ -32,12 +32,18 @@ static func refresh():
 	
 static func on_select(node:ShapeNode):
 	var index = node.optionIndex
+	var btn = optionBtnList[node.optionIndex]
 	if Game.Instance.curSelectedShape == node:
 		Game.Instance.curSelectedShape = null
+		btn.selected = false
 		print("lose curSelectedShape to ", index)
 	else:
+		if Game.Instance.curSelectedShape:
+			var otherBtn = optionBtnList[Game.Instance.curSelectedShape.optionIndex]
+			otherBtn.selected = false
 		if node.count > 0:
 			Game.Instance.curSelectedShape = node
+			btn.selected = true
 			print("change curSelectedShape to ", index)
 		else:
 			print("miss shape count")

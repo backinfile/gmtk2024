@@ -3,6 +3,10 @@ extends Button
 
 @onready var count_label := $Ring/Count as Label
 
+
+func _ready():
+	selected = false
+
 var count: int = 0:
 	set(value):
 		count = value
@@ -16,4 +20,5 @@ var node: ShapeNode:
 var selected: bool = false:
 	set(value):
 		selected = value
+		modulate = Color.GRAY if not value else Color.WHITE
 	
