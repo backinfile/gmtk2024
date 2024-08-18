@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://cjuo3ogd0et63"]
+
+[ext_resource type="Resource" path="res://resources/levels/oneSquare_target.tres" id="1_6byvr"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_m3weg"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_56mgp"]
+[ext_resource type="Resource" uid="uid://dwn5rgv6hag47" path="res://resources/shapes/Rect11.tres" id="4_ai1cf"]
+
+[resource]
+script = ExtResource("1_m3weg")
+id = 1
+shapes = Array[ExtResource("2_56mgp")]([ExtResource("4_ai1cf")])
+shapesCount = Array[int]([1])
+goal = ExtResource("1_6byvr")
+width = 4
+height = 4
