@@ -2,17 +2,18 @@ class_name ControlManager
 extends Node
 
 static func move(dx:int, dy:int):
-	var shape = Game.Instance.curSelectedShape;
-	if shape == null: return;
-	var size = shape.curShape.shapeSize()
+	var shapeNode = Game.Instance.curOperationShape;
+	if shapeNode == null: return;
+	var size = shapeNode.shape.curShape.shapeSize()
 	var map = Game.Instance.gameMap;
 	
-	var x = shape.position.x + dx
-	var y = shape.position.y + dy
+	var x = shapeNode.shape.position.x + dx
+	var y = shapeNode.shape.position.y + dy
 	
 	# TODO check edge
 	
-	shape.position = Vector2i(x, y)
+	shapeNode.shape.position = Vector2i(x, y)
+	shapeNode.updatePosition()
 	
 	# TODO update image
 
@@ -34,7 +35,6 @@ static func onDrawStart(start):
 		return
 	else:
 		drawing = false
-		Game.Instance.curOperationShape = null
 		drawingPosition = Vector2i.ZERO
 
 static func onDrawing():
