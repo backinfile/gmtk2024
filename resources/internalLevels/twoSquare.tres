@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://ckmmwd7thl6d8"]
+
+[ext_resource type="Resource" path="res://resources/levels/twoSquare_target.tres" id="1_052mq"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_051nl"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="3_ex84i"]
+[ext_resource type="Resource" uid="uid://dwn5rgv6hag47" path="res://resources/shapes/Rect11.tres" id="4_gedci"]
+
+[resource]
+script = ExtResource("2_051nl")
+id = 1
+shapes = Array[ExtResource("3_ex84i")]([ExtResource("4_gedci")])
+shapesCount = Array[int]([2])
+goal = ExtResource("1_052mq")
+width = 5
+height = 5

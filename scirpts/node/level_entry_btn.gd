@@ -15,5 +15,4 @@ func _process(delta):
 
 
 func _on_pressed():
-	Main.Instance.nextLevelFilePath = nextLevelPath
-	Main.Instance.changeToGameScene(levelPath)
+	Main.Instance.changeToGameScene(index)

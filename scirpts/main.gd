@@ -2,7 +2,8 @@ class_name Main
 extends Control
 
 static var Instance:Main;
-var nextLevelFilePath = null
+var curLevelIndex = -1
+var levelPaths = []
 
 func _init():
 	Instance = self
@@ -26,16 +27,20 @@ func changeToSelectLevelScene():
 	$Title.visible = false
 	$Levels.visible = true
 
-func changeToGameScene(levelPath:String):
+func changeToGameScene(levelIndex:int):
 	$Title.visible = false
 	$Levels.visible = false
-	$Game.visible = true
+	curLevelIndex = levelIndex
+	var levelPath = levelPaths[curLevelIndex]
+	print("changeToGameScene levelPath ", levelPath)
+	
 	var level = ResourceLoader.load(levelPath)
 	$Game.setLevel(level)
+	$Game.visible = true
 
 func changeToNextLevel():
-	if nextLevelFilePath:
-		changeToGameScene(nextLevelFilePath)
+	if curLevelIndex + 1 < levelPaths.size():
+		changeToGameScene(curLevelIndex + 1)
 	else:
 		changeToTitleScene()
 
@@ -49,10 +54,9 @@ func loadLevelBtns():
 		var container = $Levels/GridContainer
 		for i in range(levelFilePaths.size()):
 			var fileName = levelFilePaths[i]
-			var nextFilePath = levelFilePaths[i + 1] if i + 1 < levelFilePaths.size() else null
 			var path = "res://resources/internalLevels/" + fileName
+			levelPaths.append(path)
 			var levelEntry = preload("res://nodes/level_entry_btn.tscn").instantiate()
 			levelEntry.levelPath = path
-			levelEntry.nextLevelPath = nextFilePath
 			levelEntry.index = i;
 			container.add_child(levelEntry)
