@@ -23,6 +23,10 @@ func _ready():
 	gameMap = GameMap.new();
 	gameMap.width = 5
 	gameMap.height = 5
+	
+	var size = workSpace.get_node("Box").size
+	Global.UNIT_SIZE = size.x / gameMap.width
+	
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
 	GoalRenderManger.refresh()

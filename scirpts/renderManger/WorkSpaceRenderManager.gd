@@ -4,8 +4,8 @@ extends Node
 
 static func getMousePositionOnWorkspace():
 	var mouse = Game.Instance.get_viewport().get_mouse_position();
-	var start = Game.Instance.workSpace.position
-	var offset = ((mouse - start) / Global.UNIT_TOTAL)
+	var start = Game.Instance.workSpace.get_node("Box").global_position
+	var offset = ((mouse - start) / Global.UNIT_SIZE)
 	return Global.toVector2i(offset)
 
 static func addNodeToWorkspace(shape:ShapeNode):
@@ -28,6 +28,7 @@ static func refresh():
 	#Box.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
 	
 	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");
+	Objs.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
 	
 	# init grid
 	var Grids = Game.Instance.workSpace.get_node("Box").get_node("Grids");

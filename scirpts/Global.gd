@@ -2,7 +2,6 @@ extends Node
 
 var UNIT_SIZE = 50;
 var UNIT_EDGE = 1;
-var UNIT_TOTAL = UNIT_SIZE + UNIT_EDGE;
 
 
 

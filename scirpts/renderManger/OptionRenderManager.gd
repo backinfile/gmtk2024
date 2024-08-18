@@ -15,7 +15,7 @@ static func refresh():
 		var shape = curLevel.shapes[index]
 		var count = curLevel.shapesCount[index]
 		var shapeObject = ShapeObject.new(shape)
-		var btn = Button.new()
+		var btn = preload("res://nodes/material_button.tscn").instantiate()
 		var node = Global.createShapeNode(shapeObject, count)
 		node.optionIndex = index
 		optionList.append(node)
