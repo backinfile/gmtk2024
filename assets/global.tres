@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bsm7irxu3vl06"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bsm7irxu3vl06"]
 
 [ext_resource type="FontFile" uid="uid://b4lakxlpmjyei" path="res://assets/font/Nunito-Bold.ttf" id="1_eudg2"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_hs6bu"]

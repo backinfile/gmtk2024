@@ -9,14 +9,14 @@ static func getMousePositionOnWorkspace():
 	return Global.toVector2i(offset)
 
 static func addNodeToWorkspace(shape:ShapeNode):
-	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
+	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");
 	Objs.add_child(shape)
 	shape.renderOnWorkspace = true
 	var gameMap = Game.Instance.gameMap;
 	gameMap.map.append(shape)
 
 static func removeNodeFromWorkspace(shape:ShapeNode):
-	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
+	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");
 	Objs.remove_child(shape)
 	var gameMap = Game.Instance.gameMap;
 	gameMap.map.erase(shape)
@@ -24,13 +24,13 @@ static func removeNodeFromWorkspace(shape:ShapeNode):
 
 static func refresh():
 	var gameMap = Game.Instance.gameMap;
-	var Mask = Game.Instance.workSpace.get_node("Mask");
-	Mask.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
+	#var Box = Game.Instance.workSpace.get_node("Box");
+	#Box.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
 	
-	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
+	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");
 	
 	# init grid
-	var Grids = Game.Instance.workSpace.get_node("Mask").get_node("Grids");
+	var Grids = Game.Instance.workSpace.get_node("Box").get_node("Grids");
 	Global.clear_children(Grids)
 	for x in range(gameMap.width + 1):
 		var line = Line2D.new()

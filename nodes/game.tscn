@@ -31,23 +31,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Mask" type="ColorRect" parent="WorkSpace"]
+visible = false
 clip_children = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Objs" type="Control" parent="WorkSpace/Mask"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Grids" type="Control" parent="WorkSpace/Mask"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Box" type="Control" parent="WorkSpace"]
+clip_children = 1
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
@@ -56,6 +49,16 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Objs" type="Control" parent="WorkSpace/Box"]
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -40.0
+
+[node name="Grids" type="Control" parent="WorkSpace/Box"]
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -40.0
 
 [node name="OptionPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -99,6 +102,7 @@ text = "Goal"
 
 [node name="Box" type="Control" parent="Goal"]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
