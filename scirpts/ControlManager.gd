@@ -16,25 +16,6 @@ static func move(dx:int, dy:int):
 	
 	# TODO update image
 
-
-static func scale(up:bool):
-	var shapeNode = Game.Instance.curSelectedShape;
-	if shapeNode == null: return;
-	var shape = shapeNode.shape
-	var size = shape.curShape.shapeSize()
-	var map = Game.Instance.gameMap;
-	var scale = shape.scale + (1 if up else -1)
-	if scale < 1: return
-	var result = shape.oriShape.scaleUp(scale)
-	
-	# TODO check
-	
-	shape.curShape = result
-	shape.scale = scale
-	shapeNode.recreateShape()
-	
-	# TODO Update texture
-
 static var drawing = false
 
 static func onDrawStart(start):
@@ -55,6 +36,30 @@ static func onDrawStart(start):
 
 static func onDrawing():
 	if !drawing or Game.Instance.curOperationShape == null: return
+	
+	var shapeNode = Game.Instance.curOperationShape
+	var scale = 1
+	var position = shapeNode.shape.position 
+	
+	var shapeSize = shapeNode.shape.oriShape.shapeSizeI()
+	var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
+	var offset = Global.div(mouse - shapeNode.shape.position, shapeSize)
+	print("onDrawing offset = ", offset)
+	if offset.x > 0 && offset.y > 0:
+		scale = max(offset.x, offset.y)
+	else:
+		return
+	
+	if scale != shapeNode.shape.scale:
+		var scaled = shapeNode.shape.oriShape.scaleUp(scale)
+		shapeNode.shape.curShape = scaled
+		shapeNode.shape.scale = scale
+		shapeNode.recreateShape()
+	if position != shapeNode.shape.position:
+		shapeNode.shape.position = position
+		shapeNode.updatePosition()
+	
+	
 	
 
 

@@ -140,3 +140,13 @@ func shapeSize() -> Vector2:
 			y = max(y, s[1])
 		size = Vector2(x + 1, y + 1)
 	return size
+
+func shapeSizeI() -> Vector2:
+	if size.x < 0 || size.y < 0:
+		var x = 0
+		var y = 0
+		for s in area:
+			x = max(x, s[0])
+			y = max(y, s[1])
+		size = Vector2i(x + 1, y + 1)
+	return size

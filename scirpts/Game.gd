@@ -50,11 +50,7 @@ func _process(delta):
 		dy += 1
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
-
-	if Input.is_action_just_pressed("SCALE_UP"):
-		ControlManager.scale(true)
-	elif Input.is_action_just_pressed("SCALE_DOWN"):
-		ControlManager.scale(false)
+	
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

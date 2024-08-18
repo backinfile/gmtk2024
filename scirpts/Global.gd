@@ -89,3 +89,6 @@ func clear_children(node:Node):
 
 func toVector2i(v:Vector2i):
 	return Vector2i(roundi(v.x), roundi(v.y))
+
+func div(v: Vector2i, v2:Vector2i) -> Vector2i:
+	return Vector2i(v.x / v2.x, v.y / v2.y)
