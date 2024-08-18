@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_gp4gw"]
 script = ExtResource("2_8j6fl")
-area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1)])
 
 [sub_resource type="Resource" id="Resource_8k884"]
 script = ExtResource("2_8j6fl")

@@ -3,6 +3,7 @@ extends Control
 
 var shape:ShapeObject;
 var count = -1;
+var optionIndex = -1;
 
 var dragging = false;
 var draggable = false;
@@ -11,6 +12,8 @@ var onDragUpdate = null;
 #var onDragCancel = null; # onDragCancel
 
 var renderOnWorkspace = false;
+
+@export var triangle_color:Color = Color.BLACK
 
 func init(shape:ShapeObject, count = -1):
 	self.shape = shape;
@@ -21,7 +24,9 @@ func updatePosition():
 	self.position = shape.position * Global.UNIT_SIZE
 
 func makeCopy():
-	return Global.createShapeNode(shape.makeCopy())
+	var node = Global.createShapeNode(shape.makeCopy())
+	node.optionIndex = optionIndex
+	return node
 
 
 func recreateShape():
@@ -34,6 +39,7 @@ func recreateShape():
 	for s in shape.curShape.area:
 		var p = getPolygonByDur(s[2])
 		#print("add Polygon ", p.polygon)
+		p.color = triangle_color
 		p.position = Vector2(s[0] * Global.UNIT_SIZE, s[1] * Global.UNIT_SIZE)
 		control.add_child(p)
 
