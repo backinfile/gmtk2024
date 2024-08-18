@@ -16,16 +16,16 @@ static func refresh():
 		var count = curLevel.shapesCount[index]
 		var shapeObject = ShapeObject.new(shape)
 		var btn = preload("res://nodes/material_button.tscn").instantiate()
+		vbox.add_child(btn)
 		var node = Global.createShapeNode(shapeObject, count)
 		node.optionIndex = index
 		optionList.append(node)
-		btn.add_child(node)
-		btn.custom_minimum_size = shapeObject.curShape.shapeSize() * Global.UNIT_SIZE
+		btn.count = count
+		btn.node = node
 		btn.pressed.connect(func (): on_select(node))
 		#if index == 0:
 			#Game.Instance.curSelectedShape = node
 		print(node.shape.curShape.area)
-		vbox.add_child(btn)
 	
 static func on_select(node:ShapeNode):
 	var index = node.optionIndex
