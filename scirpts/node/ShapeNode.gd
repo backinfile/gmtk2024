@@ -4,6 +4,7 @@ extends Control
 var shape:ShapeObject;
 var count = -1;
 var optionIndex = -1;
+var fixScaled = false
 
 var dragging = false;
 var draggable = false;
@@ -15,9 +16,10 @@ var renderOnWorkspace = false;
 
 @export var triangle_color:Color = Color.BLACK
 
-func init(shape:ShapeObject, count = -1):
+func init(shape:ShapeObject, count = -1, fixScaled = false):
 	self.shape = shape;
 	self.count = count;
+	self.fixScaled = fixScaled;
 	recreateShape()
 
 func updatePosition():
@@ -32,21 +34,25 @@ func makeCopy():
 func recreateShape():
 	#ShapeUtils.recreateShape(self)
 	var control:Control = get_node("shapes")
-	custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
-	control.custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
+	custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
+	control.custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
 	print("recreateShape ", custom_minimum_size)
 	Global.clear_children(control)
 	for s in shape.curShape.area:
 		var p = getPolygonByDur(s[2])
 		#print("add Polygon ", p.polygon)
 		p.color = triangle_color
-		p.position = Vector2(s[0] * Global.UNIT_SIZE, s[1] * Global.UNIT_SIZE)
+		p.position = Vector2(s[0] * getUnitSize(), s[1] * getUnitSize())
 		control.add_child(p)
+
+func getUnitSize():
+	if fixScaled: return 40
+	return Global.UNIT_SIZE
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()
-	var size = Global.UNIT_SIZE;
-	var mid = Global.UNIT_SIZE / 2;
+	var size = getUnitSize();
+	var mid = getUnitSize() / 2;
 	var polygon = []
 	polygon.append(Vector2(mid, mid))
 	match dur:
