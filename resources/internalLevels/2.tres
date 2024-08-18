@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://duos2yo7np2e0"]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_0snw4"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_tlmpq"]
+
+[sub_resource type="Resource" id="Resource_fb7n1"]
+script = ExtResource("1_0snw4")
+area = Array[Vector3i]([Vector3i(1, 3, 2), Vector3i(1, 3, 3), Vector3i(1, 3, 1), Vector3i(1, 3, 0), Vector3i(2, 2, 3), Vector3i(2, 2, 0), Vector3i(2, 2, 2), Vector3i(2, 2, 1), Vector3i(3, 1, 3), Vector3i(3, 1, 0), Vector3i(3, 1, 2), Vector3i(3, 1, 1), Vector3i(3, 3, 0), Vector3i(3, 3, 1), Vector3i(3, 3, 2), Vector3i(3, 3, 3), Vector3i(0, 0, 0), Vector3i(0, 0, 3), Vector3i(4, 0, 0), Vector3i(4, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 4, 0), Vector3i(0, 4, 1), Vector3i(0, 4, 2), Vector3i(1, 4, 2), Vector3i(0, 4, 3), Vector3i(1, 4, 3), Vector3i(1, 4, 1), Vector3i(1, 4, 0), Vector3i(4, 1, 3), Vector3i(4, 1, 0), Vector3i(4, 0, 3), Vector3i(4, 0, 2), Vector3i(4, 1, 2), Vector3i(4, 1, 1)])
+
+[sub_resource type="Resource" id="Resource_sqntt"]
+script = ExtResource("1_0snw4")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
+
+[resource]
+script = ExtResource("2_tlmpq")
+id = 1
+shapes = Array[ExtResource("1_0snw4")]([SubResource("Resource_sqntt")])
+shapesCount = Array[int]([5])
+goal = SubResource("Resource_fb7n1")
+width = 5
+height = 5

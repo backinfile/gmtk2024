@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://biouqtirgu8yn"]
+
+[ext_resource type="Script" path="res://scirpts/node/level_entry_btn.gd" id="1_f0b8l"]
+
+[node name="LevelEntryBtn" type="Button"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 98.0
+offset_bottom = 62.0
+text = "1"
+script = ExtResource("1_f0b8l")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

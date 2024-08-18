@@ -15,6 +15,7 @@ var curOperationShape:ShapeNode:
 		if value: value.borderVisible = true
 		curOperationShape = value
 	
+var debugMode = false
 
 @onready var workSpace:Control = $WorkSpace
 @onready var optionPanel = $OptionPanel
@@ -25,24 +26,32 @@ func _init():
 	Instance = self
 
 func _ready():
+	if get_tree().current_scene.name == "Game":
+		$ReturnBtn.disabled = true
+		if curLevel != null:
+			setLevel(curLevel)
+		debugMode = true
+		
+
+func setLevel(level:Level):
+	curLevel = level
+	curOperationShape = null
+	curSelectedShape = null
 	gameMap = GameMap.new();
 	gameMap.width = curLevel.width
 	gameMap.height = curLevel.height
-	
 	if true:
 		var size = workSpace.get_node("Box").size
 		Global.UNIT_SIZE = size.x / gameMap.width
 	if true:
 		var size = $Goal/Box.size
 		Global.UNIT_SIZE_2 = size.x / gameMap.width
-		
-	
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
 	GoalRenderManger.refresh()
 
 func _process(delta):
-	pass
+	if curLevel == null: return
 	
 	var dx = 0
 	var dy = 0
@@ -66,6 +75,7 @@ func _process(delta):
 		saveToLevelFile()
 
 func _input(event):
+	if curLevel == null: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
 	#elif event is InputEventMouseMotion:
@@ -104,3 +114,7 @@ func saveToLevelFile():
 		
 	ResourceSaver.save(level, "res://resources/level_saved.tres")
 	print("level saved!!")
+
+
+func _on_return_btn_pressed():
+	Main.Instance.changeToTitleScene()

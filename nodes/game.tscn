@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=7 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
+[ext_resource type="Texture2D" uid="uid://dsc1b7r26k06r" path="res://assets/img/home-outline.svg" id="6_7flkh"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -148,10 +149,10 @@ stretch_mode = 3
 
 [node name="RestartBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 974.0
-offset_top = 139.0
-offset_right = 1038.0
-offset_bottom = 203.0
+offset_left = 980.0
+offset_top = 138.0
+offset_right = 1044.0
+offset_bottom = 202.0
 theme_type_variation = &"FlatButton"
 icon_alignment = 1
 script = ExtResource("4_yq66u")
@@ -176,5 +177,36 @@ grow_vertical = 2
 texture = ExtResource("5_n6xo1")
 stretch_mode = 3
 
+[node name="ReturnBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 140.0
+offset_right = 1154.0
+offset_bottom = 204.0
+theme_type_variation = &"FlatButton"
+icon_alignment = 1
+script = ExtResource("4_yq66u")
+
+[node name="Panel" type="Panel" parent="ReturnBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ReturnBtn"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7flkh")
+stretch_mode = 3
+
 [connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="ReturnBtn" to="." method="_on_return_btn_pressed"]

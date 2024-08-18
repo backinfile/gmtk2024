@@ -43,6 +43,11 @@ static func onDrawStart(start):
 		OptionRenderManager.modifyCurSelectCount(Game.Instance.curSelectedShape, -1)
 		if Game.Instance.curOperationShape:
 			Game.Instance.curOperationShape.borderVisible = false
+		
+		if GoalRenderManger.isWin():
+			print("check win = true");
+			if !Game.Instance.debugMode:
+				Main.Instance.changeToNextLevel()
 
 static func onDrawing():
 	if !drawing: return

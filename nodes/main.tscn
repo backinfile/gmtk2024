@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=7 format=3 uid="uid://3muo0hh6ic2t"]
 
+[ext_resource type="Script" path="res://scirpts/main.gd" id="1_u3gaw"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_bnuot"]
 [ext_resource type="Texture2D" uid="uid://2qp6er017h64" path="res://assets/img/title.png" id="3_rht5u"]
+[ext_resource type="PackedScene" uid="uid://boep8bgfii2rd" path="res://nodes/game.tscn" id="5_h8pe4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkof"]
 bg_color = Color(1, 1, 1, 1)
@@ -21,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u3gaw")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,7 +35,6 @@ grow_vertical = 2
 texture = ExtResource("1_y543v")
 
 [node name="Title" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,6 +76,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1fkof")
 text = "Play"
 
 [node name="Levels" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,3 +112,10 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 6
+
+[node name="Game" parent="." instance=ExtResource("5_h8pe4")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Title/Button" to="." method="_on_start_game_btn_pressed"]

@@ -29,6 +29,7 @@ static func refresh():
 	
 	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");
 	Objs.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
+	Global.clear_children(Objs)
 	
 	# init grid
 	var Grids = Game.Instance.workSpace.get_node("Box").get_node("Grids");
@@ -70,8 +71,8 @@ static func refreshShapeBoolean():
 			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
 			var triangle:Polygon2D = control.get_child(i)
 			triangle.visible = shapeRenderCache[v] % 2 == 1
-	if GoalRenderManger.isWin():
-		print("win!!")
+	#if GoalRenderManger.isWin():
+		#print("win!!")
 			
 static func keyOfV(v:Vector3i, p:Vector2i) -> int:
 	return (v[1] + p.y) * 100 + (v[0] + p.x) + v[2] * 10000
