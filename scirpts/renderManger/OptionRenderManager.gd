@@ -1,13 +1,15 @@
 class_name OptionRenderManager
 extends Node
 
-static var optionList:Array[ShapeNode] = []
+static var optionShapeList:Array[ShapeNode] = []
+static var optionBtnList:Array[MeterialButton] = []
 
 static func refresh():
 	var optionPanel = Game.Instance.optionPanel
 	var vbox = optionPanel.get_child(0)
 	
-	optionList.clear()
+	optionShapeList.clear()
+	optionBtnList.clear()
 	Global.clear_children(vbox)
 	
 	var curLevel = Game.Instance.curLevel
@@ -19,7 +21,8 @@ static func refresh():
 		vbox.add_child(btn)
 		var node = Global.createShapeNode(shapeObject, count)
 		node.optionIndex = index
-		optionList.append(node)
+		optionShapeList.append(node)
+		optionBtnList.append(btn)
 		btn.count = count
 		btn.node = node
 		btn.pressed.connect(func (): on_select(node))
@@ -40,9 +43,10 @@ static func on_select(node:ShapeNode):
 			print("miss shape count")
 
 static func modifyCurSelectCount(node:ShapeNode, modify:int):
-	node = optionList[node.optionIndex]
+	node = optionShapeList[node.optionIndex]
 	print("modifyCurSelectCount  modify = ", modify, " nodeIndex = ", node.optionIndex)
 	node.count += modify
+	optionBtnList[node.optionIndex].count = node.count
 	if node.count < 0: node.count = 0
 	if node.count <= 0:
 		if Game.Instance.curSelectedShape == node:

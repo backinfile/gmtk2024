@@ -1,3 +1,4 @@
+class_name MeterialButton
 extends Button
 
 @onready var count_label := $Ring/Count as Label
