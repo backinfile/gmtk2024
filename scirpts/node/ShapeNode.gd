@@ -72,7 +72,7 @@ func getUnitSize():
 		return Global.UNIT_SIZE
 	elif scaleMode == 1:
 		return Global.UNIT_SIZE_2
-	return 40
+	return 40 / shape.curShape.shapeSize().x
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()

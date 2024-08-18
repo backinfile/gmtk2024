@@ -49,6 +49,7 @@ static func onDrawing():
 	if Game.Instance.curOperationShape == null: return
 	
 	var shapeNode = Game.Instance.curOperationShape
+	var curLevel = Game.Instance.curLevel
 	var scale = 1
 	var position = drawingPosition 
 	
@@ -85,7 +86,7 @@ static func onDrawing():
 		shapeNode.updatePosition()
 	if changed:
 		WorkspaceRenderManager.refreshShapeBoolean()
-		print("===== scale = ", scale)
+		#print("===== scale = ", scale)
 	
 	
 static func undo():
