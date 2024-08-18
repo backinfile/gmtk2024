@@ -32,7 +32,7 @@ func recreateShape():
 			p.queue_free()
 	for s in shape.curShape.area:
 		var p = getPolygonByDur(s[2])
-		print("add Polygon ", p.polygon)
+		#print("add Polygon ", p.polygon)
 		p.position = Vector2(s[0] * Global.UNIT_SIZE, s[1] * Global.UNIT_SIZE)
 		add_child(p)
 

@@ -12,7 +12,7 @@ var curSelectedShape:ShapeNode;
 var curOperationShape:ShapeNode;
 
 @onready var workSpace:Control = $WorkSpace
-@onready var selectPancel = $SelectPanel
+@onready var optionPanel = $OptionPanel
 
 static var Instance:Game;
 
@@ -21,18 +21,10 @@ func _init():
 
 func _ready():
 	gameMap = GameMap.new();
-	for index in range(curLevel.shapes.size()):
-		var shape = curLevel.shapes[index]
-		var count = curLevel.shapesCount[index]
-		var shapeObject = ShapeObject.new(shape)
-		var node = Global.createShapeNode(shapeObject, count)
-		print(node.shape.curShape.area)
-		curSelectedShape = node
-		selectPancel.add_child(node)
 	#ControlManager.scale(true)
 	#ControlManager.scale(true)
 	#ControlManager.scale(true)
-	
+	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
 
 func _process(delta):
@@ -59,6 +51,5 @@ func _input(event):
 		ControlManager.onDrawStart(event.is_pressed())
 	#elif event is InputEventMouseMotion:
 		#ControlManager.onDrawing()
-
 
 	

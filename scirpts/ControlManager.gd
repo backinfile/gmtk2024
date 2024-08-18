@@ -21,11 +21,12 @@ static var drawing = false
 static var drawingPosition:Vector2i = Vector2i.ZERO;
 
 static func onDrawStart(start):
-	if Game.Instance.curSelectedShape == null: return
+	var shapeNode = Game.Instance.curSelectedShape
+	if shapeNode == null: return
 	if start:
 		var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
-		print("onDrawStart mouse = ", mouse)
-		if mouse.x >= 0 || mouse.y >= 0:
+		if mouse.x >= 0 && mouse.y >= 0 && mouse.x < Game.Instance.gameMap.width && mouse.y < Game.Instance.gameMap.height:
+			print("onDrawStart mouse = ", mouse)
 			drawing = true;
 			Game.Instance.curOperationShape = Game.Instance.curSelectedShape.makeCopy()
 			Game.Instance.curOperationShape.shape.position = mouse
@@ -38,7 +39,8 @@ static func onDrawStart(start):
 		drawingPosition = Vector2i.ZERO
 
 static func onDrawing():
-	if !drawing or Game.Instance.curOperationShape == null: return
+	if !drawing: return
+	if Game.Instance.curOperationShape == null: return
 	
 	var shapeNode = Game.Instance.curOperationShape
 	var scale = 1
@@ -48,7 +50,7 @@ static func onDrawing():
 	var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
 	var offset = mouse - position
 	var offsetBySize = Global.div(mouse - position, shapeSize)
-	print("onDrawing offset = ", offset, " offsetBySize = ", offsetBySize)
+	#print("onDrawing offset = ", offset, " offsetBySize = ", offsetBySize)
 	if offset.x >= 0 and offset.y >= 0 and offset.x < shapeSize.x and offset.y < shapeSize.y:
 		scale = 1
 	elif offsetBySize.x >= 0 && offsetBySize.y >= 0:
