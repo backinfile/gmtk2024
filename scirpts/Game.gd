@@ -45,6 +45,9 @@ func _process(delta):
 	
 	if curOperationShape != null:
 		ControlManager.onDrawing()
+		
+	if Input.is_action_just_pressed("save"):
+		saveToFile()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -55,3 +58,7 @@ func _input(event):
 	
 func _on_undo_btn_pressed():
 	ControlManager.undo()
+
+func saveToFile():
+	var shape = WorkspaceRenderManager.workspaceToShape();
+	ResourceSaver.save(shape, "res://resources/shape_saved.tres")

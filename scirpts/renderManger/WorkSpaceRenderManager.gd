@@ -77,15 +77,21 @@ static func workspaceToShape():
 	var minX = -1
 	var minY = -1
 	var shapeRenderCache = {}
+	var gameMap = Game.Instance.gameMap
 	for node in Game.Instance.gameMap.map:
 		var p = node.shape.position
 		for v in node.shape.curShape.area:
-			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
+			var x = v.x + p.x
+			var y = v.y + p.y
+			v = Vector3i(x, y, v.z)
 			shapeRenderCache[v] = true
-			if minX < 0 or (p.x <= minX && p.y <= minY):
-				minX = v.x
-				minY = v.y
+			if minX < 0 or (x <= minX && y <= minY):
+				minX = x
+				minY = y
 	var shape = Shape.new()
 	for v in shapeRenderCache.keys():
-		shape.area.append(Vector3i(v.x - minX, v.y - minY, v.z))
+		var x = v.x - minX
+		var y = v.y - minY
+		if x>=0 && x < gameMap.width && y>=0 && y < gameMap.height:
+			shape.area.append(Vector3i(v.x - minX, v.y - minY, v.z))
 	return shape

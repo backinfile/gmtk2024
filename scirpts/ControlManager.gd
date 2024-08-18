@@ -36,7 +36,8 @@ static func onDrawStart(start):
 			drawingPosition = mouse
 			WorkspaceRenderManager.refreshShapeBoolean()
 		return
-	else:
+	
+	if drawing:
 		drawing = false
 		drawingPosition = Vector2i.ZERO
 		OptionRenderManager.modifyCurSelectCount(Game.Instance.curSelectedShape, -1)
