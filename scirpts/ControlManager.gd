@@ -41,6 +41,8 @@ static func onDrawStart(start):
 		drawing = false
 		drawingPosition = Vector2i.ZERO
 		OptionRenderManager.modifyCurSelectCount(Game.Instance.curSelectedShape, -1)
+		if Game.Instance.curOperationShape:
+			Game.Instance.curOperationShape.borderVisible = false
 
 static func onDrawing():
 	if !drawing: return

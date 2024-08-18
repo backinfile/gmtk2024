@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bg6lxs5ma22a" path="res://resources/shapes/TriDown.tres" id="9_2wyd5"]
 [ext_resource type="Resource" uid="uid://c3wsrhy7rrjr7" path="res://resources/shapes/TriRight.tres" id="10_xf1yx"]
 [ext_resource type="Resource" uid="uid://d4c74knpkv08v" path="res://resources/shapes/TriLeft.tres" id="11_633ee"]
-[ext_resource type="Resource" path="res://resources/shapes/diamond.tres" id="12_5c2ir"]
+[ext_resource type="Resource" uid="uid://b64bexfiv8442" path="res://resources/shapes/diamond.tres" id="12_5c2ir"]
 
 [resource]
 script = ExtResource("1_m0eh6")
