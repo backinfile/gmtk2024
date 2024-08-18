@@ -15,5 +15,5 @@ id = 1
 shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("4_50ax0"), ExtResource("5_b8sv8"), ExtResource("6_cb4tv"), ExtResource("7_7lr5s")])
 shapesCount = Array[int]([10, 10, 10, 10, 10])
 goal = ExtResource("1_28gfr")
-width = 4
-height = 4
+width = 6
+height = 6
