@@ -1,6 +1,8 @@
 extends Node
 
 var UNIT_SIZE = 50;
+var UNIT_EDGE = 1;
+var UNIT_TOTAL = UNIT_SIZE + UNIT_EDGE;
 
 
 
@@ -79,3 +81,11 @@ func getDurOffsetPos(dur:int):
 		Shape.DUR.LEFT: return Vector2i.LEFT
 		Shape.DUR.DOWN: return Vector2i.DOWN
 		Shape.DUR.RIGHT: return Vector2i.RIGHT
+		
+func clear_children(node:Node):
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
+
+func toVector2i(v:Vector2i):
+	return Vector2i(roundi(v.x), roundi(v.y))

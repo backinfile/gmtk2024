@@ -12,6 +12,7 @@ enum DUR {
 	RIGHT = 3
 }
 
+
 func get_size() -> Vector2i:
 	var width: int = 0
 	var height: int = 0

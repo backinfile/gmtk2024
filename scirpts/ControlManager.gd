@@ -35,9 +35,27 @@ static func scale(up:bool):
 	
 	# TODO Update texture
 
+static var drawing = false
 
+static func onDrawStart(start):
+	if Game.Instance.curSelectedShape == null: return
+	if start:
+		var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
+		print("onDrawStart mouse = ", mouse)
+		if mouse.x >= 0 || mouse.y >= 0:
+			drawing = true;
+			Game.Instance.curOperationShape = Game.Instance.curSelectedShape.makeCopy()
+			Game.Instance.curOperationShape.shape.position = mouse
+			Game.Instance.curOperationShape.updatePosition()
+			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
+		return
+	
+	drawing = false
+	Game.Instance.curOperationShape = null
 
-
+static func onDrawing():
+	if !drawing or Game.Instance.curOperationShape == null: return
+	
 
 
 

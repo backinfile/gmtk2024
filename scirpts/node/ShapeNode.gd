@@ -16,6 +16,12 @@ func init(shape:ShapeObject, count = -1):
 	self.count = count;
 	recreateShape()
 
+func updatePosition():
+	self.position = shape.position * Global.UNIT_SIZE
+
+func makeCopy():
+	return Global.createShapeNode(shape.makeCopy())
+
 func recreateShape():
 	ShapeUtils.recreateShape(self)
 	custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
@@ -53,7 +59,7 @@ func getPolygonByDur(dur:int):
 	return p
 
 func _ready():
-	setDragState(true)
+	setDragState(false)
 	pass
 
 func setDragState(draggable:bool, onDrag:Callable = func (d):pass, onDragUpdate:Callable = func ():pass):

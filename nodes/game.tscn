@@ -17,6 +17,22 @@ offset_top = 110.0
 offset_right = 890.0
 offset_bottom = 610.0
 
+[node name="Mask" type="ColorRect" parent="WorkSpace"]
+clip_children = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Objs" type="Control" parent="WorkSpace/Mask"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Grids" type="Control" parent="WorkSpace/Mask"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="SelectPanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
