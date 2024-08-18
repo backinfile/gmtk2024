@@ -57,3 +57,13 @@ offset_left = 950.0
 offset_top = 80.0
 offset_right = 1120.0
 offset_bottom = 260.0
+
+[node name="UndoBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 322.0
+offset_right = 1031.0
+offset_bottom = 353.0
+text = "UNDO"
+
+[connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]

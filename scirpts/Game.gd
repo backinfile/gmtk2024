@@ -53,3 +53,5 @@ func _input(event):
 		#ControlManager.onDrawing()
 
 	
+func _on_undo_btn_pressed():
+	ControlManager.undo()

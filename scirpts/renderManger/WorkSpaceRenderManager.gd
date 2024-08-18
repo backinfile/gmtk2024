@@ -11,9 +11,14 @@ static func getMousePositionOnWorkspace():
 static func addNodeToWorkspace(shape:ShapeNode):
 	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
 	Objs.add_child(shape)
-	
 	var gameMap = Game.Instance.gameMap;
 	gameMap.map.append(shape)
+
+static func removeNodeFromWorkspace(shape:ShapeNode):
+	var Objs = Game.Instance.workSpace.get_node("Mask").get_node("Objs");
+	Objs.remove_child(shape)
+	var gameMap = Game.Instance.gameMap;
+	gameMap.map.erase(shape)
 	
 
 static func refresh():

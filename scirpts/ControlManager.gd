@@ -78,7 +78,14 @@ static func onDrawing():
 	
 	
 	
-
+static func undo():
+	Game.Instance.curOperationShape = null
+	var map = Game.Instance.gameMap.map
+	if map:
+		var node = map[map.size() - 1]
+		WorkspaceRenderManager.removeNodeFromWorkspace(node)
+		
+		
 
 
 
