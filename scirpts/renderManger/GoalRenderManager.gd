@@ -12,5 +12,4 @@ static func refresh():
 
 static func isWin()->bool:
 	var goal = Game.Instance.curLevel.goal
-	
-	return WorkspaceRenderManager.workspaceToShape().isSameWith(goal)
+	return WorkspaceRenderManager.workspaceToShape(false).isSameWith(goal)
