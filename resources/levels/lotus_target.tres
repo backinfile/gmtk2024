@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Shape" load_steps=2 format=3 uid="uid://dtuh4y11u4gfv"]
+[gd_resource type="Resource" script_class="Shape" load_steps=2 format=3 uid="uid://cdc0qypxyrklo"]
 
-[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_jqils"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_so7bd"]
 
 [resource]
-script = ExtResource("1_jqils")
-area = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 1, 2), Vector3i(0, 0, 3), Vector3i(-1, 1, 2), Vector3i(-1, 1, 0), Vector3i(0, 2, 3), Vector3i(1, 1, 0), Vector3i(0, 2, 1)])
+script = ExtResource("1_so7bd")
+area = Array[Vector3i]([Vector3i(1, 0, 3), Vector3i(0, 1, 2), Vector3i(0, 1, 0), Vector3i(1, 2, 3), Vector3i(1, 0, 1), Vector3i(2, 1, 2), Vector3i(2, 1, 0), Vector3i(1, 2, 1)])

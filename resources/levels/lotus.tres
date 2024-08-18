@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://bfqn8ndj7m71c"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_0vxr0"]
-[ext_resource type="Resource" path="res://resources/levels/lotus_target.tres" id="1_1d4sf"]
+[ext_resource type="Resource" uid="uid://cdc0qypxyrklo" path="res://resources/levels/lotus_target.tres" id="1_1d4sf"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_5frin"]
 [ext_resource type="Resource" uid="uid://bprhgomwhlflq" path="res://resources/shapes/TriLeftDown.tres" id="4_f8t08"]
 [ext_resource type="Resource" uid="uid://bjhhy3v0g0o0n" path="res://resources/shapes/TriLeftUp.tres" id="5_lsx3u"]
@@ -14,3 +14,5 @@ id = 1
 shapes = Array[ExtResource("2_5frin")]([ExtResource("4_f8t08"), ExtResource("5_lsx3u"), ExtResource("6_lfu2b"), ExtResource("7_yro4j")])
 shapesCount = Array[int]([1, 1, 1, 1])
 goal = ExtResource("1_1d4sf")
+width = 4
+height = 4
