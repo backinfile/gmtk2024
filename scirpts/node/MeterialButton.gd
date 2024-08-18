@@ -16,4 +16,4 @@ var node: ShapeNode:
 var selected: bool = false:
 	set(value):
 		selected = value
-    
+	
