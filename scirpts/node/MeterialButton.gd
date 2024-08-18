@@ -20,5 +20,40 @@ var node: ShapeNode:
 var selected: bool = false:
 	set(value):
 		selected = value
-		modulate = Color.GRAY if not value else Color.WHITE
+		update()
 	
+var color: Color:
+	set(value):
+		color = value
+
+
+var state: DrawMode:
+	set(value):
+		if state != value:
+			state = value 
+			update()
+
+
+func _draw() -> void:
+	state = get_draw_mode()
+
+func update():
+	var tween = create_tween()
+	var color: Color 
+	if selected:
+		color = Color(1, 1, 1, 1)
+	else:
+		tween.tween_property($Container, "modulate", Color(1, 1, 1, 1), .1)
+		match state:
+			DrawMode.DRAW_NORMAL:
+				color = Color(1, 1, 1, 0)
+			DrawMode.DRAW_HOVER:
+				color = Color(1, 1, 1, 1)
+			DrawMode.DRAW_PRESSED:
+				color = Color(1, 1, 1, .8)
+			DrawMode.DRAW_DISABLED:
+				tween.tween_property($Container, "modulate", Color(1, 1, 1, .5), .1)
+				color = Color(1, 1, 1, 0)
+			DrawMode.DRAW_HOVER_PRESSED:
+				color = Color(1, 1, 1, .8)
+	tween.tween_property($Border, "modulate", color, .1)

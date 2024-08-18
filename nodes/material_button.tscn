@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://cob8wdviwnhv1"]
+[gd_scene load_steps=4 format=3 uid="uid://cob8wdviwnhv1"]
 
 [ext_resource type="Script" path="res://scirpts/node/MeterialButton.gd" id="1_u0emv"]
 [ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="2_qsgv1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2emx"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.692422, 0.851857, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [node name="MaterialButton" type="Button"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
 script = ExtResource("1_u0emv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Border" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2emx")
 
 [node name="Container" type="Control" parent="."]
 layout_mode = 1
@@ -36,8 +56,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -25.0
-offset_bottom = 25.0
+offset_left = -30.0
+offset_bottom = 30.0
 grow_horizontal = 0
 texture = ExtResource("2_qsgv1")
 expand_mode = 1
@@ -70,7 +90,7 @@ offset_right = 4.0
 offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
