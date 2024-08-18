@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cibisabl15wom"]
+
+[node name="MaterialButton" type="Button"]
+custom_minimum_size = Vector2(60, 60)

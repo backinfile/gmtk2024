@@ -1,24 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=5 format=3 uid="uid://3muo0hh6ic2t"]
 
-[ext_resource type="FontFile" uid="uid://b4lakxlpmjyei" path="res://assets/font/Nunito-Bold.ttf" id="1_1fkbc"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_bnuot"]
 [ext_resource type="Texture2D" uid="uid://2qp6er017h64" path="res://assets/img/title.png" id="3_rht5u"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ok6"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_size = 5
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="Theme" id="Theme_uls54"]
-default_font = ExtResource("2_bnuot")
-Button/colors/font_color = Color(0.3, 0.3, 0.3, 1)
-Button/fonts/font = ExtResource("1_1fkbc")
-Button/styles/normal = SubResource("StyleBoxFlat_64ok6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkof"]
 bg_color = Color(1, 1, 1, 1)
@@ -37,7 +21,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_uls54")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1

@@ -31,6 +31,10 @@ folder_colors={
 "res://test/": "gray"
 }
 
+[gui]
+
+theme/custom="res://assets/global.tres"
+
 [input]
 
 UP={
