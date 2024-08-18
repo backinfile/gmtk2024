@@ -36,9 +36,11 @@ static func onDrawStart(start):
 			drawingPosition = mouse
 			WorkspaceRenderManager.refreshShapeBoolean()
 		return
-	else:
+	
+	if drawing:
 		drawing = false
 		drawingPosition = Vector2i.ZERO
+		OptionRenderManager.modifyCurSelectCount(Game.Instance.curSelectedShape, -1)
 
 static func onDrawing():
 	if !drawing: return
@@ -89,6 +91,7 @@ static func undo():
 	if map:
 		var node = map[map.size() - 1]
 		WorkspaceRenderManager.removeNodeFromWorkspace(node)
+		OptionRenderManager.modifyCurSelectCount(node, 1)
 	WorkspaceRenderManager.refreshShapeBoolean()
 		
 		
