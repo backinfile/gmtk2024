@@ -16,7 +16,7 @@ func createShapeNode(shape:ShapeObject, count = 1, scaleMode = 0):
 	return node;
 	
 func getShapesBySizeAndDur(size:int, dur:int):
-	print("getShapesBySizeAndDur size = ", size, " dur = ", dur)
+	#print("getShapesBySizeAndDur size = ", size, " dur = ", dur)
 	if size == 1:
 		return [Vector3i(0,0, dur)]
 	elif size == 2:

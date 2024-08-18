@@ -58,15 +58,15 @@ static func onDrawing():
 	if offset.x >= 0 and offset.y >= 0 and offset.x < shapeSize.x and offset.y < shapeSize.y:
 		scale = 1
 	elif offsetBySize.x >= 0 && offsetBySize.y >= 0:
-		scale = max(offset.x, offset.y) + 1
+		scale = max(offsetBySize.x, offsetBySize.y) + 1
 	elif offsetBySize.x >= 0 && offsetBySize.y < 0:
-		scale = max(offset.x, absi(offset.y)) + 1
+		scale = max(offsetBySize.x, absi(offsetBySize.y)) + 1
 		position = Vector2i(position.x, position.y - (scale - 1) * shapeSize.y)
 	elif offsetBySize.x < 0 && offsetBySize.y < 0:
-		scale = max(absi(offset.x), absi(offset.y)) + 1
+		scale = max(absi(offsetBySize.x), absi(offsetBySize.y)) + 1
 		position = Vector2i(position.x - (scale - 1) * shapeSize.x, position.y - (scale - 1) * shapeSize.y)
 	elif offsetBySize.x < 0 && offsetBySize.y >= 0:
-		scale = max(absi(offset.x), absi(offset.y)) + 1
+		scale = max(absi(offsetBySize.x), absi(offsetBySize.y)) + 1
 		position = Vector2i(position.x - (scale - 1) * shapeSize.x, position.y)
 	else:
 		return
@@ -83,6 +83,7 @@ static func onDrawing():
 		shapeNode.updatePosition()
 	if changed:
 		WorkspaceRenderManager.refreshShapeBoolean()
+		print("===== scale = ", scale)
 	
 	
 static func undo():
