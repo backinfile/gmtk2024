@@ -69,5 +69,6 @@ func _on_undo_btn_pressed():
 	ControlManager.undo()
 
 func saveToFile():
-	var shape = WorkspaceRenderManager.workspaceToShape();
+	var shape = WorkspaceRenderManager.workspaceToShape(false);
 	ResourceSaver.save(shape, "res://resources/shape_saved.tres")
+	print("saved!!")

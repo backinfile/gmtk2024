@@ -76,7 +76,7 @@ static func refreshShapeBoolean():
 static func keyOfV(v:Vector3i, p:Vector2i) -> int:
 	return (v[1] + p.y) * 100 + (v[0] + p.x) + v[2] * 10000
 
-static func workspaceToShape():
+static func workspaceToShape(moveToLeftTop = true):
 	var minX = -1
 	var minY = -1
 	var shapeRenderCache = {}
@@ -99,6 +99,9 @@ static func workspaceToShape():
 				else:
 					minX = mini(x, minX)
 					minY = mini(y, minY)
+	if not moveToLeftTop:
+		minX = 0
+		minY = 0
 	var shape = Shape.new()
 	for v in shapeRenderCache.keys():
 		var x = v.x - minX
