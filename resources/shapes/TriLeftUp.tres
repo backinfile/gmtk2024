@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Shape" load_steps=2 format=3 uid="uid://bjhhy3v0g0o0n"]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_3y7xb"]
+
+[resource]
+script = ExtResource("1_3y7xb")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1)])

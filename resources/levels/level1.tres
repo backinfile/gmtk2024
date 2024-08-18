@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://khsfe5fhstjc"]
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://khsfe5fhstjc"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_jwyh7"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_8j6fl"]
+[ext_resource type="Resource" uid="uid://c3wsrhy7rrjr7" path="res://resources/shapes/TriRight.tres" id="3_1dy5m"]
 
 [sub_resource type="Resource" id="Resource_gp4gw"]
 script = ExtResource("2_8j6fl")
@@ -18,6 +19,6 @@ area = Array[Vector3i]([Vector3i(0, 0, 1)])
 [resource]
 script = ExtResource("1_jwyh7")
 id = 1
-shapes = Array[ExtResource("2_8j6fl")]([SubResource("Resource_8k884"), SubResource("Resource_j8bsw")])
-shapesCount = Array[int]([1, 1])
+shapes = Array[ExtResource("2_8j6fl")]([SubResource("Resource_8k884"), SubResource("Resource_j8bsw"), ExtResource("3_1dy5m")])
+shapesCount = Array[int]([1, 1, 1])
 goal = SubResource("Resource_gp4gw")

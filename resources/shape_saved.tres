@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Shape" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Shape" load_steps=2 format=3 uid="uid://6g4pc3om7pha"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_1ttfa"]
 
