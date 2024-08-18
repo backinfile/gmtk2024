@@ -69,6 +69,11 @@ func _input(event):
 	
 func _on_undo_btn_pressed():
 	ControlManager.undo()
+	
+func _on_restart_btn_pressed():
+	var cnt = gameMap.map.size()
+	for i in range(cnt):
+		ControlManager.undo()
 
 func saveToFile():
 	var shape = WorkspaceRenderManager.workspaceToShape(false);
