@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
-[ext_resource type="Resource" uid="uid://khsfe5fhstjc" path="res://resources/levels/level1.tres" id="2_hragj"]
+[ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_234me"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ulm38")
-curLevel = ExtResource("2_hragj")
+curLevel = ExtResource("2_234me")
 metadata/_edit_lock_ = true
 
 [node name="WorkSpace" type="Panel" parent="."]
