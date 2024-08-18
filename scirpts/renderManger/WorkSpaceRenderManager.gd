@@ -67,4 +67,4 @@ static func refreshShapeBoolean():
 			triangle.visible = shapeRenderCache[keyOfV(v, p)] % 2 == 1
 			
 static func keyOfV(v:Vector3i, p:Vector2i) -> int:
-	return (v[1] + p.x) * 100 + (v[0] + p.y) + v[2] * 10000
+	return (v[1] + p.y) * 100 + (v[0] + p.x) + v[2] * 10000
