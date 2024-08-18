@@ -93,9 +93,12 @@ static func workspaceToShape():
 			if x>=0 && x < gameMap.width && y>=0 && y < gameMap.height:
 				v = Vector3i(x, y, v.z)
 				shapeRenderCache[v] = true
-				if minX < 0 or (x <= minX && y <= minY):
+				if minX < 0:
 					minX = x
 					minY = y
+				else:
+					minX = mini(x, minX)
+					minY = mini(y, minY)
 	var shape = Shape.new()
 	for v in shapeRenderCache.keys():
 		var x = v.x - minX

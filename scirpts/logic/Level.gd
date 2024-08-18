@@ -5,3 +5,5 @@ extends Resource
 @export var shapes: Array[Shape]
 @export var shapesCount:Array[int] = []
 @export var goal:Shape;
+@export var width = 5;
+@export var height = 5;

@@ -44,13 +44,15 @@ static func on_select(node:ShapeNode):
 
 static func modifyCurSelectCount(node:ShapeNode, modify:int):
 	node = optionShapeList[node.optionIndex]
+	var btn = optionBtnList[node.optionIndex]
 	print("modifyCurSelectCount  modify = ", modify, " nodeIndex = ", node.optionIndex)
 	node.count += modify
-	optionBtnList[node.optionIndex].count = node.count
+	btn.count = node.count
 	if node.count < 0: node.count = 0
 	if node.count <= 0:
 		if Game.Instance.curSelectedShape == node:
 			print("lose curSelectedShape by reduce count")
 			Game.Instance.curSelectedShape = null
+			btn.selected = false
 			#ControlManager.onDrawStart(false)
 	
