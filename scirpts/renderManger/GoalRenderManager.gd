@@ -6,7 +6,7 @@ static func refresh():
 	Global.clear_children(goal)
 	
 	var shapeObject = ShapeObject.new(Game.Instance.curLevel.goal)
-	var node = Global.createShapeNode(shapeObject)
+	var node = Global.createShapeNode(shapeObject, 1, 1)
 	goal.add_child(node)
 	
 

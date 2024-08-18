@@ -1,6 +1,7 @@
 extends Node
 
 var UNIT_SIZE = 50;
+var UNIT_SIZE_2 = 50;
 var UNIT_EDGE = 1;
 
 
@@ -8,9 +9,9 @@ var UNIT_EDGE = 1;
 @onready var shape_node_tscn:PackedScene = load("res://nodes/shape_node.tscn");
 var InvalidPos = Vector2(-1, -1)
 
-func createShapeNode(shape:ShapeObject, count = 1, fixedScale = false):
+func createShapeNode(shape:ShapeObject, count = 1, scaleMode = 0):
 	var node:ShapeNode = shape_node_tscn.instantiate()
-	node.init(shape, count, fixedScale);
+	node.init(shape, count, scaleMode);
 	print("createShapeNode")
 	return node;
 	

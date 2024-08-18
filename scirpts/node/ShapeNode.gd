@@ -4,7 +4,7 @@ extends Control
 var shape:ShapeObject;
 var count = -1;
 var optionIndex = -1;
-var fixScaled = false
+var scaleMode:int = 0  # 0-use Global.UNIT_SIZE 1-use Global.UNIT_SIZE_2 2-fixed 50
 
 var dragging = false;
 var draggable = false;
@@ -16,10 +16,10 @@ var renderOnWorkspace = false;
 
 @export var triangle_color:Color = Color.BLACK
 
-func init(shape:ShapeObject, count = -1, fixScaled = false):
+func init(shape:ShapeObject, count = -1, scaleMode = 0):
 	self.shape = shape;
 	self.count = count;
-	self.fixScaled = fixScaled;
+	self.scaleMode = scaleMode;
 	recreateShape()
 
 func updatePosition():
@@ -46,8 +46,11 @@ func recreateShape():
 		control.add_child(p)
 
 func getUnitSize():
-	if fixScaled: return 40
-	return Global.UNIT_SIZE
+	if scaleMode == 0:
+		return Global.UNIT_SIZE
+	elif scaleMode == 1:
+		return Global.UNIT_SIZE_2
+	return 40
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()

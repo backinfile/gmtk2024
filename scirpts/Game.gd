@@ -21,11 +21,16 @@ func _init():
 
 func _ready():
 	gameMap = GameMap.new();
-	gameMap.width = 5
-	gameMap.height = 5
+	gameMap.width = curLevel.width
+	gameMap.height = curLevel.height
 	
-	var size = workSpace.get_node("Box").size
-	Global.UNIT_SIZE = size.x / gameMap.width
+	if true:
+		var size = workSpace.get_node("Box").size
+		Global.UNIT_SIZE = size.x / gameMap.width
+	if true:
+		var size = $Goal/Box.size
+		Global.UNIT_SIZE_2 = size.x / gameMap.width
+		
 	
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
