@@ -1,5 +1,5 @@
 class_name GameMap
-extends Node
+extends RefCounted
 
 var map: Array[ShapeNode] = [];
 var width = 5;

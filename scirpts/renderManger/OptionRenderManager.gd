@@ -15,14 +15,18 @@ static func refresh():
 		var shapeObject = ShapeObject.new(shape)
 		var btn = Button.new()
 		var node = Global.createShapeNode(shapeObject, count)
-		btn.custom_minimum_size = shapeObject.curShape.shapeSize() * Global.UNIT_SIZE
 		btn.add_child(node)
+		btn.custom_minimum_size = shapeObject.curShape.shapeSize() * Global.UNIT_SIZE
 		btn.pressed.connect(func ():
-			Game.Instance.curSelectedShape = node
-			print("change curSelectedShape to ", index)
+			if Game.Instance.curSelectedShape == node:
+				Game.Instance.curSelectedShape = null
+				print("lose curSelectedShape to ", index)
+			else:
+				Game.Instance.curSelectedShape = node
+				print("change curSelectedShape to ", index)
 			)
+		#if index == 0:
+			#Game.Instance.curSelectedShape = node
 		print(node.shape.curShape.area)
-		if Game.Instance.curSelectedShape == null:
-			Game.Instance.curSelectedShape = node
 		vbox.add_child(btn)
 	

@@ -21,11 +21,11 @@ func _init():
 
 func _ready():
 	gameMap = GameMap.new();
-	#ControlManager.scale(true)
-	#ControlManager.scale(true)
-	#ControlManager.scale(true)
+	gameMap.width = 5
+	gameMap.height = 5
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
+	GoalRenderManger.refresh()
 
 func _process(delta):
 	pass

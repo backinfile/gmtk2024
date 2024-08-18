@@ -1,5 +1,5 @@
 class_name ShapeObject
-extends Node
+extends RefCounted
 
 var oriShape: Shape;
 var curShape: Shape;
