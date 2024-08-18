@@ -57,6 +57,8 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("save"):
 		saveToFile()
+	if Input.is_action_just_pressed("saveFile"):
+		saveToLevelFile()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -72,3 +74,23 @@ func saveToFile():
 	var shape = WorkspaceRenderManager.workspaceToShape(false);
 	ResourceSaver.save(shape, "res://resources/shape_saved.tres")
 	print("saved!!")
+
+func saveToLevelFile():
+	var level = Level.new()
+	level.goal = WorkspaceRenderManager.workspaceToShape(false);
+	level.width = curLevel.width
+	level.height = curLevel.height
+	
+	var map = {}
+	for node in gameMap.map:
+		if node.optionIndex in map:
+			map[node.optionIndex] += 1
+		else:
+			map[node.optionIndex] = 1
+	for index in map.keys():
+		var node = OptionRenderManager.optionShapeList[index]
+		level.shapes.append(node.shape.oriShape.duplicate())
+		level.shapesCount.append(map[index])
+		
+	ResourceSaver.save(level, "res://resources/level_saved.tres")
+	print("level saved!!")
