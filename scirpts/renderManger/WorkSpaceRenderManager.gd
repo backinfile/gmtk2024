@@ -54,17 +54,38 @@ static func refreshShapeBoolean():
 	for node in Game.Instance.gameMap.map:
 		var p = node.shape.position
 		for v in node.shape.curShape.area:
-			if keyOfV(v, p) in shapeRenderCache:
-				shapeRenderCache[keyOfV(v, p)] += 1
+			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
+			if v in shapeRenderCache:
+				shapeRenderCache[v] += 1
 			else:
-				shapeRenderCache[keyOfV(v, p)] = 1
+				shapeRenderCache[v] = 1
 	for node in Game.Instance.gameMap.map:
 		var p = node.shape.position
 		var control = node.get_node("shapes")
 		for i in range(node.shape.curShape.area.size()):
 			var v = node.shape.curShape.area[i]
+			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
 			var triangle:Polygon2D = control.get_child(i)
-			triangle.visible = shapeRenderCache[keyOfV(v, p)] % 2 == 1
+			triangle.visible = shapeRenderCache[v] % 2 == 1
+	if GoalRenderManger.isWin():
+		print("win!!")
 			
 static func keyOfV(v:Vector3i, p:Vector2i) -> int:
 	return (v[1] + p.y) * 100 + (v[0] + p.x) + v[2] * 10000
+
+static func workspaceToShape():
+	var minX = -1
+	var minY = -1
+	var shapeRenderCache = {}
+	for node in Game.Instance.gameMap.map:
+		var p = node.shape.position
+		for v in node.shape.curShape.area:
+			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
+			shapeRenderCache[v] = true
+			if minX < 0 or (p.x <= minX && p.y <= minY):
+				minX = v.x
+				minY = v.y
+	var shape = Shape.new()
+	for v in shapeRenderCache.keys():
+		shape.area.append(Vector3i(v.x - minX, v.y - minY, v.z))
+	return shape

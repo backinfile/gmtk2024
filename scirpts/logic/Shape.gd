@@ -21,6 +21,19 @@ func get_size() -> Vector2i:
 		height = max(height, pos[1])
 	return Vector2i(width, height)
 
+
+func isSameWith(shape:Shape)->bool:
+	if shape == null: return false
+	if shape.area.size() != area.size(): return false
+	var map = {}
+	for v in area:
+		map[v] = true
+	for v in shape.area:
+		if v not in map:
+			return false
+		map.erase(v)
+	return true
+
 # 将图形分解成若干连续图形
 func split() -> Array[Array]:
 	var result : Array[Array] = []

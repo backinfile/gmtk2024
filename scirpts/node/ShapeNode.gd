@@ -23,10 +23,8 @@ func updatePosition():
 func makeCopy():
 	return Global.createShapeNode(shape.makeCopy())
 
-var triangles = {}
 
 func recreateShape():
-	triangles.clear()
 	#ShapeUtils.recreateShape(self)
 	var control:Control = get_node("shapes")
 	custom_minimum_size = shape.curShape.shapeSize() * Global.UNIT_SIZE
@@ -38,7 +36,6 @@ func recreateShape():
 		#print("add Polygon ", p.polygon)
 		p.position = Vector2(s[0] * Global.UNIT_SIZE, s[1] * Global.UNIT_SIZE)
 		control.add_child(p)
-		triangles[s] = p
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()

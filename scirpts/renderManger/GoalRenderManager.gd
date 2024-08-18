@@ -9,4 +9,8 @@ static func refresh():
 	var node = Global.createShapeNode(shapeObject)
 	goal.add_child(node)
 	
-		
+
+static func isWin()->bool:
+	var goal = Game.Instance.curLevel.goal
+	
+	return WorkspaceRenderManager.workspaceToShape().isSameWith(goal)
