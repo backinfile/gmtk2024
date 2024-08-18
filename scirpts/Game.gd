@@ -51,12 +51,14 @@ func _process(delta):
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
 	
+	if curOperationShape != null:
+		ControlManager.onDrawing()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
-	elif event is InputEventMouseMotion:
-		ControlManager.onDrawing()
+	#elif event is InputEventMouseMotion:
+		#ControlManager.onDrawing()
 
-	
+
 	

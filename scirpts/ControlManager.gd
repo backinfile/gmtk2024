@@ -17,6 +17,7 @@ static func move(dx:int, dy:int):
 	# TODO update image
 
 static var drawing = false
+static var drawingPosition:Vector2i = Vector2i.ZERO;
 
 static func onDrawStart(start):
 	if Game.Instance.curSelectedShape == null: return
@@ -29,24 +30,29 @@ static func onDrawStart(start):
 			Game.Instance.curOperationShape.shape.position = mouse
 			Game.Instance.curOperationShape.updatePosition()
 			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
+			drawingPosition = mouse
 		return
-	
-	drawing = false
-	Game.Instance.curOperationShape = null
+	else:
+		drawing = false
+		Game.Instance.curOperationShape = null
+		drawingPosition = Vector2i.ZERO
 
 static func onDrawing():
 	if !drawing or Game.Instance.curOperationShape == null: return
 	
 	var shapeNode = Game.Instance.curOperationShape
 	var scale = 1
-	var position = shapeNode.shape.position 
+	var position = drawingPosition 
 	
 	var shapeSize = shapeNode.shape.oriShape.shapeSizeI()
 	var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
-	var offset = Global.div(mouse - shapeNode.shape.position, shapeSize)
+	var offset = mouse - shapeNode.shape.position
+	var offsetBySize = Global.div(mouse - shapeNode.shape.position, shapeSize)
 	print("onDrawing offset = ", offset)
-	if offset.x > 0 && offset.y > 0:
-		scale = max(offset.x, offset.y)
+	if offset.x >= 0 and offset.y >= 0 and offset.x < shapeSize.x and offset.y < shapeSize.y:
+		scale = 1
+	elif offsetBySize.x >= 0 && offsetBySize.y >= 0:
+		scale = max(offset.x, offset.y) + 1
 	else:
 		return
 	
