@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://4tsnx8k2byhy"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://4tsnx8k2byhy"]
 
 [ext_resource type="FontFile" uid="uid://b4lakxlpmjyei" path="res://assets/font/Nunito-Bold.ttf" id="1_eudg2"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_hs6bu"]
@@ -11,6 +11,17 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qs5w4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ta4gq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_752n7"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,4 +39,7 @@ Button/colors/font_color = Color(0.3, 0.3, 0.3, 1)
 Button/colors/icon_normal_color = Color(0.5, 0.5, 0.5, 1)
 Button/fonts/font = ExtResource("1_eudg2")
 Button/styles/normal = SubResource("StyleBoxFlat_64ok6")
+FlatButton/styles/normal = SubResource("StyleBoxFlat_qs5w4")
+FlatButton/styles/pressed = SubResource("StyleBoxEmpty_ta4gq")
+Label/colors/font_color = Color(0.5, 0.5, 0.5, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_752n7")

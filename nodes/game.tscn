@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=5 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://khsfe5fhstjc" path="res://resources/level1.tres" id="2_hragj"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
+[ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -45,6 +46,17 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Box" type="Control" parent="WorkSpace"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="OptionPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 4
@@ -72,13 +84,39 @@ offset_top = 260.0
 offset_right = 1170.0
 offset_bottom = 560.0
 
+[node name="Label" type="Label" parent="Goal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_top = 10.0
+offset_right = 25.5
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Goal"
+
+[node name="Box" type="Control" parent="Goal"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 50.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="UndoBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 870.0
 offset_top = 140.0
 offset_right = 934.0
 offset_bottom = 204.0
+theme_type_variation = &"FlatButton"
 icon = ExtResource("3_fokoy")
 icon_alignment = 1
+script = ExtResource("4_yq66u")
 
 [connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]

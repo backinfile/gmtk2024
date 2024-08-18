@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8damftqtsnvu"]
+
+[ext_resource type="Texture2D" uid="uid://b7un0ymehffhf" path="res://assets/img/line.svg" id="1_iolwi"]
+
+[node name="Dotline" type="Line2D"]
+modulate = Color(1, 1, 1, 0.407843)
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 100, 100)
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("1_iolwi")
+texture_mode = 1
