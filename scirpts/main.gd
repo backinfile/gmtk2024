@@ -4,12 +4,16 @@ extends Control
 static var Instance:Main;
 var curLevelIndex = -1
 var levelPaths = []
+var levelBtns = []
+
+var savedIndex = -1;
 
 func _init():
 	Instance = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_game()
 	changeToTitleScene(true)
 	loadLevelBtns()
 
@@ -25,6 +29,8 @@ func changeToTitleScene(fromGameStart = false):
 func changeToSelectLevelScene():
 	$Game.visible = false
 	$Title.visible = false
+	
+	refreshLevelBtn()
 	$Levels.visible = true
 
 func changeToGameScene(levelIndex:int):
@@ -39,6 +45,8 @@ func changeToGameScene(levelIndex:int):
 	$Game.visible = true
 
 func changeToNextLevel():
+	savedIndex = max(savedIndex, curLevelIndex)
+	save_game()
 	if curLevelIndex + 1 < levelPaths.size():
 		changeToGameScene(curLevelIndex + 1)
 	else:
@@ -60,3 +68,24 @@ func loadLevelBtns():
 			levelEntry.levelPath = path
 			levelEntry.index = i;
 			container.add_child(levelEntry)
+			levelBtns.append(levelEntry)
+
+func refreshLevelBtn():
+	for i in range(levelBtns.size()):
+		levelBtns[i].disabled = i > savedIndex + 1
+
+func save_game():
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify({"savedIndex": savedIndex})
+	save_file.store_line(json_string)
+
+func load_game():
+	if not FileAccess.file_exists("user://savegame.save"):
+		return
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var json_string = save_file.get_line()
+	var node_data  = JSON.parse_string(json_string)
+	if not node_data:
+			print("JSON Parse Error: ", json_string)
+			return
+	savedIndex = node_data["savedIndex"]
