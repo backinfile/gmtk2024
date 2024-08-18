@@ -33,16 +33,18 @@ static func refresh():
 	var Grids = Game.Instance.workSpace.get_node("Box").get_node("Grids");
 	Global.clear_children(Grids)
 	for x in range(gameMap.width + 1):
-		var line = Line2D.new()
+		var line = preload("res://nodes/dotline.tscn").instantiate()
 		line.default_color = Color.GRAY
-		line.width = Global.UNIT_EDGE
+		#line.width = Global.UNIT_EDGE
+		line.clear_points()
 		line.add_point(Vector2(x * Global.UNIT_SIZE + Global.UNIT_EDGE, 0 + Global.UNIT_EDGE))
 		line.add_point(Vector2(x * Global.UNIT_SIZE + Global.UNIT_EDGE, gameMap.height * Global.UNIT_SIZE + Global.UNIT_EDGE))
 		Grids.add_child(line)
 	for y in range(gameMap.height + 1):
-		var line = Line2D.new()
+		var line = preload("res://nodes/dotline.tscn").instantiate()
 		line.default_color = Color.GRAY
-		line.width = Global.UNIT_EDGE
+		#line.width = Global.UNIT_EDGE
+		line.clear_points()
 		line.add_point(Vector2(0 + Global.UNIT_EDGE, y * Global.UNIT_SIZE + Global.UNIT_EDGE))
 		line.add_point(Vector2(gameMap.width * Global.UNIT_SIZE + Global.UNIT_EDGE, y * Global.UNIT_SIZE + Global.UNIT_EDGE))
 		Grids.add_child(line)
