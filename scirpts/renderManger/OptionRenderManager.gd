@@ -1,11 +1,13 @@
 class_name OptionRenderManager
 extends Node
 
+static var optionList:Array[ShapeNode] = []
 
 static func refresh():
 	var optionPanel = Game.Instance.optionPanel
 	var vbox = optionPanel.get_child(0)
 	
+	optionList.clear()
 	Global.clear_children(vbox)
 	
 	var curLevel = Game.Instance.curLevel
@@ -15,18 +17,36 @@ static func refresh():
 		var shapeObject = ShapeObject.new(shape)
 		var btn = Button.new()
 		var node = Global.createShapeNode(shapeObject, count)
+		node.optionIndex = index
+		optionList.append(node)
 		btn.add_child(node)
 		btn.custom_minimum_size = shapeObject.curShape.shapeSize() * Global.UNIT_SIZE
-		btn.pressed.connect(func (): on_select(index, node))
+		btn.pressed.connect(func (): on_select(node))
 		#if index == 0:
 			#Game.Instance.curSelectedShape = node
 		print(node.shape.curShape.area)
 		vbox.add_child(btn)
 	
-static func on_select(index:int, node:ShapeNode):
+static func on_select(node:ShapeNode):
+	var index = node.optionIndex
 	if Game.Instance.curSelectedShape == node:
 		Game.Instance.curSelectedShape = null
 		print("lose curSelectedShape to ", index)
 	else:
-		Game.Instance.curSelectedShape = node
-		print("change curSelectedShape to ", index)
+		if node.count > 0:
+			Game.Instance.curSelectedShape = node
+			print("change curSelectedShape to ", index)
+		else:
+			print("miss shape count")
+
+static func modifyCurSelectCount(node:ShapeNode, modify:int):
+	node = optionList[node.optionIndex]
+	print("modifyCurSelectCount  modify = ", modify, " nodeIndex = ", node.optionIndex)
+	node.count += modify
+	if node.count < 0: node.count = 0
+	if node.count <= 0:
+		if Game.Instance.curSelectedShape == node:
+			print("lose curSelectedShape by reduce count")
+			Game.Instance.curSelectedShape = null
+			#ControlManager.onDrawStart(false)
+	
