@@ -82,8 +82,12 @@ static func workspaceToShape():
 	var shapeRenderCache = {}
 	var gameMap = Game.Instance.gameMap
 	for node in Game.Instance.gameMap.map:
+		var control = node.get_node("shapes")
 		var p = node.shape.position
-		for v in node.shape.curShape.area:
+		for i in range(node.shape.curShape.area.size()):
+			var v = node.shape.curShape.area[i]
+			var triangle:Polygon2D = control.get_child(i)
+			if !triangle.visible: continue
 			var x = v.x + p.x
 			var y = v.y + p.y
 			if x>=0 && x < gameMap.width && y>=0 && y < gameMap.height:

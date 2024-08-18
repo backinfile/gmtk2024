@@ -19,7 +19,7 @@ static func refresh():
 		var shapeObject = ShapeObject.new(shape)
 		var btn = preload("res://nodes/material_button.tscn").instantiate()
 		vbox.add_child(btn)
-		var node = Global.createShapeNode(shapeObject, count)
+		var node = Global.createShapeNode(shapeObject, count, true)
 		node.optionIndex = index
 		optionShapeList.append(node)
 		optionBtnList.append(btn)

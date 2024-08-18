@@ -12,3 +12,8 @@ var node: ShapeNode:
 	set(value):
 		node = value
 		$Container.add_child(node)
+
+var selected: bool = false:
+	set(value):
+		selected = value
+	

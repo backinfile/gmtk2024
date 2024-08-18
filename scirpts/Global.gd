@@ -8,9 +8,9 @@ var UNIT_EDGE = 1;
 @onready var shape_node_tscn:PackedScene = load("res://nodes/shape_node.tscn");
 var InvalidPos = Vector2(-1, -1)
 
-func createShapeNode(shape:ShapeObject, count = 1):
+func createShapeNode(shape:ShapeObject, count = 1, fixedScale = false):
 	var node:ShapeNode = shape_node_tscn.instantiate()
-	node.init(shape, count);
+	node.init(shape, count, fixedScale);
 	print("createShapeNode")
 	return node;
 	
