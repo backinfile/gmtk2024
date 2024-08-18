@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_uh87a")
-area = Array[Vector3i]([Vector3i(0, 0, 2)])
+area = Array[Vector3i]([Vector3i(0, 0, 1)])
