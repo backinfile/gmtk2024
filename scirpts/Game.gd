@@ -9,7 +9,12 @@ extends Control
 @export var curLevel:Level;
 var gameMap:GameMap;
 var curSelectedShape:ShapeNode;
-var curOperationShape:ShapeNode;
+var curOperationShape:ShapeNode:
+	set(value):
+		if curOperationShape: curOperationShape.borderVisible = false
+		if value: value.borderVisible = true
+		curOperationShape = value
+	
 
 @onready var workSpace:Control = $WorkSpace
 @onready var optionPanel = $OptionPanel

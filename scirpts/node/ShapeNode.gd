@@ -16,6 +16,13 @@ var renderOnWorkspace = false;
 
 @export var triangle_color:Color = Color.BLACK
 
+var borderVisible:bool:
+	get: 
+		return $border.visible
+	set(value): 
+		$border.visible = value
+		print("set border ", value)
+
 func init(shape:ShapeObject, count = -1, scaleMode = 0):
 	self.shape = shape;
 	self.count = count;
@@ -44,6 +51,21 @@ func recreateShape():
 		p.color = triangle_color
 		p.position = Vector2(s[0] * getUnitSize(), s[1] * getUnitSize())
 		control.add_child(p)
+		
+	var border:Control = get_node("border")
+	Global.clear_children(border)
+	var size = custom_minimum_size
+	var line = preload("res://nodes/dotline.tscn").instantiate()
+	line.default_color = Color.BLUE
+	line.width = 20
+	line.clear_points()
+	line.add_point(Vector2(0,0))
+	line.add_point(Vector2(size.x,0))
+	line.add_point(Vector2(size.x,size.y))
+	line.add_point(Vector2(0,size.y))
+	line.add_point(Vector2(0,0))
+	border.add_child(line)
+	
 
 func getUnitSize():
 	if scaleMode == 0:
