@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=14 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
@@ -253,7 +253,6 @@ offset_right = 150.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
 pivot_offset = Vector2(240, 240)
 
 [node name="Mask" type="ColorRect" parent="WorkSpace"]
@@ -291,6 +290,7 @@ offset_right = 10.0
 offset_bottom = 10.0
 texture = ExtResource("3_k6uad")
 expand_mode = 1
+
 [node name="White" type="Panel" parent="WorkSpace"]
 self_modulate = Color(1, 1, 1, 0)
 clip_children = 2
