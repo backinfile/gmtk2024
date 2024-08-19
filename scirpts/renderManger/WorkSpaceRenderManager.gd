@@ -105,11 +105,12 @@ static func refreshShapeBoolean():
 				triangle.visible = true
 				if newVisible: shapeBoolCache[v] = true
 				else: shapeBoolCache.erase(v)
-				var targetColorA = Color(node.materialColorA, 1 if newVisible else 0)
-				var targetColorB = Color(node.materialColorB, 1 if newVisible else 0)
+				var target = 1 if newVisible else 0
+				#var targetColorA = Color(node.materialColorA, 1 if newVisible else 0)
+				#var targetColorB = Color(node.materialColorB, 1 if newVisible else 0)
 				var tween = node.create_tween()
-				tween.tween_property(triangle, "material:shader_parameter/colorA", targetColorA, .1)
-				tween.tween_property(triangle, "material:shader_parameter/colorB", targetColorB, .1)
+				tween.tween_property(triangle, "color:a", target, .05)
+				tween.tween_property(triangle, "color:a", target, .05)
 			else:
 				triangle.visible = newVisible
 			#triangle.visible = shapeRenderCache[v] % 2 == 1

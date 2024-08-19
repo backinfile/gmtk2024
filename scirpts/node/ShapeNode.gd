@@ -66,22 +66,12 @@ func recreateShape():
 		var p = getPolygonByDur(s[2])
 		#print("add Polygon ", p.polygon)
 		p.color = triangle_color
+		if scaleMode == 0 or scaleMode == 1: p.color = Color.WHITE
 		p.position = Vector2(s[0] * getUnitSize(), s[1] * getUnitSize())
 		control.add_child(p)
 		
 	var border:Control = get_node("border")
 	Global.clear_children(border)
-	#var size = custom_minimum_size
-	#var line = preload("res://nodes/dotline.tscn").instantiate()
-	#line.default_color = Color.BLUE
-	#line.width = 20
-	#line.clear_points()
-	#line.add_point(Vector2(0,0))
-	#line.add_point(Vector2(size.x,0))
-	#line.add_point(Vector2(size.x,size.y))
-	#line.add_point(Vector2(0,size.y))
-	#line.add_point(Vector2(0,0))
-	#border.add_child(line)
 	var size = getUnitSize()
 	var outlines = shape.curShape.get_outline()
 	for outline in outlines: 
@@ -94,6 +84,17 @@ func recreateShape():
 		for p in outline:
 			line.add_point(p * size)
 		border.add_child(line)
+	#var size = custom_minimum_size
+	#var line = preload("res://nodes/dotline.tscn").instantiate()
+	#line.default_color = Color.BLUE
+	#line.width = 20
+	#line.clear_points()
+	#line.add_point(Vector2(0,0))
+	#line.add_point(Vector2(size.x,0))
+	#line.add_point(Vector2(size.x,size.y))
+	#line.add_point(Vector2(0,size.y))
+	#line.add_point(Vector2(0,0))
+	#border.add_child(line)
 	
 
 func getUnitSize():
@@ -105,8 +106,9 @@ func getUnitSize():
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()
+	p.color = Color.WHITE
 	if scaleMode == 0 || scaleMode == 1:
-		p.material = workspaceMaterial.duplicate()
+		p.material = workspaceMaterial # .duplicate()
 	var size = getUnitSize();
 	var mid = getUnitSize() / 2;
 	var polygon = []
