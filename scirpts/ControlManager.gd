@@ -83,7 +83,7 @@ static func onDrawing():
 	var offset = mouse - position
 	offset = Vector2i(offset.x + 1, offset.y) if offset.x < 0 else offset
 	offset = Vector2i(offset.x, offset.y + 1) if offset.y < 0 else offset
-	var offsetBySize = Global.div(mouse - position, shapeSize)
+	var offsetBySize = Global.div(offset, shapeSize)
 	var scalePositionOffset = Vector2i.ZERO
 	var angelPositionOffsetFactor = Vector2i(1, 1)
 	#print("onDrawing offset = ", offset, " offsetBySize = ", offsetBySize)
