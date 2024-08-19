@@ -285,6 +285,11 @@ layout_mode = 0
 [node name="Grids" type="Control" parent="WorkSpace/Box"]
 anchors_preset = 0
 
+[node name="HoverDotlines" type="Control" parent="WorkSpace/Box"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Dotline" parent="WorkSpace/Box" instance=ExtResource("4_nylqt")]
 visible = false
 

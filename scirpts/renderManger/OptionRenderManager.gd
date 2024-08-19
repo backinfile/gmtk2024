@@ -32,6 +32,7 @@ static func refresh():
 		if index == 0:
 			Game.Instance.curSelectedShape = node
 			btn.selected = true
+			WorkspaceRenderManager.refreshHoverDotline()
 		print(node.shape.curShape.area)
 	
 static func on_select(node:ShapeNode):
@@ -51,6 +52,7 @@ static func on_select(node:ShapeNode):
 			print("change curSelectedShape to ", index)
 		else:
 			print("miss shape count")
+	WorkspaceRenderManager.refreshHoverDotline()
 
 static func modifyCurSelectCount(node:ShapeNode, modify:int):
 	node = optionShapeList[node.optionIndex]
@@ -69,4 +71,5 @@ static func modifyCurSelectCount(node:ShapeNode, modify:int):
 	if modify > 0 and Game.Instance.curSelectedShape == null:
 		Game.Instance.curSelectedShape = node
 		btn.selected = true
+	WorkspaceRenderManager.refreshHoverDotline()
 			

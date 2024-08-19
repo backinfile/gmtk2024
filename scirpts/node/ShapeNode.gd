@@ -85,23 +85,23 @@ func recreateShape():
 			for p in outline:
 				line.add_point(p * size)
 			border.add_child(line)
-	if false:
-		var maxPoint = null
-		var maxDistance = -1
-		for v in shape.curShape.area:
-			var p = Vector2(v[0], v[1])
-			var dis = p.distance_to(Vector2.ZERO)
-			if dis > maxDistance:
-				maxPoint = p
-				maxDistance = dis
-		if maxPoint:
-			var line = preload("res://nodes/dotline.tscn").instantiate()
-			line.default_color = Color.BLUE
-			line.width = 20
-			line.clear_points()
-			line.add_point(Vector2(0,0))
-			line.add_point(maxPoint * getUnitSize())
-			border.add_child(line)
+	#if false:
+		#var maxPoint = null
+		#var maxDistance = -1
+		#for v in shape.curShape.area:
+			#var p = Vector2(v[0], v[1])
+			#var dis = p.distance_to(Vector2.ZERO)
+			#if dis > maxDistance:
+				#maxPoint = p
+				#maxDistance = dis
+		#if maxPoint:
+			#var line = preload("res://nodes/dotline.tscn").instantiate()
+			#line.default_color = Color.BLUE
+			#line.width = 20
+			#line.clear_points()
+			#line.add_point(Vector2(0,0))
+			#line.add_point(maxPoint * getUnitSize())
+			#border.add_child(line)
 	
 
 func getUnitSize():

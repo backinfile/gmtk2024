@@ -7,6 +7,8 @@ var UNIT_EDGE = 1;
 var workspace_dotline_color = Color.BLUE
 var workspace_dotline_width = 20
 
+var workspace_rotate_angle_offset = 45
+
 var COLORS = [
 	Color.from_hsv(0, 1, .8),
 	Color.from_hsv(.1, 1, .8),
