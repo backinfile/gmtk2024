@@ -19,6 +19,7 @@ var debugMode = false
 
 @onready var workSpace:Control = $WorkSpace
 @onready var optionPanel = $OptionPanel
+@onready var workSpaceRotateAnchor:Control = $WorkSpace/Box/Anchor
 
 static var Instance:Game;
 

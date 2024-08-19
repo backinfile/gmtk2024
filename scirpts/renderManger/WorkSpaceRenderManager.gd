@@ -12,11 +12,11 @@ static func getMousePositionOnWorkspace():
 static var matchAngles = [0,  90, -90, 180, -180, 45, -45, 135, -135,]
 
 static func getMouseAngleOnWorkspace(target:Vector2i):
+	if getMousePositionOnWorkspace() == target:
+		return 0
 	var mouse = Game.Instance.get_viewport().get_mouse_position();
 	var start = Game.Instance.workSpace.get_node("Box").global_position
 	var targetPos = start + target * Global.UNIT_SIZE
-	if mouse.distance_to(targetPos) < Global.UNIT_SIZE:
-		return 0
 	var angle = rad_to_deg(targetPos.angle_to_point(mouse))
 	angle = (int(angle) + 180 + 360 - 45) % 360 - 180
 	var minIndex = 0
@@ -29,7 +29,10 @@ static func getMouseAngleOnWorkspace(target:Vector2i):
 	var finalAngle = matchAngles[minIndex]
 	#print("angle = ", angle, " finalAngle = ", finalAngle)
 	return finalAngle
-	
+
+static func getWorldPositionByWorkspacePosition(v:Vector2i):
+	var start = Game.Instance.workSpace.get_node("Box").global_position
+	return start + v * Global.UNIT_SIZE
 
 static func addNodeToWorkspace(shape:ShapeNode):
 	var Objs = Game.Instance.workSpace.get_node("Box").get_node("Objs");

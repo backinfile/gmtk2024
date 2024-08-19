@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=8 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
+[ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
 [ext_resource type="Texture2D" uid="uid://dsc1b7r26k06r" path="res://assets/img/home-outline.svg" id="6_7flkh"]
@@ -58,6 +59,15 @@ layout_mode = 0
 
 [node name="Grids" type="Control" parent="WorkSpace/Box"]
 anchors_preset = 0
+
+[node name="Anchor" type="TextureRect" parent="WorkSpace/Box"]
+visible = false
+modulate = Color(0.184314, 0.0352941, 0.988235, 1)
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("3_k6uad")
+expand_mode = 1
 
 [node name="OptionPanel" type="Panel" parent="."]
 layout_mode = 1
