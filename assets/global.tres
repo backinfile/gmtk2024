@@ -90,6 +90,7 @@ FlatButton/styles/normal = SubResource("StyleBoxEmpty_fw8u7")
 FlatButton/styles/pressed = SubResource("StyleBoxEmpty_ta4gq")
 Label/colors/font_color = Color(0.5, 0.5, 0.5, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_752n7")
+TutorialLabel/base_type = &"Label"
 WhiteFlatButton/base_type = &"Button"
 WhiteFlatButton/styles/disabled = SubResource("StyleBoxFlat_5lnw4")
 WhiteFlatButton/styles/focus = SubResource("StyleBoxEmpty_8tmd8")
