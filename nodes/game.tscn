@@ -482,10 +482,10 @@ stretch_mode = 3
 
 [node name="ReturnBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1090.0
-offset_top = 140.0
-offset_right = 1154.0
-offset_bottom = 204.0
+offset_left = 1190.0
+offset_top = 20.0
+offset_right = 1254.0
+offset_bottom = 84.0
 theme_type_variation = &"FlatButton"
 icon_alignment = 1
 script = ExtResource("4_yq66u")
