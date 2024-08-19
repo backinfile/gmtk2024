@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=6 format=3]
+[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://c4ugufqx2hkdp"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_4f56h"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_gok41"]
@@ -23,4 +23,4 @@ shapesCount = Array[int]([2, 2])
 goal = SubResource("Resource_rjixu")
 width = 5
 height = 5
-canRotate = true
+canRotate = false
