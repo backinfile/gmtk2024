@@ -1,27 +1,16 @@
-[gd_resource type="Resource" script_class="Level" load_steps=15 format=3 uid="uid://delvd5bgybpdh"]
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://delvd5bgybpdh"]
 
-[ext_resource type="Resource" uid="uid://c2b332iqbe83o" path="res://resources/shapes/TriUp.tres" id="1_28gfr"]
 [ext_resource type="Resource" path="res://resources/levels/twoSquare_target.tres" id="1_f2qf6"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_m0eh6"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_kqw50"]
 [ext_resource type="Resource" uid="uid://dwn5rgv6hag47" path="res://resources/shapes/Rect11.tres" id="3_mjnov"]
 [ext_resource type="Resource" uid="uid://bprhgomwhlflq" path="res://resources/shapes/TriLeftDown.tres" id="4_50ax0"]
-[ext_resource type="Resource" uid="uid://bjhhy3v0g0o0n" path="res://resources/shapes/TriLeftUp.tres" id="5_b8sv8"]
-[ext_resource type="Resource" uid="uid://ck3t2lp7gdyl0" path="res://resources/shapes/TriRightDown.tres" id="6_cb4tv"]
-[ext_resource type="Resource" uid="uid://oele2fqnuu25" path="res://resources/shapes/TriRightUp.tres" id="7_7lr5s"]
-[ext_resource type="Resource" uid="uid://bg6lxs5ma22a" path="res://resources/shapes/TriDown.tres" id="9_2wyd5"]
-[ext_resource type="Resource" uid="uid://c3wsrhy7rrjr7" path="res://resources/shapes/TriRight.tres" id="10_xf1yx"]
-[ext_resource type="Resource" uid="uid://d4c74knpkv08v" path="res://resources/shapes/TriLeft.tres" id="11_633ee"]
-[ext_resource type="Resource" uid="uid://b64bexfiv8442" path="res://resources/shapes/diamond.tres" id="12_5c2ir"]
-
-[sub_resource type="Resource" id="Resource_h5bct"]
-script = ExtResource("2_kqw50")
-area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 2)])
+[ext_resource type="Resource" uid="uid://bwoqhxcycpcgt" path="res://hourglass.tres" id="6_ghj05"]
 
 [resource]
 script = ExtResource("1_m0eh6")
 id = 1
-shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("4_50ax0"), ExtResource("5_b8sv8"), ExtResource("6_cb4tv"), ExtResource("7_7lr5s"), ExtResource("9_2wyd5"), ExtResource("10_xf1yx"), ExtResource("1_28gfr"), ExtResource("11_633ee"), ExtResource("12_5c2ir"), SubResource("Resource_h5bct")])
+shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("4_50ax0"), ExtResource("6_ghj05")])
 shapesCount = Array[int]([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
 goal = ExtResource("1_f2qf6")
 width = 8
