@@ -22,6 +22,7 @@ var canRotateShape = true
 @onready var workSpace:Control = $WorkSpace
 @onready var optionPanel = $OptionPanel
 @onready var workSpaceRotateAnchor:Control = $WorkSpace/Anchor
+@onready var workSpaceDotline:Node2D = $WorkSpace/Box/Dotline
 
 static var Instance:Game;
 

@@ -64,6 +64,7 @@ static func onDrawStart(start):
 			if !Game.Instance.debugMode:
 				#Main.Instance.changeToNextLevel()
 				Game.Instance.win()
+		Game.Instance.workSpaceDotline.visible = false
 
 static func onDrawing():
 	if !drawing: return
@@ -133,6 +134,18 @@ static func onDrawing():
 		shapeNode.shape.position = position
 		shapeNode.updatePosition()
 		WorkspaceRenderManager.refreshShapeBoolean()
+		
+		if true:
+			var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
+			var startPos = drawingPosition * Global.UNIT_SIZE
+			var len = Vector2(0, scale * Global.UNIT_SIZE * factor)
+			var endPos =  len.rotated(deg_to_rad(angle - 45))
+			var dotline = Game.Instance.workSpaceDotline
+			dotline.visible = true
+			dotline.clear_points()
+			dotline.add_point(startPos)
+			dotline.add_point(startPos + endPos)
+		
 	
 	
 static func undo():

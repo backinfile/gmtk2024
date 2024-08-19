@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=15 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
 [ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
+[ext_resource type="PackedScene" uid="uid://b6u4tpfesljfb" path="res://nodes/dotline.tscn" id="4_nylqt"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
 [ext_resource type="Texture2D" uid="uid://bd1rqnhqno3vp" path="res://assets/img/grid-outline.svg" id="6_bq30p"]
@@ -284,6 +285,9 @@ layout_mode = 0
 [node name="Grids" type="Control" parent="WorkSpace/Box"]
 anchors_preset = 0
 
+[node name="Dotline" parent="WorkSpace/Box" instance=ExtResource("4_nylqt")]
+visible = false
+
 [node name="Anchor" type="TextureRect" parent="WorkSpace"]
 visible = false
 modulate = Color(0.184314, 0.0352941, 0.988235, 1)
@@ -312,6 +316,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.901743, 0.901743)

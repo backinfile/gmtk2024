@@ -11,6 +11,11 @@ var count: int = 0:
 	set(value):
 		count = value
 		count_label.text = str(count)
+		if count <= 0:
+			disabled = true
+		else:
+			disabled = false
+		update()
 
 var node: ShapeNode:
 	set(value):
@@ -26,8 +31,9 @@ var color: Color:
 	set(value):
 		color = value
 		assert(node, "please set node first")
-		$Ring.modulate = color
+		$Ring.self_modulate = color
 		$Border.modulate = color
+		count_label.modulate = color
 		node.triangle_color = color
 
 var state: DrawMode:
@@ -40,13 +46,17 @@ var state: DrawMode:
 func _draw() -> void:
 	state = get_draw_mode()
 
+var tween: Tween
 func update():
-	var tween = create_tween()
+	if tween: tween.kill()
+	tween = create_tween().set_parallel()
 	var a = 1
+	$Ring.show()
+	tween.tween_property($Container, "modulate:a", 1, .1)
 	if selected:
+		print("seleced")
 		a = 1
 	else:
-		tween.tween_property($Container, "modulate:a", 1, .1)
 		match state:
 			DrawMode.DRAW_NORMAL:
 				a = 0
@@ -55,6 +65,7 @@ func update():
 			DrawMode.DRAW_PRESSED:
 				a = .8
 			DrawMode.DRAW_DISABLED:
+				$Ring.hide()
 				tween.tween_property($Container, "modulate:a", .5, .1)
 				a = 0
 			DrawMode.DRAW_HOVER_PRESSED:

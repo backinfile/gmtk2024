@@ -80,6 +80,9 @@ static func refresh():
 		line.add_point(Vector2(gameMap.width * Global.UNIT_SIZE + Global.UNIT_EDGE, y * Global.UNIT_SIZE + Global.UNIT_EDGE))
 		Grids.add_child(line)
 	
+	Game.Instance.workSpaceDotline.default_color = Global.workspace_dotline_color
+	Game.Instance.workSpaceDotline.clear_points()
+	Game.Instance.workSpaceDotline.width = Global.workspace_dotline_width
 	
 	
 static func refreshShapeBoolean():

@@ -4,6 +4,9 @@ var UNIT_SIZE = 50;
 var UNIT_SIZE_2 = 50;
 var UNIT_EDGE = 1;
 
+var workspace_dotline_color = Color.BLUE
+var workspace_dotline_width = 20
+
 var COLORS = [
 	Color(.5, 1, 1),
 	Color(1, .5, 1),
