@@ -68,6 +68,7 @@ static func onDrawing():
 		var rotatedShape = shapeNode.shape.oriShape.rotate(angle)
 		var negOffset = rotatedShape.getNegOffset()
 		rotatedShape = rotatedShape.moveOffset(negOffset)
+		print("change angle = ", angle)
 		print("negOffset = ", negOffset, " old position = ", position)
 		position = position - negOffset
 		shapeNode.shape.curShape = rotatedShape

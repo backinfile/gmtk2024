@@ -9,7 +9,7 @@ static func getMousePositionOnWorkspace():
 	return Global.toVector2i(offset)
 
 
-static var matchAngles = [0,  90, -90, 180] #45, -45,135, -135,
+static var matchAngles = [0,  90, -90, 180, -180, 45, -45, 135, -135,]
 
 static func getMouseAngleOnWorkspace(target:Vector2i):
 	var mouse = Game.Instance.get_viewport().get_mouse_position();

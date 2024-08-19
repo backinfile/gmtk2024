@@ -174,21 +174,68 @@ func _rotateFixed(r:int):
 		shape.area.append(Vector3i(p.x, p.y, _rotateShapeTypeFixed(v[2], r)))
 	return shape
 
-
-	
-
 func _rotateAngle(r:int):
-	pass
+	var shape = Shape.new()
+	for v in area:
+		var p = _rotatePositionAngle(v[0], v[1], r)
+		var offset = _rotatePositionAnglePositionOffset(r, v[2])
+		p = p + offset
+		match r:
+			45: 
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 1) % 4))
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 2) % 4))
+			135:
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 0) % 4))
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 1) % 4))
+			-135:
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 0) % 4))
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 3) % 4))
+			-45:
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 2) % 4))
+				shape.area.append(Vector3i(p.x, p.y, (v[2] + 3) % 4))
+	return shape
 
-func _get_rotate_offset_angle(r:int):
+func _rotatePositionAnglePositionOffset(r:int, dir):
+	match dir:
+		0:
+			match r:
+				45: return Vector2i(0, 0)
+				135: return Vector2(-1, 0)
+				-135: return Vector2(-1, -1)
+				-45: return Vector2i(0, -1)
+		1:
+			match r:
+				45: return Vector2i(-1, 0)
+				135: return Vector2(-1, -1)
+				-135: return Vector2(0, -1)
+				-45: return Vector2i(0, 0)
+		2:
+			match r:
+				45: return Vector2i(-1, 1)
+				135: return Vector2(-2, -1)
+				-135: return Vector2(0, -2)
+				-45: return Vector2i(1, 0)
+		3:
+			match r:
+				45: return Vector2i(0, 1)
+				135: return Vector2(-2, 0)
+				-135: return Vector2(-1, -2)
+				-45: return Vector2i(1, -1)
+
+func _rotatePositionAngle(x, y, r:int):
 	match r:
-		45: return Vector2i.ZERO
+		45: return Vector2i(x - y, x + y)
+		135: return Vector2( - x - y, x - y)
+		-135: return Vector2(- x + y, - x - y)
+		-45: return Vector2i(x + y, -x + y )
+	return Vector2i(x, y)
 
 func _rotatePositionFixed(x, y, r:int):
 	match r:
 		90: return Vector2i(- y - 1, x)
 		180: return Vector2i(- x - 1, - y - 1)
 		-90:  return Vector2(y , -x - 1)
+		-180: return Vector2i(- x - 1, - y - 1)
 	return Vector2i(x, y)
 
 func _rotateShapeTypeFixed(dir, r:int):
@@ -196,6 +243,7 @@ func _rotateShapeTypeFixed(dir, r:int):
 		90: return (dir + 3) % 4
 		180: return (dir + 2) % 4
 		-90: return (dir + 1) % 4
+		-180: return (dir + 2) % 4
 	return dir
 	
 
