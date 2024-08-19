@@ -14,7 +14,14 @@ var onDragUpdate = null;
 
 var renderOnWorkspace = false;
 
-@export var triangle_color:Color = Color.BLACK
+@export var triangle_color:Color = Color.BLACK:
+	set(value):
+		var shapes = get_node("shapes")
+		if shapes:
+			for s in get_node("shapes").get_children():
+				s.color = value
+		triangle_color = value
+	
 
 var borderVisible:bool:
 	get: 
