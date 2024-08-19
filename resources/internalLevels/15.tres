@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://b58ulx3b8tsp0"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_nas1c"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_0usuv"]
