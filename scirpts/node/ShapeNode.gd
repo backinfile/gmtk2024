@@ -72,29 +72,36 @@ func recreateShape():
 		
 	var border:Control = get_node("border")
 	Global.clear_children(border)
-	var size = getUnitSize()
-	var outlines = shape.curShape.get_outline()
-	for outline in outlines: 
-		var line := Line2D.new() as Line2D
-		line.clear_points()
-		line.joint_mode = Line2D.LINE_JOINT_ROUND
-		line.width = 5
-		line.default_color = Color.BLACK
-		line.closed = true
-		for p in outline:
-			line.add_point(p * size)
-		border.add_child(line)
-	#var size = custom_minimum_size
-	#var line = preload("res://nodes/dotline.tscn").instantiate()
-	#line.default_color = Color.BLUE
-	#line.width = 20
-	#line.clear_points()
-	#line.add_point(Vector2(0,0))
-	#line.add_point(Vector2(size.x,0))
-	#line.add_point(Vector2(size.x,size.y))
-	#line.add_point(Vector2(0,size.y))
-	#line.add_point(Vector2(0,0))
-	#border.add_child(line)
+	if true:
+		var size = getUnitSize()
+		var outlines = shape.curShape.get_outline()
+		for outline in outlines: 
+			var line := Line2D.new() as Line2D
+			line.clear_points()
+			line.joint_mode = Line2D.LINE_JOINT_ROUND
+			line.width = 5
+			line.default_color = Color.BLACK
+			line.closed = true
+			for p in outline:
+				line.add_point(p * size)
+			border.add_child(line)
+	if false:
+		var maxPoint = null
+		var maxDistance = -1
+		for v in shape.curShape.area:
+			var p = Vector2(v[0], v[1])
+			var dis = p.distance_to(Vector2.ZERO)
+			if dis > maxDistance:
+				maxPoint = p
+				maxDistance = dis
+		if maxPoint:
+			var line = preload("res://nodes/dotline.tscn").instantiate()
+			line.default_color = Color.BLUE
+			line.width = 20
+			line.clear_points()
+			line.add_point(Vector2(0,0))
+			line.add_point(maxPoint * getUnitSize())
+			border.add_child(line)
 	
 
 func getUnitSize():
