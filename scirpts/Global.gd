@@ -7,13 +7,15 @@ var UNIT_EDGE = 1;
 var workspace_dotline_color = Color.BLUE
 var workspace_dotline_width = 20
 
+var workspace_rotate_angle_offset = 45
+
 var COLORS = [
-	Color(.5, 1, 1),
-	Color(1, .5, 1),
-	Color(1, 1, .5),
-	Color(.5, .5, 1),
-	Color(.5, 1, .5),
-	Color(1, .5, .5),
+	Color.from_hsv(0, 1, .8),
+	Color.from_hsv(.1, 1, .8),
+	Color.from_hsv(.3, 1, .8),
+	Color.from_hsv(.4, 1, .8),
+	Color.from_hsv(0.5, 1, .8),
+	Color.from_hsv(0.7, 1, .8),
 ]
 
 @onready var shape_node_tscn:PackedScene = load("res://nodes/shape_node.tscn");

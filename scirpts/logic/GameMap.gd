@@ -10,3 +10,6 @@ func _init():
 	
 func mapSize():
 	return Vector2(width, height)
+
+func contains(p:Vector2i):
+	return p.x >= 0 && p.y >= 0 && p.x < width && p.y < height

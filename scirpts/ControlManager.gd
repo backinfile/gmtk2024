@@ -45,10 +45,10 @@ static func onDrawStart(start):
 			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
 			drawingPosition = mouse
 			WorkspaceRenderManager.refreshShapeBoolean()
-			if Game.Instance.canRotateShape:
-				Input.set_custom_mouse_cursor(cursor_expand_rotate)
-			else:
-				Input.set_custom_mouse_cursor(cursor_expand)
+			#if Game.Instance.canRotateShape:
+				#Input.set_custom_mouse_cursor(cursor_expand_rotate)
+			#else:
+				#Input.set_custom_mouse_cursor(cursor_expand)
 		return
 	
 	if drawing:
@@ -67,6 +67,18 @@ static func onDrawStart(start):
 		Game.Instance.workSpaceDotline.visible = false
 
 static func onDrawing():
+	if true:
+		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
+		if drawing:
+			hoverDotlines.visible = false
+		elif Game.Instance.curSelectedShape:
+			var p = WorkspaceRenderManager.getMousePositionOnWorkspace()
+			if Game.Instance.gameMap and Game.Instance.gameMap.contains(p):
+				hoverDotlines.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p)
+				hoverDotlines.visible = true
+			else:
+				hoverDotlines.visible = false
+	
 	if !drawing: return
 	if Game.Instance.curOperationShape == null: return
 	
@@ -139,7 +151,7 @@ static func onDrawing():
 			var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
 			var startPos = drawingPosition * Global.UNIT_SIZE
 			var len = Vector2(0, scale * Global.UNIT_SIZE * factor)
-			var endPos =  len.rotated(deg_to_rad(angle - 45))
+			var endPos =  len.rotated(deg_to_rad(angle - Global.workspace_rotate_angle_offset))
 			var dotline = Game.Instance.workSpaceDotline
 			dotline.visible = true
 			dotline.clear_points()
