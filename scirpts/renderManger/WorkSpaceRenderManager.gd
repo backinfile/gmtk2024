@@ -20,7 +20,7 @@ static func getMouseAngleOnWorkspace(target:Vector2i):
 	var start = Game.Instance.workSpace.get_node("Box").global_position
 	var targetPos = start + target * Global.UNIT_SIZE
 	var angle = rad_to_deg(targetPos.angle_to_point(mouse))
-	angle = (int(angle) + 180 + 360 - 45) % 360 - 180
+	angle = (int(angle) + 180 + 360 - Global.workspace_rotate_angle_offset) % 360 - 180
 	var minIndex = 0
 	var minDis = 1000
 	for i in range(matchAngles.size()):
@@ -156,3 +156,24 @@ static func workspaceToShape(moveToLeftTop = true):
 		var y = v.y - minY
 		shape.area.append(Vector3i(v.x - minX, v.y - minY, v.z))
 	return shape
+
+
+static func refreshHoverDotline():
+	var HoverDotlines = Game.Instance.workSpaceHoverDotlines
+	var shapeNode = Game.Instance.curSelectedShape
+	if shapeNode == null:
+		HoverDotlines.visible = false
+		return
+	Global.clear_children(HoverDotlines)
+	var size = Global.UNIT_SIZE
+	var outlines = shapeNode.shape.curShape.get_outline()
+	for outline in outlines: 
+		var line := Line2D.new() as Line2D
+		line.clear_points()
+		line.joint_mode = Line2D.LINE_JOINT_ROUND
+		line.width = 5
+		line.default_color = Color.GRAY
+		line.closed = true
+		for p in outline:
+			line.add_point(p * size)
+		HoverDotlines.add_child(line)

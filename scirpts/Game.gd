@@ -23,6 +23,7 @@ var canRotateShape = true
 @onready var optionPanel = $OptionPanel
 @onready var workSpaceRotateAnchor:Control = $WorkSpace/Anchor
 @onready var workSpaceDotline:Node2D = $WorkSpace/Box/Dotline
+@onready var workSpaceHoverDotlines:Control = $WorkSpace/Box/HoverDotlines
 
 static var Instance:Game;
 
@@ -72,8 +73,7 @@ func _process(delta):
 	if dx != 0 or dy != 0:
 		ControlManager.move(dx, dy)
 	
-	if curOperationShape != null:
-		ControlManager.onDrawing()
+	ControlManager.onDrawing()
 		
 	if Input.is_action_just_pressed("save"):
 		saveToFile()
