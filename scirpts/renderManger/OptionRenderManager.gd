@@ -29,8 +29,9 @@ static func refresh():
 		btn.color = Global.COLORS[index % Global.COLORS.size()]
 		
 		btn.pressed.connect(func (): on_select(node))
-		#if index == 0:
-			#Game.Instance.curSelectedShape = node
+		if index == 0:
+			Game.Instance.curSelectedShape = node
+			btn.selected = true
 		print(node.shape.curShape.area)
 	
 static func on_select(node:ShapeNode):
