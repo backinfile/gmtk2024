@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
 [ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
-[ext_resource type="PackedScene" uid="uid://b6u4tpfesljfb" path="res://nodes/dotline.tscn" id="4_nylqt"]
+[ext_resource type="PackedScene" uid="uid://b8damftqtsnvu" path="res://nodes/dotline.tscn" id="4_nylqt"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
 [ext_resource type="Texture2D" uid="uid://bd1rqnhqno3vp" path="res://assets/img/grid-outline.svg" id="6_bq30p"]

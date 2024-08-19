@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://defy1fgqyw3ky"]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_yxp2l"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_q3h61"]
+
+[sub_resource type="Resource" id="Resource_d51v0"]
+script = ExtResource("1_yxp2l")
+area = Array[Vector3i]([Vector3i(1, 2, 2), Vector3i(2, 2, 2), Vector3i(1, 2, 3), Vector3i(2, 2, 3), Vector3i(2, 2, 1), Vector3i(3, 2, 1), Vector3i(3, 2, 2), Vector3i(2, 1, 2), Vector3i(2, 2, 0), Vector3i(1, 2, 1), Vector3i(1, 2, 0), Vector3i(1, 1, 2), Vector3i(1, 1, 1), Vector3i(1, 1, 0), Vector3i(1, 1, 3), Vector3i(2, 1, 1), Vector3i(2, 1, 3), Vector3i(3, 1, 0), Vector3i(3, 1, 1), Vector3i(3, 1, 2), Vector3i(3, 1, 3), Vector3i(3, 2, 3), Vector3i(3, 2, 0)])
+
+[sub_resource type="Resource" id="Resource_q4o2p"]
+script = ExtResource("1_yxp2l")
+area = Array[Vector3i]([Vector3i(0, 0, 1)])
+
+[resource]
+script = ExtResource("2_q3h61")
+id = 1
+shapes = Array[ExtResource("1_yxp2l")]([SubResource("Resource_q4o2p")])
+shapesCount = Array[int]([3])
+goal = SubResource("Resource_d51v0")
+width = 5
+height = 5
+canRotate = true
