@@ -10,8 +10,10 @@ offset_right = 50.0
 offset_bottom = 50.0
 mouse_filter = 1
 script = ExtResource("1_byg4t")
-workspaceMaterial = ExtResource("1_wajqj")
 triangle_color = Color(0.170636, 0.101191, 0.198817, 1)
+workspaceMaterial = ExtResource("1_wajqj")
+materialColorA = Color(0.980392, 0.815686, 0.588235, 1)
+materialColorB = Color(0.960784, 0.721569, 0.721569, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

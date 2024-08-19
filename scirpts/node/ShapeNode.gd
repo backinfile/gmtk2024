@@ -20,15 +20,18 @@ var onDragUpdate = null;
 
 var renderOnWorkspace = false;
 
-@export var workspaceMaterial:Material;
 @export var triangle_color:Color = Color.BLACK:
 	set(value):
-		var shapes = get_node("shapes")
 		if shapes:
-			for s in get_node("shapes").get_children():
+			for s in shapes.get_children():
 				s.color = value
 		triangle_color = value
-	
+
+@onready var shapes = get_node("shapes")
+
+@export var workspaceMaterial:Material;
+@export var materialColorA:Color;
+@export var materialColorB:Color;
 
 var borderVisible:bool:
 	get: 
@@ -91,7 +94,7 @@ func getUnitSize():
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()
 	if scaleMode == 0 || scaleMode == 1:
-		p.material = workspaceMaterial
+		p.material = workspaceMaterial.duplicate()
 	var size = getUnitSize();
 	var mid = getUnitSize() / 2;
 	var polygon = []

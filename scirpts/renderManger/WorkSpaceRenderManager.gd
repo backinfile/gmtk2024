@@ -2,6 +2,8 @@ class_name WorkspaceRenderManager
 extends Node
 
 
+static var shapeBoolCache = {}
+
 static func getMousePositionOnWorkspace():
 	var mouse = Game.Instance.get_viewport().get_mouse_position();
 	var start = Game.Instance.workSpace.get_node("Box").global_position
@@ -49,6 +51,7 @@ static func removeNodeFromWorkspace(shape:ShapeNode):
 	
 
 static func refresh():
+	shapeBoolCache.clear()
 	var gameMap = Game.Instance.gameMap;
 	#var Box = Game.Instance.workSpace.get_node("Box");
 	#Box.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
@@ -96,7 +99,20 @@ static func refreshShapeBoolean():
 			var v = node.shape.curShape.area[i]
 			v = Vector3i(v.x + p.x, v.y + p.y, v.z)
 			var triangle:Polygon2D = control.get_child(i)
-			triangle.visible = shapeRenderCache[v] % 2 == 1
+			var oldVisible = v in shapeBoolCache
+			var newVisible = shapeRenderCache[v] % 2 == 1
+			if oldVisible != newVisible:
+				triangle.visible = true
+				if newVisible: shapeBoolCache[v] = true
+				else: shapeBoolCache.erase(v)
+				var targetColorA = Color(node.materialColorA, 1 if newVisible else 0)
+				var targetColorB = Color(node.materialColorB, 1 if newVisible else 0)
+				var tween = node.create_tween()
+				tween.tween_property(triangle, "material:shader_parameter/colorA", targetColorA, .1)
+				tween.tween_property(triangle, "material:shader_parameter/colorB", targetColorB, .1)
+			else:
+				triangle.visible = newVisible
+			#triangle.visible = shapeRenderCache[v] % 2 == 1
 	#if GoalRenderManger.isWin():
 		#print("win!!")
 			

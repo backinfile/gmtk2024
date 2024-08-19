@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Level" load_steps=14 format=3 uid="uid://delvd5bgybpdh"]
+[gd_resource type="Resource" script_class="Level" load_steps=15 format=3 uid="uid://delvd5bgybpdh"]
 
 [ext_resource type="Resource" uid="uid://c2b332iqbe83o" path="res://resources/shapes/TriUp.tres" id="1_28gfr"]
+[ext_resource type="Resource" path="res://resources/levels/twoSquare_target.tres" id="1_f2qf6"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_m0eh6"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_kqw50"]
 [ext_resource type="Resource" uid="uid://dwn5rgv6hag47" path="res://resources/shapes/Rect11.tres" id="3_mjnov"]
@@ -22,6 +23,6 @@ script = ExtResource("1_m0eh6")
 id = 1
 shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("4_50ax0"), ExtResource("5_b8sv8"), ExtResource("6_cb4tv"), ExtResource("7_7lr5s"), ExtResource("9_2wyd5"), ExtResource("10_xf1yx"), ExtResource("1_28gfr"), ExtResource("11_633ee"), ExtResource("12_5c2ir"), SubResource("Resource_h5bct")])
 shapesCount = Array[int]([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
-goal = ExtResource("1_28gfr")
+goal = ExtResource("1_f2qf6")
 width = 8
 height = 8
