@@ -9,7 +9,7 @@ static func refresh():
 	var node = Global.createShapeNode(shapeObject, 1, 1)
 	goal.add_child(node)
 	
-	var size = shapeObject.curShape.shapeSizeI()
+	var size = Game.Instance.gameMap.mapSize()
 	
 	for x in range(size.x + 1):
 		var line = preload("res://nodes/dotline.tscn").instantiate()
