@@ -56,10 +56,14 @@ func makeCopy():
 
 
 func recreateShape():
+	var renderOffset = Vector2i.ZERO
+	if scaleMode == 2:
+		renderOffset = shape.curShape.getNegOffset()
+	
 	#ShapeUtils.recreateShape(self)
 	var control:Control = get_node("shapes")
 	custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
-	control.custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
+	control.custom_minimum_size = custom_minimum_size
 	#print("recreateShape ", custom_minimum_size)
 	Global.clear_children(control)
 	for s in shape.curShape.area:
@@ -67,7 +71,7 @@ func recreateShape():
 		#print("add Polygon ", p.polygon)
 		p.color = triangle_color
 		if scaleMode == 0 or scaleMode == 1: p.color = Color.WHITE
-		p.position = Vector2(s[0] * getUnitSize(), s[1] * getUnitSize())
+		p.position = Vector2((s[0] + renderOffset.x) * getUnitSize(), (s[1] + renderOffset.y) * getUnitSize())
 		control.add_child(p)
 		
 	var border:Control = get_node("border")
@@ -85,23 +89,6 @@ func recreateShape():
 			for p in outline:
 				line.add_point(p * size)
 			border.add_child(line)
-	#if false:
-		#var maxPoint = null
-		#var maxDistance = -1
-		#for v in shape.curShape.area:
-			#var p = Vector2(v[0], v[1])
-			#var dis = p.distance_to(Vector2.ZERO)
-			#if dis > maxDistance:
-				#maxPoint = p
-				#maxDistance = dis
-		#if maxPoint:
-			#var line = preload("res://nodes/dotline.tscn").instantiate()
-			#line.default_color = Color.BLUE
-			#line.width = 20
-			#line.clear_points()
-			#line.add_point(Vector2(0,0))
-			#line.add_point(maxPoint * getUnitSize())
-			#border.add_child(line)
 	
 
 func getUnitSize():
