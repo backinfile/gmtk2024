@@ -43,7 +43,7 @@ func recreateShape():
 	var control:Control = get_node("shapes")
 	custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
 	control.custom_minimum_size = shape.curShape.shapeSize() * getUnitSize()
-	print("recreateShape ", custom_minimum_size)
+	#print("recreateShape ", custom_minimum_size)
 	Global.clear_children(control)
 	for s in shape.curShape.area:
 		var p = getPolygonByDur(s[2])

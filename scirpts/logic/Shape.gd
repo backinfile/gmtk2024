@@ -144,6 +144,61 @@ func scaleUp(scale:int):
 	shape.area.append_array(result)
 	return shape
 
+
+func getNegOffset() -> Vector2i:
+	var minX = 0
+	var minY = 0
+	for v in area:
+		minX = min(v[0], minX)
+		minY = min(v[1], minY)
+	return Vector2i(-minX, -minY)
+
+func moveOffset(offset:Vector2i) -> Shape:
+	var shape = Shape.new()
+	for v in area:
+		shape.area.append(Vector3i(v[0] + offset.x, v[1] + offset.y, v[2]))
+	return shape
+
+# coor can be neg
+func rotate(r:int) -> Shape:
+	if (r == 0): return self.duplicate()
+	if (r == 45 or r == -45 or r == 135 or r == -135):
+		return _rotateAngle(r)
+	return _rotateFixed(r)
+	
+
+func _rotateFixed(r:int):
+	var shape = Shape.new()
+	for v in area:
+		var p = _rotatePositionFixed(v[0], v[1], r)
+		shape.area.append(Vector3i(p.x, p.y, _rotateShapeTypeFixed(v[2], r)))
+	return shape
+
+
+	
+
+func _rotateAngle(r:int):
+	pass
+
+func _get_rotate_offset_angle(r:int):
+	match r:
+		45: return Vector2i.ZERO
+
+func _rotatePositionFixed(x, y, r:int):
+	match r:
+		90: return Vector2i(- y - 1, x)
+		180: return Vector2i(- x - 1, - y - 1)
+		-90:  return Vector2(y , -x - 1)
+	return Vector2i(x, y)
+
+func _rotateShapeTypeFixed(dir, r:int):
+	match r:
+		90: return (dir + 3) % 4
+		180: return (dir + 2) % 4
+		-90: return (dir + 1) % 4
+	return dir
+	
+
 func shapeSize() -> Vector2:
 	if size.x < 0 || size.y < 0:
 		var x = 0

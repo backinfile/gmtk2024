@@ -4,6 +4,7 @@ extends RefCounted
 var oriShape: Shape;
 var curShape: Shape;
 var scale = 1;
+var angle = 0;
 var position: Vector2i = Vector2i.ZERO;
 
 func _init(shape: Shape):

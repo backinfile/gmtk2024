@@ -55,43 +55,56 @@ static func onDrawing():
 	
 	var shapeNode = Game.Instance.curOperationShape
 	var curLevel = Game.Instance.curLevel
+	var gameMapSize = Vector2i(Game.Instance.gameMap.width, Game.Instance.gameMap.height)
 	var scale = 1
-	var position = drawingPosition 
+	var position = drawingPosition
 	
 	var shapeSize = shapeNode.shape.oriShape.shapeSizeI()
 	var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
-	var offset = mouse - position
-	var offsetBySize = Global.div(mouse - position, shapeSize)
-	#print("onDrawing offset = ", offset, " offsetBySize = ", offsetBySize)
-	if offset.x >= 0 and offset.y >= 0 and offset.x < shapeSize.x and offset.y < shapeSize.y:
-		scale = 1
-	elif offsetBySize.x >= 0 && offsetBySize.y >= 0:
-		scale = max(offsetBySize.x, offsetBySize.y) + 1
-	elif offsetBySize.x >= 0 && offsetBySize.y < 0:
-		scale = max(offsetBySize.x, absi(offsetBySize.y)) + 1
-		position = Vector2i(position.x, position.y - (scale - 1) * shapeSize.y)
-	elif offsetBySize.x < 0 && offsetBySize.y < 0:
-		scale = max(absi(offsetBySize.x), absi(offsetBySize.y)) + 1
-		position = Vector2i(position.x - (scale - 1) * shapeSize.x, position.y - (scale - 1) * shapeSize.y)
-	elif offsetBySize.x < 0 && offsetBySize.y >= 0:
-		scale = max(absi(offsetBySize.x), absi(offsetBySize.y)) + 1
-		position = Vector2i(position.x - (scale - 1) * shapeSize.x, position.y)
-	else:
-		return
-		
-	var changed = scale != shapeNode.shape.scale or position != shapeNode.shape.position
+	var angle = WorkspaceRenderManager.getMouseAngleOnWorkspace(position)
 	
-	if scale != shapeNode.shape.scale:
-		var scaled = shapeNode.shape.oriShape.scaleUp(scale)
-		shapeNode.shape.curShape = scaled
-		shapeNode.shape.scale = scale
+	
+	if angle != shapeNode.shape.angle:
+		var rotatedShape = shapeNode.shape.oriShape.rotate(angle)
+		var negOffset = rotatedShape.getNegOffset()
+		rotatedShape = rotatedShape.moveOffset(negOffset)
+		print("negOffset = ", negOffset, " old position = ", position)
+		position = position - negOffset
+		shapeNode.shape.curShape = rotatedShape
+		shapeNode.shape.angle = angle
 		shapeNode.recreateShape()
-	if position != shapeNode.shape.position:
-		shapeNode.shape.position = position
-		shapeNode.updatePosition()
-	if changed:
-		WorkspaceRenderManager.refreshShapeBoolean()
-		#print("===== scale = ", scale)
+		
+		if position != shapeNode.shape.position:
+			print("update position to ", position)
+			shapeNode.shape.position = position
+			shapeNode.updatePosition()
+	#var offset = mouse - position
+	#var offsetBySize = Global.div(mouse - position, shapeSize)
+	##print("onDrawing offset = ", offset, " offsetBySize = ", offsetBySize)
+	#if offset.x >= 0 and offset.y >= 0 and offset.x < shapeSize.x and offset.y < shapeSize.y:
+		#scale = 1
+	#elif offsetBySize.x >= 0 && offsetBySize.y >= 0:
+		#scale = max(offsetBySize.x, offsetBySize.y) + 1
+		#var maxScale = _get_max_scale_x_or_y(gameMapSize - position, shapeSize)
+		#scale = min(maxScale, scale)
+	#else:
+		#return
+		#
+	#if scale < 1:
+		#return;
+	#var changed = scale != shapeNode.shape.scale or position != shapeNode.shape.position
+	#
+	#if scale != shapeNode.shape.scale:
+		#var scaled = shapeNode.shape.oriShape.scaleUp(scale)
+		#shapeNode.shape.curShape = scaled
+		#shapeNode.shape.scale = scale
+		#shapeNode.recreateShape()
+	#if position != shapeNode.shape.position:
+		#shapeNode.shape.position = position
+		#shapeNode.updatePosition()
+	#if changed:
+		#WorkspaceRenderManager.refreshShapeBoolean()
+		##print("===== scale = ", scale)
 	
 	
 static func undo():
@@ -105,7 +118,11 @@ static func undo():
 		
 		
 
-
+static func _get_max_scale_x_or_y(empty:Vector2i, shapeSize:Vector2i):
+	var scale = min(empty.x / shapeSize.x, empty.y / shapeSize.y)
+	#print("maxScale = ", scale)
+	return scale
+	
 
 
 	
