@@ -3,7 +3,7 @@ extends Node
 
 static var cursor_expand = preload("res://assets/img/expand.svg")
 static var cursor_expand_rotate = preload("res://assets/img/expand-rotate.svg")
-
+static var cursor_move = preload("res://assets/img/move.svg")
 
 static func move(dx:int, dy:int):
 	var shapeNode = Game.Instance.curOperationShape;
@@ -47,10 +47,10 @@ static func onDrawStart(start):
 			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
 			drawingPosition = mouse
 			WorkspaceRenderManager.refreshShapeBoolean()
-			#if Game.Instance.canRotateShape:
-				#Input.set_custom_mouse_cursor(cursor_expand_rotate)
-			#else:
-				#Input.set_custom_mouse_cursor(cursor_expand)
+			if Game.Instance.canRotateShape:
+				Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
+			else:
+				Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
 		return
 	
 	if drawing:
@@ -77,6 +77,13 @@ static func onStartDrawWithMove(start:bool):
 	dragMode = start
 	if start:
 		dragStartMouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
+		Input.set_custom_mouse_cursor(cursor_move, 0, Vector2(11, 11))
+	else:
+		if drawing:
+			Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
+		else:
+			Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
+			
 
 static func onDrawing():
 	if true: # draw hover dotlion

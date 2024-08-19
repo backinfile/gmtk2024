@@ -251,10 +251,14 @@ func shapeSize() -> Vector2:
 	if size.x < 0 || size.y < 0:
 		var x = 0
 		var y = 0
+		var minX = 0
+		var minY = 0
 		for s in area:
 			x = max(x, s[0])
 			y = max(y, s[1])
-		size = Vector2(x + 1, y + 1)
+			minX = min(minX, s[0])
+			minY = min(minY, s[0])
+		size = Vector2(x + 1 - minX, y + 1 - minY)
 	return size
 
 func shapeSizeI() -> Vector2:
