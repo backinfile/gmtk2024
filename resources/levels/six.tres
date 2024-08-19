@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_osnw1"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_a8hj2"]
+
+[sub_resource type="Resource" id="Resource_h33vx"]
+script = ExtResource("1_osnw1")
+area = Array[Vector3i]([Vector3i(2, 2, 2), Vector3i(2, 2, 3), Vector3i(2, 3, 3), Vector3i(2, 3, 0), Vector3i(3, 2, 1), Vector3i(3, 2, 2), Vector3i(4, 2, 1), Vector3i(4, 2, 2), Vector3i(3, 2, 3), Vector3i(4, 3, 0), Vector3i(4, 3, 1), Vector3i(3, 3, 0), Vector3i(3, 3, 1), Vector3i(3, 3, 2), Vector3i(3, 3, 3), Vector3i(3, 2, 0)])
+
+[sub_resource type="Resource" id="Resource_h700k"]
+script = ExtResource("1_osnw1")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 3)])
+
+[sub_resource type="Resource" id="Resource_a6bcx"]
+script = ExtResource("1_osnw1")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
+
+[sub_resource type="Resource" id="Resource_q7oqy"]
+script = ExtResource("1_osnw1")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 2)])
+
+[resource]
+script = ExtResource("2_a8hj2")
+id = 1
+shapes = Array[ExtResource("1_osnw1")]([SubResource("Resource_h700k"), SubResource("Resource_a6bcx"), SubResource("Resource_q7oqy")])
+shapesCount = Array[int]([2, 1, 1])
+goal = SubResource("Resource_h33vx")
+width = 8
+height = 8
+canRotate = true
