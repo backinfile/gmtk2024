@@ -17,10 +17,11 @@ var curOperationShape:ShapeNode:
 		curOperationShape = value
 	
 var debugMode = false
+var canRotateShape = true
 
 @onready var workSpace:Control = $WorkSpace
 @onready var optionPanel = $OptionPanel
-@onready var workSpaceRotateAnchor:Control = $WorkSpace/Box/Anchor
+@onready var workSpaceRotateAnchor:Control = $WorkSpace/Anchor
 
 static var Instance:Game;
 
@@ -43,6 +44,7 @@ func setLevel(level:Level):
 	gameMap = GameMap.new();
 	gameMap.width = curLevel.width
 	gameMap.height = curLevel.height
+	canRotateShape = curLevel.canRotate
 	if true:
 		var size = workSpace.get_node("Box").size
 		Global.UNIT_SIZE = size.x / gameMap.width

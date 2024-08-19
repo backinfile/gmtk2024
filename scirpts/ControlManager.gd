@@ -95,6 +95,11 @@ static func onDrawing():
 	else:
 		print("errrr")
 	
+	if not Game.Instance.canRotateShape:
+		angle = 0
+		if not (offsetBySize.x >= 0 && offsetBySize.y >= 0):
+			return
+	
 	if abs(angle) == 45 or abs(angle) == 135: scale = max(1, scale - 1)
 	if angle != shapeNode.shape.angle || scale != shapeNode.shape.scale:
 		#print("angle = ", angle, " scale = ", scale)

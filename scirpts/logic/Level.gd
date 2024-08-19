@@ -7,3 +7,4 @@ extends Resource
 @export var goal:Shape;
 @export var width = 5;
 @export var height = 5;
+@export var canRotate = true

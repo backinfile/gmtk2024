@@ -26,3 +26,4 @@ shapesCount = Array[int]([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
 goal = ExtResource("1_f2qf6")
 width = 8
 height = 8
+canRotate = true
