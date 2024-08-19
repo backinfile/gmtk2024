@@ -22,7 +22,7 @@ static var drawing = false
 static var drawingPosition:Vector2i = Vector2i(-1, -1):
 	set(value):
 		var anchor = Game.Instance.workSpaceRotateAnchor
-		if value.x > 0:
+		if value.x >= 0:
 			anchor.visible = true
 			anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(value) - anchor.size / 2
 		else: anchor.visible = false
