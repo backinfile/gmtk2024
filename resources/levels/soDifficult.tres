@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://oopvugdg3pmo"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_oxnnl"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_4edq0"]
@@ -17,6 +17,6 @@ id = 1
 shapes = Array[ExtResource("1_oxnnl")]([SubResource("Resource_tc3mg")])
 shapesCount = Array[int]([3])
 goal = SubResource("Resource_hvmxp")
-width = 8
-height = 8
+width = 5
+height = 5
 canRotate = true
