@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_yijoe"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_wlfem"]
+
+[sub_resource type="Resource" id="Resource_firr7"]
+script = ExtResource("1_yijoe")
+area = Array[Vector3i]([Vector3i(2, 1, 0), Vector3i(3, 1, 0), Vector3i(2, 1, 3), Vector3i(3, 1, 3), Vector3i(4, 1, 0), Vector3i(3, 1, 1), Vector3i(4, 1, 1), Vector3i(3, 2, 0), Vector3i(3, 1, 2), Vector3i(2, 1, 1), Vector3i(2, 1, 2), Vector3i(2, 2, 0), Vector3i(2, 3, 0), Vector3i(2, 3, 1), Vector3i(3, 2, 1), Vector3i(2, 2, 3), Vector3i(2, 3, 2), Vector3i(2, 3, 3), Vector3i(3, 3, 3), Vector3i(4, 3, 2), Vector3i(4, 3, 1), Vector3i(3, 2, 2), Vector3i(3, 3, 0), Vector3i(4, 2, 3), Vector3i(4, 3, 3), Vector3i(4, 2, 0), Vector3i(4, 3, 0), Vector3i(4, 1, 3), Vector3i(4, 1, 2), Vector3i(4, 2, 2), Vector3i(3, 2, 3), Vector3i(4, 2, 1), Vector3i(1, 3, 0), Vector3i(1, 3, 3), Vector3i(2, 4, 3), Vector3i(2, 4, 0)])
+
+[sub_resource type="Resource" id="Resource_niida"]
+script = ExtResource("1_yijoe")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
+
+[sub_resource type="Resource" id="Resource_o6mki"]
+script = ExtResource("1_yijoe")
+area = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 2)])
+
+[sub_resource type="Resource" id="Resource_rgdh5"]
+script = ExtResource("1_yijoe")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 3)])
+
+[resource]
+script = ExtResource("2_wlfem")
+id = 1
+shapes = Array[ExtResource("1_yijoe")]([SubResource("Resource_niida"), SubResource("Resource_o6mki"), SubResource("Resource_rgdh5")])
+shapesCount = Array[int]([1, 1, 1])
+goal = SubResource("Resource_firr7")
+width = 6
+height = 6
+canRotate = true
