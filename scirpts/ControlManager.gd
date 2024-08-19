@@ -92,11 +92,15 @@ static func onDrawing():
 			hoverDotlines.visible = false
 		elif Game.Instance.curSelectedShape:
 			var p = WorkspaceRenderManager.getMousePositionOnWorkspace()
+			var anchor = Game.Instance.workSpaceRotateAnchor
 			if Game.Instance.gameMap and Game.Instance.gameMap.contains(p):
 				hoverDotlines.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p)
 				hoverDotlines.visible = true
+				anchor.visible = true
+				anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p) - anchor.size / 2
 			else:
 				hoverDotlines.visible = false
+				anchor.visible = false
 	
 	if !drawing: return
 	if Game.Instance.curOperationShape == null: return

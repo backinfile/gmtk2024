@@ -18,5 +18,5 @@ shapes = Array[ExtResource("1_a0h1n")]([SubResource("Resource_5y6v2")])
 shapesCount = Array[int]([1])
 goal = SubResource("Resource_8lurh")
 width = 4
-height = 8
+height = 4
 canRotate = false
