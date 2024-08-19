@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bsm7irxu3vl06"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bsm7irxu3vl06"]
 
 [ext_resource type="FontFile" uid="uid://b4lakxlpmjyei" path="res://assets/font/Nunito-Bold.ttf" id="1_eudg2"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_hs6bu"]
@@ -28,9 +28,60 @@ shadow_color = Color(0, 0, 0, 0.392157)
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lnw4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tmd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jbdl"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpftl"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rau50"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k83hv"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
 [resource]
 default_font = ExtResource("2_hs6bu")
 Button/colors/font_color = Color(0.3, 0.3, 0.3, 1)
+Button/colors/font_focus_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_hover_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_hover_pressed_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_pressed_color = Color(0.301961, 0.301961, 0.301961, 1)
 Button/colors/icon_normal_color = Color(0.5, 0.5, 0.5, 1)
 Button/fonts/font = ExtResource("1_eudg2")
 Button/styles/normal = SubResource("StyleBoxFlat_64ok6")
@@ -39,3 +90,10 @@ FlatButton/styles/normal = SubResource("StyleBoxEmpty_fw8u7")
 FlatButton/styles/pressed = SubResource("StyleBoxEmpty_ta4gq")
 Label/colors/font_color = Color(0.5, 0.5, 0.5, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_752n7")
+WhiteFlatButton/base_type = &"Button"
+WhiteFlatButton/styles/disabled = SubResource("StyleBoxFlat_5lnw4")
+WhiteFlatButton/styles/focus = SubResource("StyleBoxEmpty_8tmd8")
+WhiteFlatButton/styles/hover = SubResource("StyleBoxFlat_7jbdl")
+WhiteFlatButton/styles/hover_pressed = SubResource("StyleBoxFlat_hpftl")
+WhiteFlatButton/styles/normal = SubResource("StyleBoxFlat_rau50")
+WhiteFlatButton/styles/pressed = SubResource("StyleBoxFlat_k83hv")

@@ -5,6 +5,7 @@ static var Instance:Main;
 var curLevelIndex = -1
 var levelPaths = []
 var levelBtns = []
+var curScene: Control
 
 var savedIndex = -1;
 
@@ -14,41 +15,50 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game()
-	changeToTitleScene(true)
+	#changeToTitleScene(true)
+	
+	$Levels.position = Vector2(0, size.y)
+	$Levels.show()
+	$Game.position = Vector2(0, size.y)
+	$Game.show()
+	$Title.position = Vector2(0, 0)
+	$Title.show()
+	curScene = $Title
 	loadLevelBtns()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func changeScene(scene: Control):
+	const DURATION = .5
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(curScene, "position:y", -size.y, DURATION)
+	scene.position.y = size.y
+	tween.parallel().tween_property(scene, "position:y", 0, DURATION)
+	curScene = scene
+
 func changeToTitleScene(fromGameStart = false):
-	$Levels.visible = false
-	$Game.visible = false
-	$Title.visible = true
+	changeScene($Title)
 	
 func changeToSelectLevelScene():
-	$Game.visible = false
-	$Title.visible = false
-	
 	refreshLevelBtn()
-	$Levels.visible = true
+	changeScene($Levels)
 
-func changeToGameScene(levelIndex:int):
-	$Title.visible = false
-	$Levels.visible = false
+func changeToGameScene(levelIndex:int, anim: bool = true):
 	curLevelIndex = levelIndex
 	var levelPath = levelPaths[curLevelIndex]
 	print("changeToGameScene levelPath ", levelPath)
 	
 	var level = ResourceLoader.load(levelPath)
 	$Game.setLevel(level)
-	$Game.visible = true
+	if anim: changeScene($Game)
 
 func changeToNextLevel():
 	savedIndex = max(savedIndex, curLevelIndex)
 	save_game()
 	if curLevelIndex + 1 < levelPaths.size():
-		changeToGameScene(curLevelIndex + 1)
+		changeToGameScene(curLevelIndex + 1, false)
 	else:
 		changeToTitleScene()
 
