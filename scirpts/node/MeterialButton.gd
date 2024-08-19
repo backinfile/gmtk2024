@@ -25,7 +25,10 @@ var selected: bool = false:
 var color: Color:
 	set(value):
 		color = value
-
+		assert(node, "please set node first")
+		$Ring.modulate = color
+		$Border.modulate = color
+		node.triangle_color = color
 
 var state: DrawMode:
 	set(value):
@@ -39,21 +42,21 @@ func _draw() -> void:
 
 func update():
 	var tween = create_tween()
-	var color: Color 
+	var a = 1
 	if selected:
-		color = Color(1, 1, 1, 1)
+		a = 1
 	else:
-		tween.tween_property($Container, "modulate", Color(1, 1, 1, 1), .1)
+		tween.tween_property($Container, "modulate:a", 1, .1)
 		match state:
 			DrawMode.DRAW_NORMAL:
-				color = Color(1, 1, 1, 0)
+				a = 0
 			DrawMode.DRAW_HOVER:
-				color = Color(1, 1, 1, 1)
+				a = 1
 			DrawMode.DRAW_PRESSED:
-				color = Color(1, 1, 1, .8)
+				a = .8
 			DrawMode.DRAW_DISABLED:
-				tween.tween_property($Container, "modulate", Color(1, 1, 1, .5), .1)
-				color = Color(1, 1, 1, 0)
+				tween.tween_property($Container, "modulate:a", .5, .1)
+				a = 0
 			DrawMode.DRAW_HOVER_PRESSED:
-				color = Color(1, 1, 1, .8)
-	tween.tween_property($Border, "modulate", color, .1)
+				a = .8
+	tween.tween_property($Border, "modulate:a", a, .1)
