@@ -4,6 +4,7 @@ extends Node
 static var cursor_expand = preload("res://assets/img/expand.svg")
 static var cursor_expand_rotate = preload("res://assets/img/expand-rotate.svg")
 
+
 static func move(dx:int, dy:int):
 	var shapeNode = Game.Instance.curOperationShape;
 	if shapeNode == null: return;
@@ -39,6 +40,7 @@ static func onDrawStart(start):
 		if mouse.x >= 0 && mouse.y >= 0 && mouse.x < Game.Instance.gameMap.width && mouse.y < Game.Instance.gameMap.height:
 			print("onDrawStart mouse = ", mouse)
 			drawing = true;
+			lastNegOffset = Vector2i.ZERO
 			Game.Instance.curOperationShape = Game.Instance.curSelectedShape.makeCopy()
 			Game.Instance.curOperationShape.shape.position = mouse
 			Game.Instance.curOperationShape.updatePosition()
@@ -66,8 +68,18 @@ static func onDrawStart(start):
 				Game.Instance.win()
 		Game.Instance.workSpaceDotline.visible = false
 
+
+
+static var dragMode = false
+static var dragStartMouse:Vector2i = Vector2i.ZERO
+static var lastNegOffset:Vector2i = Vector2i.ZERO
+static func onStartDrawWithMove(start:bool):
+	dragMode = start
+	if start:
+		dragStartMouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
+
 static func onDrawing():
-	if true:
+	if true: # draw hover dotlion
 		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
 		if drawing:
 			hoverDotlines.visible = false
@@ -89,6 +101,18 @@ static func onDrawing():
 	var position = drawingPosition
 	var shapeSize = shapeNode.shape.oriShape.shapeSizeI()
 	var mouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
+	
+	# check right click to move
+	if dragMode:
+		var diff = mouse - dragStartMouse
+		drawingPosition = drawingPosition + diff
+		dragStartMouse = mouse
+		if diff.x != 0 or diff.y != 0:
+			shapeNode.shape.position = drawingPosition - lastNegOffset
+			shapeNode.updatePosition()
+			WorkspaceRenderManager.refreshShapeBoolean()
+			Game.Instance.workSpaceDotline.visible = false
+		return
 	
 	# check angle
 	var angle = WorkspaceRenderManager.getMouseAngleOnWorkspace(position)
@@ -130,6 +154,7 @@ static func onDrawing():
 		# do rotate
 		var rotatedShape = scaledShape.rotate(angle)
 		var negOffset = rotatedShape.getNegOffset()
+		lastNegOffset = negOffset
 		rotatedShape = rotatedShape.moveOffset(negOffset)
 		#print("change angle = ", angle)
 		#print("negOffset = ", negOffset, " old position = ", position)
@@ -146,19 +171,19 @@ static func onDrawing():
 		shapeNode.shape.position = position
 		shapeNode.updatePosition()
 		WorkspaceRenderManager.refreshShapeBoolean()
-		
-		if true:
-			var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
-			var startPos = drawingPosition * Global.UNIT_SIZE
-			var len = Vector2(0, scale * Global.UNIT_SIZE * factor)
-			var endPos =  len.rotated(deg_to_rad(angle - Global.workspace_rotate_angle_offset))
-			var dotline = Game.Instance.workSpaceDotline
-			dotline.visible = true
-			dotline.clear_points()
-			dotline.add_point(startPos)
-			dotline.add_point(startPos + endPos)
-		
-	
+		refreshDotline(angle, scale)
+
+static func refreshDotline(angle, scale):
+	if true:
+		var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
+		var startPos = drawingPosition * Global.UNIT_SIZE
+		var len = Vector2(0, scale * Global.UNIT_SIZE * factor)
+		var endPos =  len.rotated(deg_to_rad(angle - Global.workspace_rotate_angle_offset))
+		var dotline = Game.Instance.workSpaceDotline
+		dotline.visible = true
+		dotline.clear_points()
+		dotline.add_point(startPos)
+		dotline.add_point(startPos + endPos)
 	
 static func undo():
 	Game.Instance.curOperationShape = null
