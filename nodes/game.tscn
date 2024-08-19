@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=19 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
@@ -15,6 +15,22 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="InputEventKey" id="InputEventKey_drl1d"]
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="Shortcut" id="Shortcut_p66lr"]
+events = [SubResource("InputEventKey_drl1d")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c862t"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_mf83k"]
+events = [SubResource("InputEventKey_c862t")]
 
 [sub_resource type="Animation" id="Animation_m2cf2"]
 length = 0.001
@@ -439,6 +455,7 @@ offset_top = 140.0
 offset_right = 934.0
 offset_bottom = 204.0
 theme_type_variation = &"FlatButton"
+shortcut = SubResource("Shortcut_p66lr")
 icon_alignment = 1
 script = ExtResource("4_yq66u")
 
@@ -469,6 +486,7 @@ offset_top = 138.0
 offset_right = 1044.0
 offset_bottom = 202.0
 theme_type_variation = &"FlatButton"
+shortcut = SubResource("Shortcut_mf83k")
 icon_alignment = 1
 script = ExtResource("4_yq66u")
 
@@ -494,10 +512,10 @@ stretch_mode = 3
 
 [node name="ReturnBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1190.0
-offset_top = 20.0
-offset_right = 1254.0
-offset_bottom = 84.0
+offset_left = 1090.0
+offset_top = 138.0
+offset_right = 1154.0
+offset_bottom = 202.0
 theme_type_variation = &"FlatButton"
 icon_alignment = 1
 script = ExtResource("4_yq66u")
