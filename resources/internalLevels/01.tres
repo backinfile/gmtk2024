@@ -19,4 +19,4 @@ shapesCount = Array[int]([1])
 goal = SubResource("Resource_8lurh")
 width = 4
 height = 8
-canRotate = true
+canRotate = false

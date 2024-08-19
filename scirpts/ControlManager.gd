@@ -71,9 +71,9 @@ static func onDrawing():
 		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
 		if drawing:
 			hoverDotlines.visible = false
-		else:
+		elif Game.Instance.curSelectedShape:
 			var p = WorkspaceRenderManager.getMousePositionOnWorkspace()
-			if Game.Instance.gameMap.contains(p):
+			if Game.Instance.gameMap and Game.Instance.gameMap.contains(p):
 				hoverDotlines.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p)
 				hoverDotlines.visible = true
 			else:
