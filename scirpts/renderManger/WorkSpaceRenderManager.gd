@@ -130,8 +130,9 @@ static func workspaceToShape(moveToLeftTop = true):
 		var p = node.shape.position
 		for i in range(node.shape.curShape.area.size()):
 			var v = node.shape.curShape.area[i]
+			var pos = Vector3i(v[0] + p.x, v[1] + p.y, v[2])
+			if pos not in WorkspaceRenderManager.shapeBoolCache: continue
 			var triangle:Polygon2D = control.get_child(i)
-			if !triangle.visible: continue
 			var x = v.x + p.x
 			var y = v.y + p.y
 			if x>=0 && x < gameMap.width && y>=0 && y < gameMap.height:
