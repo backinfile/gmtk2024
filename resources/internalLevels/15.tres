@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://b58ulx3b8tsp0"]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_nas1c"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_0usuv"]
+
+[sub_resource type="Resource" id="Resource_xwj2l"]
+script = ExtResource("1_nas1c")
+area = Array[Vector3i]([Vector3i(2, 1, 1), Vector3i(2, 1, 2), Vector3i(1, 1, 2), Vector3i(1, 1, 3), Vector3i(1, 2, 3), Vector3i(1, 2, 0), Vector3i(2, 2, 0), Vector3i(2, 2, 1)])
+
+[sub_resource type="Resource" id="Resource_plhgf"]
+script = ExtResource("1_nas1c")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
+
+[resource]
+script = ExtResource("2_0usuv")
+id = 1
+shapes = Array[ExtResource("1_nas1c")]([SubResource("Resource_plhgf")])
+shapesCount = Array[int]([1])
+goal = SubResource("Resource_xwj2l")
+width = 4
+height = 4
+canRotate = true

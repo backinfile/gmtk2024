@@ -8,6 +8,7 @@ var levelBtns = []
 var curScene: Control
 
 var savedIndex = -1;
+var completeLevels = []
 
 func _init():
 	Instance = self
@@ -56,6 +57,7 @@ func changeToGameScene(levelIndex:int, anim: bool = true):
 
 func changeToNextLevel():
 	savedIndex = max(savedIndex, curLevelIndex)
+	completeLevels.append(curLevelIndex)
 	save_game()
 	if curLevelIndex + 1 < levelPaths.size():
 		changeToGameScene(curLevelIndex + 1, false)
@@ -82,11 +84,11 @@ func loadLevelBtns():
 
 func refreshLevelBtn():
 	for i in range(levelBtns.size()):
-		levelBtns[i].disabled = i > savedIndex + 1
+		levelBtns[i].complete = i in completeLevels
 
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	var json_string = JSON.stringify({"savedIndex": savedIndex})
+	var json_string = JSON.stringify({"completeLevels": completeLevels})
 	save_file.store_line(json_string)
 
 func load_game():
@@ -98,4 +100,7 @@ func load_game():
 	if not node_data:
 			print("JSON Parse Error: ", json_string)
 			return
-	savedIndex = node_data["savedIndex"]
+	if "completeLevels" in node_data:
+		completeLevels.clear()
+		for level in node_data["completeLevels"]:
+			completeLevels.append(int(level))
