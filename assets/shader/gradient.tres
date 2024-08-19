@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://boqsxwyekfjtu"]
+
+[ext_resource type="Shader" path="res://assets/shader/gradient.gdshader" id="1_vll7b"]
+
+[resource]
+shader = ExtResource("1_vll7b")
+shader_parameter/colorA = Color(0.98, 0.816667, 0.588, 1)
+shader_parameter/colorB = Color(0.96, 0.72, 0.72, 1)
