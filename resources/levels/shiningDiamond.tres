@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="Level" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_b5baj"]
-[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_8ykyj"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_kvkp8"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_vaett"]
 
-[sub_resource type="Resource" id="Resource_b3nqt"]
-script = ExtResource("1_b5baj")
-area = Array[Vector3i]([Vector3i(1, 3, 2), Vector3i(1, 3, 3), Vector3i(2, 3, 1), Vector3i(2, 3, 2), Vector3i(3, 1, 2), Vector3i(3, 1, 3), Vector3i(2, 3, 3), Vector3i(2, 3, 0), Vector3i(3, 3, 2), Vector3i(3, 3, 3), Vector3i(3, 3, 0), Vector3i(3, 3, 1), Vector3i(1, 4, 3), Vector3i(1, 4, 0), Vector3i(2, 5, 3), Vector3i(2, 5, 0), Vector3i(2, 4, 0), Vector3i(2, 4, 1), Vector3i(3, 5, 0), Vector3i(3, 5, 1), Vector3i(2, 4, 2), Vector3i(2, 4, 3), Vector3i(3, 5, 2), Vector3i(3, 5, 3), Vector3i(3, 6, 3), Vector3i(3, 6, 0), Vector3i(3, 4, 3), Vector3i(3, 4, 0), Vector3i(3, 4, 1), Vector3i(3, 4, 2), Vector3i(4, 6, 0), Vector3i(4, 6, 1), Vector3i(5, 5, 0), Vector3i(5, 5, 1), Vector3i(4, 5, 1), Vector3i(4, 5, 2), Vector3i(5, 4, 1), Vector3i(5, 4, 2), Vector3i(6, 4, 0), Vector3i(6, 4, 1), Vector3i(4, 5, 3), Vector3i(4, 5, 0), Vector3i(5, 4, 3), Vector3i(5, 4, 0), Vector3i(4, 4, 0), Vector3i(4, 4, 1), Vector3i(4, 4, 2), Vector3i(4, 4, 3), Vector3i(5, 2, 2), Vector3i(6, 3, 1), Vector3i(6, 3, 2), Vector3i(5, 3, 2), Vector3i(5, 3, 3), Vector3i(4, 1, 1), Vector3i(4, 1, 2), Vector3i(5, 3, 0), Vector3i(5, 3, 1), Vector3i(4, 3, 1), Vector3i(4, 3, 2), Vector3i(4, 3, 3), Vector3i(4, 3, 0), Vector3i(1, 2, 0), Vector3i(2, 2, 0), Vector3i(5, 2, 0), Vector3i(1, 2, 3), Vector3i(5, 2, 3), Vector3i(6, 2, 0), Vector3i(2, 2, 1), Vector3i(6, 2, 1), Vector3i(1, 7, 2), Vector3i(2, 7, 2), Vector3i(3, 7, 2), Vector3i(4, 7, 2), Vector3i(5, 7, 2), Vector3i(1, 7, 3), Vector3i(2, 7, 3), Vector3i(3, 7, 3), Vector3i(4, 7, 3), Vector3i(5, 7, 3), Vector3i(6, 7, 2), Vector3i(2, 7, 1), Vector3i(3, 7, 1), Vector3i(4, 7, 1), Vector3i(5, 7, 1), Vector3i(6, 7, 1), Vector3i(2, 7, 0), Vector3i(3, 7, 0), Vector3i(4, 7, 0), Vector3i(5, 7, 0)])
+[sub_resource type="Resource" id="Resource_2ck0f"]
+script = ExtResource("1_kvkp8")
+area = Array[Vector3i]([Vector3i(1, 3, 2), Vector3i(1, 3, 3), Vector3i(2, 3, 1), Vector3i(2, 3, 2), Vector3i(3, 1, 2), Vector3i(3, 1, 3), Vector3i(2, 3, 3), Vector3i(2, 3, 0), Vector3i(3, 3, 2), Vector3i(3, 3, 3), Vector3i(3, 3, 0), Vector3i(3, 3, 1), Vector3i(1, 4, 3), Vector3i(1, 4, 0), Vector3i(2, 5, 3), Vector3i(2, 5, 0), Vector3i(2, 4, 0), Vector3i(2, 4, 1), Vector3i(3, 5, 0), Vector3i(3, 5, 1), Vector3i(2, 4, 2), Vector3i(2, 4, 3), Vector3i(3, 5, 2), Vector3i(3, 5, 3), Vector3i(3, 6, 3), Vector3i(3, 6, 0), Vector3i(3, 4, 3), Vector3i(3, 4, 0), Vector3i(3, 4, 1), Vector3i(3, 4, 2), Vector3i(4, 6, 0), Vector3i(4, 6, 1), Vector3i(5, 5, 0), Vector3i(5, 5, 1), Vector3i(4, 5, 1), Vector3i(4, 5, 2), Vector3i(5, 4, 1), Vector3i(5, 4, 2), Vector3i(6, 4, 0), Vector3i(6, 4, 1), Vector3i(4, 5, 3), Vector3i(4, 5, 0), Vector3i(5, 4, 3), Vector3i(5, 4, 0), Vector3i(4, 4, 0), Vector3i(4, 4, 1), Vector3i(4, 4, 2), Vector3i(4, 4, 3), Vector3i(6, 3, 1), Vector3i(6, 3, 2), Vector3i(5, 3, 2), Vector3i(5, 3, 3), Vector3i(4, 1, 1), Vector3i(4, 1, 2), Vector3i(5, 3, 0), Vector3i(5, 3, 1), Vector3i(4, 3, 1), Vector3i(4, 3, 2), Vector3i(4, 3, 3), Vector3i(4, 3, 0), Vector3i(1, 2, 0), Vector3i(2, 2, 0), Vector3i(5, 2, 0), Vector3i(1, 2, 3), Vector3i(5, 2, 3), Vector3i(6, 2, 0), Vector3i(2, 2, 1), Vector3i(6, 2, 1), Vector3i(1, 7, 2), Vector3i(2, 7, 2), Vector3i(3, 7, 2), Vector3i(4, 7, 2), Vector3i(5, 7, 2), Vector3i(1, 7, 3), Vector3i(2, 7, 3), Vector3i(3, 7, 3), Vector3i(4, 7, 3), Vector3i(5, 7, 3), Vector3i(6, 7, 2), Vector3i(2, 7, 1), Vector3i(3, 7, 1), Vector3i(4, 7, 1), Vector3i(5, 7, 1), Vector3i(6, 7, 1), Vector3i(2, 7, 0), Vector3i(3, 7, 0), Vector3i(4, 7, 0), Vector3i(5, 7, 0)])
 
-[sub_resource type="Resource" id="Resource_ipegc"]
-script = ExtResource("1_b5baj")
+[sub_resource type="Resource" id="Resource_4jtm7"]
+script = ExtResource("1_kvkp8")
 area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 2), Vector3i(0, 0, 3)])
 
-[sub_resource type="Resource" id="Resource_yhhp2"]
-script = ExtResource("1_b5baj")
+[sub_resource type="Resource" id="Resource_3xiqp"]
+script = ExtResource("1_kvkp8")
 area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 2)])
 
 [resource]
-script = ExtResource("2_8ykyj")
+script = ExtResource("2_vaett")
 id = 1
-shapes = Array[ExtResource("1_b5baj")]([SubResource("Resource_ipegc"), SubResource("Resource_yhhp2")])
+shapes = Array[ExtResource("1_kvkp8")]([SubResource("Resource_4jtm7"), SubResource("Resource_3xiqp")])
 shapesCount = Array[int]([1, 2])
-goal = SubResource("Resource_b3nqt")
+goal = SubResource("Resource_2ck0f")
 width = 8
 height = 8
 canRotate = true
