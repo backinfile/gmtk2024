@@ -10,6 +10,10 @@ static func getMousePositionOnWorkspace():
 	var offset = ((mouse - start) / Global.UNIT_SIZE)
 	return Global.toVector2i(offset)
 
+static func getPositionOnWorkspace(pos:Vector2):
+	var start = Game.Instance.workSpace.get_node("Box").global_position
+	var offset = ((pos - start) / Global.UNIT_SIZE)
+	return Global.toVector2i(offset)
 
 static var matchAngles = [0,  90, -90, 180, -180, 45, -45, 135, -135,]
 

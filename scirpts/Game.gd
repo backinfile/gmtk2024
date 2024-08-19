@@ -84,6 +84,8 @@ func _input(event):
 	if curLevel == null: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		ControlManager.onStartDrawWithMove(event.is_pressed())
 	#elif event is InputEventMouseMotion:
 		#ControlManager.onDrawing()
 
@@ -132,6 +134,12 @@ func exit_level():
 	pass
 
 func win():
+	clearScene()
 	$AnimationPlayer.play("exit")
 	await $AnimationPlayer.animation_finished
 	Main.Instance.changeToNextLevel()
+	
+func clearScene():
+	curLevel = null
+	curSelectedShape = null
+	curOperationShape = null
