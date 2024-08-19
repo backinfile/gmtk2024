@@ -54,7 +54,8 @@ static func onDrawStart(start):
 		if GoalRenderManger.isWin():
 			print("check win = true");
 			if !Game.Instance.debugMode:
-				Main.Instance.changeToNextLevel()
+				#Main.Instance.changeToNextLevel()
+				Game.Instance.win()
 
 static func onDrawing():
 	if !drawing: return

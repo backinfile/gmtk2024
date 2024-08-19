@@ -1,4 +1,4 @@
-extends Button
+extends TransitionButton
 
 var levelPath:String;
 var nextLevelPath;

@@ -7,6 +7,7 @@ extends Control
 #var shapesInWorkSpace:Array[ShapeNode] = []
 
 @export var curLevel:Level;
+
 var gameMap:GameMap;
 var curSelectedShape:ShapeNode;
 var curOperationShape:ShapeNode:
@@ -35,6 +36,7 @@ func _ready():
 		
 
 func setLevel(level:Level):
+	$AnimationPlayer.play("enter")
 	curLevel = level
 	curOperationShape = null
 	curSelectedShape = null
@@ -118,4 +120,15 @@ func saveToLevelFile():
 
 
 func _on_return_btn_pressed():
-	Main.Instance.changeToTitleScene()
+	Main.Instance.changeToSelectLevelScene()
+
+func enter_level():
+	pass
+
+func exit_level():
+	pass
+
+func win():
+	$AnimationPlayer.play("exit")
+	await $AnimationPlayer.animation_finished
+	Main.Instance.changeToNextLevel()

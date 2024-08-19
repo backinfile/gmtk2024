@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=13 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
@@ -6,7 +6,228 @@
 [ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
-[ext_resource type="Texture2D" uid="uid://dsc1b7r26k06r" path="res://assets/img/home-outline.svg" id="6_7flkh"]
+[ext_resource type="Texture2D" uid="uid://bd1rqnhqno3vp" path="res://assets/img/grid-outline.svg" id="6_bq30p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qa3n"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_m2cf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkSpace/White:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionPanel/White:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Goal/White:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorkSpace/M/Polygon2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-50, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Goal/M/Polygon2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 50)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorkSpace/White:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OptionPanel/White:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Goal/White:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k5v3d"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkSpace/White:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionPanel/White:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Goal/White:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nenum"]
+resource_name = "exit"
+length = 2.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkSpace/White:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionPanel/White:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Goal/White:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorkSpace/M/Polygon2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, 200), Vector2(650, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Goal/M/Polygon2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 50), Vector2(550, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_w3twg"]
+resource_name = "win"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_073er"]
+_data = {
+"RESET": SubResource("Animation_m2cf2"),
+"enter": SubResource("Animation_k5v3d"),
+"exit": SubResource("Animation_nenum"),
+"win": SubResource("Animation_w3twg")
+}
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -32,6 +253,8 @@ offset_right = 150.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(240, 240)
 
 [node name="Mask" type="ColorRect" parent="WorkSpace"]
 visible = false
@@ -68,6 +291,33 @@ offset_right = 10.0
 offset_bottom = 10.0
 texture = ExtResource("3_k6uad")
 expand_mode = 1
+[node name="White" type="Panel" parent="WorkSpace"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qa3n")
+
+[node name="M" type="Panel" parent="WorkSpace"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.901743, 0.901743)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qa3n")
+
+[node name="Polygon2D" type="Polygon2D" parent="WorkSpace/M"]
+position = Vector2(-50, 200)
+color = Color(1, 1, 1, 0.686275)
+antialiased = true
+polygon = PackedVector2Array(90, -310, -10, -310, -216.667, 280, -116.667, 280)
 
 [node name="OptionPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -94,6 +344,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 alignment = 1
+
+[node name="White" type="Panel" parent="OptionPanel"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qa3n")
 
 [node name="Goal" type="Panel" parent="."]
 layout_mode = 0
@@ -126,6 +388,35 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="White" type="Panel" parent="Goal"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qa3n")
+
+[node name="M" type="Panel" parent="Goal"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qa3n")
+
+[node name="Polygon2D" type="Polygon2D" parent="Goal/M"]
+position = Vector2(0, 50)
+color = Color(1, 1, 1, 0.686275)
+antialiased = true
+polygon = PackedVector2Array(90, -310, -10, -310, -213.333, 250, -113.333, 250)
 
 [node name="UndoBtn" type="Button" parent="."]
 layout_mode = 0
@@ -214,8 +505,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_7flkh")
+texture = ExtResource("6_bq30p")
 stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_073er")
+}
 
 [connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]

@@ -13,6 +13,7 @@ static func refresh():
 	Global.clear_children(vbox)
 	
 	var curLevel = Game.Instance.curLevel
+	Global.COLORS.shuffle()
 	for index in range(curLevel.shapes.size()):
 		var shape = curLevel.shapes[index]
 		var count = curLevel.shapesCount[index]
@@ -25,6 +26,8 @@ static func refresh():
 		optionBtnList.append(btn)
 		btn.count = count
 		btn.node = node
+		btn.color = Global.COLORS[index % Global.COLORS.size()]
+		
 		btn.pressed.connect(func (): on_select(node))
 		#if index == 0:
 			#Game.Instance.curSelectedShape = node

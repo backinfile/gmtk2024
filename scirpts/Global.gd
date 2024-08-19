@@ -4,13 +4,13 @@ var UNIT_SIZE = 50;
 var UNIT_SIZE_2 = 50;
 var UNIT_EDGE = 1;
 
-const COLORS = [
-  Color(.5, 1, 1),
-  Color(1, .5, 1),
-  Color(1, 1, .5),
-  Color(.5, .5, 1),
-  Color(.5, 1, .5),
-  Color(1, .5, .5),
+var COLORS = [
+	Color(.5, 1, 1),
+	Color(1, .5, 1),
+	Color(1, 1, .5),
+	Color(.5, .5, 1),
+	Color(.5, 1, .5),
+	Color(1, .5, .5),
 ]
 
 @onready var shape_node_tscn:PackedScene = load("res://nodes/shape_node.tscn");

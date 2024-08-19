@@ -3,10 +3,14 @@
 [ext_resource type="Script" path="res://scirpts/node/level_entry_btn.gd" id="1_f0b8l"]
 
 [node name="LevelEntryBtn" type="Button"]
-custom_minimum_size = Vector2(60, 60)
-offset_right = 98.0
-offset_bottom = 62.0
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"WhiteFlatButton"
+theme_override_font_sizes/font_size = 24
 text = "1"
 script = ExtResource("1_f0b8l")
+hover_color = Color(0.9, 0.9, 0.9, 1)
+pressed_color = Color(0.8, 0.8, 0.8, 1)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=11 format=3 uid="uid://3muo0hh6ic2t"]
 
 [ext_resource type="Script" path="res://scirpts/main.gd" id="1_u3gaw"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_bnuot"]
 [ext_resource type="Texture2D" uid="uid://2qp6er017h64" path="res://assets/img/title.png" id="3_rht5u"]
+[ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_7l2p2"]
 [ext_resource type="PackedScene" uid="uid://boep8bgfii2rd" path="res://nodes/game.tscn" id="5_h8pe4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkof"]
@@ -15,6 +16,45 @@ corner_radius_bottom_left = 40
 shadow_color = Color(0, 0, 0, 0.388235)
 shadow_size = 3
 shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_14m6t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f74im"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.713726), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3axky"]
+_data = {
+"RESET": SubResource("Animation_14m6t"),
+"idle": SubResource("Animation_f74im")
+}
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -70,13 +110,32 @@ offset_right = 75.0
 offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(75, 40)
+theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_1fkof")
 text = "Play"
+script = ExtResource("4_7l2p2")
+
+[node name="Panel" type="Panel" parent="Title/Button"]
+modulate = Color(1, 1, 1, 0.713726)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fkof")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+libraries = {
+"": SubResource("AnimationLibrary_3axky")
+}
+autoplay = "idle"
 
 [node name="Levels" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +171,9 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 6
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 8
 
 [node name="Game" parent="." instance=ExtResource("5_h8pe4")]
 visible = false
