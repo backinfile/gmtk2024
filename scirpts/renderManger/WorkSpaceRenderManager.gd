@@ -105,11 +105,12 @@ static func refreshShapeBoolean():
 				triangle.visible = true
 				if newVisible: shapeBoolCache[v] = true
 				else: shapeBoolCache.erase(v)
-				var targetColorA = Color(node.materialColorA, 1 if newVisible else 0)
-				var targetColorB = Color(node.materialColorB, 1 if newVisible else 0)
+				var target = 1 if newVisible else 0
+				#var targetColorA = Color(node.materialColorA, 1 if newVisible else 0)
+				#var targetColorB = Color(node.materialColorB, 1 if newVisible else 0)
 				var tween = node.create_tween()
-				tween.tween_property(triangle, "material:shader_parameter/colorA", targetColorA, .1)
-				tween.tween_property(triangle, "material:shader_parameter/colorB", targetColorB, .1)
+				tween.tween_property(triangle, "color:a", target, .05)
+				tween.tween_property(triangle, "color:a", target, .05)
 			else:
 				triangle.visible = newVisible
 			#triangle.visible = shapeRenderCache[v] % 2 == 1
@@ -129,8 +130,9 @@ static func workspaceToShape(moveToLeftTop = true):
 		var p = node.shape.position
 		for i in range(node.shape.curShape.area.size()):
 			var v = node.shape.curShape.area[i]
+			var pos = Vector3i(v[0] + p.x, v[1] + p.y, v[2])
+			if pos not in WorkspaceRenderManager.shapeBoolCache: continue
 			var triangle:Polygon2D = control.get_child(i)
-			if !triangle.visible: continue
 			var x = v.x + p.x
 			var y = v.y + p.y
 			if x>=0 && x < gameMap.width && y>=0 && y < gameMap.height:

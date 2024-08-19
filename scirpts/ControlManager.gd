@@ -1,6 +1,9 @@
 class_name ControlManager
 extends Node
 
+static var cursor_expand = preload("res://assets/img/expand.svg")
+static var cursor_expand_rotate = preload("res://assets/img/expand-rotate.svg")
+
 static func move(dx:int, dy:int):
 	var shapeNode = Game.Instance.curOperationShape;
 	if shapeNode == null: return;
@@ -42,6 +45,10 @@ static func onDrawStart(start):
 			WorkspaceRenderManager.addNodeToWorkspace(Game.Instance.curOperationShape)
 			drawingPosition = mouse
 			WorkspaceRenderManager.refreshShapeBoolean()
+			if Game.Instance.canRotateShape:
+				Input.set_custom_mouse_cursor(cursor_expand_rotate)
+			else:
+				Input.set_custom_mouse_cursor(cursor_expand)
 		return
 	
 	if drawing:
@@ -50,6 +57,7 @@ static func onDrawStart(start):
 		OptionRenderManager.modifyCurSelectCount(Game.Instance.curSelectedShape, -1)
 		if Game.Instance.curOperationShape:
 			Game.Instance.curOperationShape.borderVisible = false
+		Input.set_custom_mouse_cursor(null)
 		
 		if GoalRenderManger.isWin():
 			print("check win = true");
