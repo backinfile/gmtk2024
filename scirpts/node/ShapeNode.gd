@@ -4,7 +4,13 @@ extends Control
 var shape:ShapeObject;
 var count = -1;
 var optionIndex = -1;
-var scaleMode:int = 0  # 0-use Global.UNIT_SIZE 1-use Global.UNIT_SIZE_2 2-fixed 50
+
+
+# scaleMode 0- workSpace use Global.UNIT_SIZE 
+# scaleMode 1- goal use Global.UNIT_SIZE_2 
+# scaleMode 2- optionBtn fixed 50
+var scaleMode:int = 0  
+
 
 var dragging = false;
 var draggable = false;
@@ -14,6 +20,7 @@ var onDragUpdate = null;
 
 var renderOnWorkspace = false;
 
+@export var workspaceMaterial:Material;
 @export var triangle_color:Color = Color.BLACK:
 	set(value):
 		var shapes = get_node("shapes")
@@ -83,6 +90,8 @@ func getUnitSize():
 
 func getPolygonByDur(dur:int):
 	var p = Polygon2D.new()
+	if scaleMode == 0 || scaleMode == 1:
+		p.material = workspaceMaterial
 	var size = getUnitSize();
 	var mid = getUnitSize() / 2;
 	var polygon = []
