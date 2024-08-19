@@ -1,18 +1,19 @@
-[gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://delvd5bgybpdh"]
+[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://delvd5bgybpdh"]
 
 [ext_resource type="Resource" path="res://resources/levels/twoSquare_target.tres" id="1_f2qf6"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="1_m0eh6"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="2_kqw50"]
 [ext_resource type="Resource" uid="uid://dwn5rgv6hag47" path="res://resources/shapes/Rect11.tres" id="3_mjnov"]
-[ext_resource type="Resource" uid="uid://bprhgomwhlflq" path="res://resources/shapes/TriLeftDown.tres" id="4_50ax0"]
+[ext_resource type="Resource" uid="uid://d4c74knpkv08v" path="res://resources/shapes/TriLeft.tres" id="5_3eddn"]
 [ext_resource type="Resource" uid="uid://bwoqhxcycpcgt" path="res://hourglass.tres" id="6_ghj05"]
+[ext_resource type="Resource" uid="uid://xiomnwvkwfku" path="res://resources/shapes/twoDiamonds.tres" id="7_xd8qx"]
 
 [resource]
 script = ExtResource("1_m0eh6")
 id = 1
-shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("4_50ax0"), ExtResource("6_ghj05")])
+shapes = Array[ExtResource("2_kqw50")]([ExtResource("3_mjnov"), ExtResource("5_3eddn"), ExtResource("6_ghj05"), ExtResource("7_xd8qx")])
 shapesCount = Array[int]([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
 goal = ExtResource("1_f2qf6")
-width = 7
-height = 7
+width = 8
+height = 8
 canRotate = true
