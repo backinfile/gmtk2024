@@ -6,7 +6,7 @@ var index:int;
 var complete = false:
 	set(value):
 		complete = value
-		if complete: add_theme_color_override("font_color", Color("ED5D5D"))
+		if complete: add_theme_color_override("font_color", Color("71C6C8"))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
