@@ -89,6 +89,8 @@ static func onStartDrawWithMove(start:bool):
 	else:
 		Input.set_custom_mouse_cursor(null)
 
+static var lastScale = 1;
+static var lastRotateAngle = 0;
 static func onDrawing():
 	if true: # draw hover dotlion
 		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
@@ -127,7 +129,8 @@ static func onDrawing():
 			shapeNode.shape.position = drawingPosition - lastNegOffset
 			shapeNode.updatePosition()
 			WorkspaceRenderManager.refreshShapeBoolean()
-			Game.Instance.workSpaceDotline.visible = false
+			refreshDotline()
+			#Game.Instance.workSpaceDotline.visible = false
 		return
 	
 	# check angle
@@ -187,9 +190,13 @@ static func onDrawing():
 		shapeNode.shape.position = position
 		shapeNode.updatePosition()
 		WorkspaceRenderManager.refreshShapeBoolean()
-		refreshDotline(angle, scale)
+		lastScale = scale
+		lastRotateAngle = angle
+		refreshDotline()
 
-static func refreshDotline(angle, scale):
+static func refreshDotline():
+	var angle = lastRotateAngle
+	var scale = lastScale
 	if true:
 		var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
 		var startPos = drawingPosition * Global.UNIT_SIZE
