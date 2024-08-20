@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
-[ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
+[ext_resource type="PackedScene" uid="uid://bwdc1kfd2665f" path="res://nodes/anchor.tscn" id="4_c2dr1"]
 [ext_resource type="PackedScene" uid="uid://b6u4tpfesljfb" path="res://nodes/dotline.tscn" id="4_nylqt"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
@@ -309,16 +309,9 @@ offset_bottom = 40.0
 [node name="Dotline" parent="WorkSpace/Box" instance=ExtResource("4_nylqt")]
 visible = false
 
-[node name="Anchor" type="TextureRect" parent="WorkSpace"]
-visible = false
-modulate = Color(0.184314, 0.0352941, 0.988235, 1)
+[node name="Anchor" parent="WorkSpace" instance=ExtResource("4_c2dr1")]
+self_modulate = Color(0.777033, 0.904492, 0.187454, 1)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 50.0
-offset_bottom = 50.0
-texture = ExtResource("3_k6uad")
-expand_mode = 1
 
 [node name="White" type="Panel" parent="WorkSpace"]
 self_modulate = Color(1, 1, 1, 0)
