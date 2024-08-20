@@ -25,6 +25,8 @@ SoundEffectPlayer="*res://nodes/sound_effect_player.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
+window/stretch/aspect="ignore"
 
 [file_customization]
 
