@@ -106,3 +106,8 @@ func toVector2i(v:Vector2i):
 
 func div(v: Vector2i, v2:Vector2i) -> Vector2i:
 	return Vector2i(v.x / v2.x, v.y / v2.y)
+
+func playSoundEffect(name: String):
+	print(name)
+	SoundEffectPlayer.stream = load("res://assets/audio/%s.mp3" % name)
+	SoundEffectPlayer.play() 
