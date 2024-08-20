@@ -28,6 +28,7 @@ static var drawingPosition:Vector2i = Vector2i(-1, -1):
 		var anchor = Game.Instance.workSpaceRotateAnchor
 		if value.x >= 0:
 			anchor.visible = true
+			anchor.self_modulate = Global.select_color
 			anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(value) - anchor.size / 2
 		else: anchor.visible = false
 		drawingPosition = value
@@ -97,6 +98,7 @@ static func onDrawing():
 				hoverDotlines.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p)
 				hoverDotlines.visible = true
 				anchor.visible = true
+				anchor.self_modulate = Global.select_color
 				anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p) - anchor.size / 2
 			else:
 				hoverDotlines.visible = false

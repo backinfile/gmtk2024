@@ -46,6 +46,9 @@ func changeToTitleScene(fromGameStart = false):
 	
 func changeToSelectLevelScene():
 	refreshLevelBtn()
+	if not completeLevels:
+		changeToGameScene(0, true)
+		return
 	changeScene($Levels)
 
 func changeToGameScene(levelIndex:int, anim: bool = true):
@@ -59,7 +62,8 @@ func changeToGameScene(levelIndex:int, anim: bool = true):
 
 func changeToNextLevel():
 	savedIndex = max(savedIndex, curLevelIndex)
-	completeLevels.append(curLevelIndex)
+	if curLevelIndex not in completeLevels:
+		completeLevels.append(curLevelIndex)
 	save_game()
 	if curLevelIndex + 1 < levelPaths.size():
 		changeToGameScene(curLevelIndex + 1, false)
@@ -111,3 +115,4 @@ func load_game():
 		completeLevels.clear()
 		for level in node_data["completeLevels"]:
 			completeLevels.append(int(level))
+		print("load save = ", completeLevels)
