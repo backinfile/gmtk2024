@@ -74,25 +74,26 @@ func _process(delta):
 	if curLevel == null: return
 	if $Tutorial.get_child_count() > 0: return
 	
-	var dx = 0
-	var dy = 0
-	if Input.is_action_just_pressed("DOWN"):
-		dy += 1
-	elif Input.is_action_just_pressed("LEFT"):
-		dx -= 1
-	elif Input.is_action_just_pressed("RIGHT"):
-		dx += 1
-	elif Input.is_action_just_pressed("UP"):
-		dy -= 1
-	if dx != 0 or dy != 0:
-		ControlManager.move(dx, dy)
-	
 	ControlManager.onDrawing()
+	
+	if debugMode:
+		var dx = 0
+		var dy = 0
+		if Input.is_action_just_pressed("DOWN"):
+			dy += 1
+		elif Input.is_action_just_pressed("LEFT"):
+			dx -= 1
+		elif Input.is_action_just_pressed("RIGHT"):
+			dx += 1
+		elif Input.is_action_just_pressed("UP"):
+			dy -= 1
+		if dx != 0 or dy != 0:
+			ControlManager.move(dx, dy)
 		
-	if Input.is_action_just_pressed("save"):
-		saveToFile()
-	if Input.is_action_just_pressed("saveFile"):
-		saveToLevelFile()
+		if Input.is_action_just_pressed("save"):
+			saveToFile()
+		if Input.is_action_just_pressed("saveFile"):
+			saveToLevelFile()
 
 func _input(event):
 	if curLevel == null: return
