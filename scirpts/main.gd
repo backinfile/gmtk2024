@@ -46,9 +46,6 @@ func changeToTitleScene(fromGameStart = false):
 	
 func changeToSelectLevelScene():
 	refreshLevelBtn()
-	if not completeLevels:
-		changeToGameScene(0, true)
-		return
 	changeScene($Levels)
 
 func changeToGameScene(levelIndex:int, anim: bool = true):
@@ -57,7 +54,7 @@ func changeToGameScene(levelIndex:int, anim: bool = true):
 	print("changeToGameScene levelPath ", levelPath)
 	
 	var level = ResourceLoader.load(levelPath)
-	$Game.setLevel(level)
+	$Game.setLevel(level, curLevelIndex + 1)
 	if anim: changeScene($Game)
 
 func changeToNextLevel():
@@ -76,6 +73,9 @@ func changeToSandbox():
 	changeScene($Game)
 
 func _on_start_game_btn_pressed():
+	if not completeLevels:
+		changeToGameScene(0, true)
+		return
 	changeToSelectLevelScene()
 
 func loadLevelBtns():
@@ -101,6 +101,7 @@ func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var json_string = JSON.stringify({"completeLevels": completeLevels})
 	save_file.store_line(json_string)
+	print("save_game = ", completeLevels)
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):

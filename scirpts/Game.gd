@@ -24,7 +24,7 @@ var canRotateShape = true
 @onready var workSpaceRotateAnchor:Control = $WorkSpace/Anchor
 @onready var workSpaceDotline:Node2D = $WorkSpace/Box/Dotline
 @onready var workSpaceHoverDotlines:Control = $WorkSpace/Box/HoverDotlines
-
+@onready var goalText = $Goal/Label
 static var Instance:Game;
 
 func _init():
@@ -38,7 +38,7 @@ func _ready():
 		debugMode = true
 		
 
-func setLevel(level:Level):
+func setLevel(level:Level, levelNumber:int = -1):
 	$AnimationPlayer.play("enter")
 	curLevel = level
 	curOperationShape = null
@@ -56,6 +56,10 @@ func setLevel(level:Level):
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
 	GoalRenderManger.refresh()
+	if levelNumber > 0:
+		goalText.text = "Goal " + str(levelNumber)
+	else:
+		goalText.text = "Goal"
 
 func _process(delta):
 	if curLevel == null: return

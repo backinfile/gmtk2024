@@ -41,6 +41,7 @@ static func on_select(node:ShapeNode):
 	Global.select_color = Global.COLORS[index % Global.COLORS.size()]
 	var btn = optionBtnList[node.optionIndex]
 	if Game.Instance.curSelectedShape == node:
+		return
 		Game.Instance.curSelectedShape = null
 		btn.selected = false
 		print("lose curSelectedShape to ", index)
