@@ -1,4 +1,4 @@
 [gd_scene format=3 uid="uid://bvgoo5iva6sjg"]
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer"]
-volume_db = -5.0
+volume_db = -7.0

@@ -72,3 +72,6 @@ func update():
 			DrawMode.DRAW_HOVER_PRESSED:
 				a = .8
 	tween.tween_property($Border, "modulate:a", a, .1)
+
+func _pressed() -> void:
+	Global.playSoundEffect("button")
