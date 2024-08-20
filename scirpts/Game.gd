@@ -24,7 +24,7 @@ var canRotateShape = true
 @onready var workSpaceRotateAnchor:Control = $WorkSpace/Anchor
 @onready var workSpaceDotline:Node2D = $WorkSpace/Box/Dotline
 @onready var workSpaceHoverDotlines:Control = $WorkSpace/Box/HoverDotlines
-
+@onready var goalText = $Goal/Label
 static var Instance:Game;
 
 func _init():
@@ -36,9 +36,17 @@ func _ready():
 		if curLevel != null:
 			setLevel(curLevel)
 		debugMode = true
+		curLevel = null
 		
 
-func setLevel(level:Level):
+func setLevel(level:Level, levelNumber:int = -1):
+	curLevel = null
+	if true:
+		Global.clear_children($Tutorial)
+		if level.tutorial:
+			for t in level.tutorial:
+				$Tutorial.add_child(t.instantiate())
+	
 	$AnimationPlayer.play("enter")
 	curLevel = level
 	curOperationShape = null
@@ -56,44 +64,55 @@ func setLevel(level:Level):
 	OptionRenderManager.refresh()
 	WorkspaceRenderManager.refresh()
 	GoalRenderManger.refresh()
+	if levelNumber > 0:
+		goalText.text = "Goal " + str(levelNumber)
+	else:
+		goalText.text = "Goal"
+	
 
 func _process(delta):
 	if curLevel == null: return
-	
-	var dx = 0
-	var dy = 0
-	if Input.is_action_just_pressed("DOWN"):
-		dy += 1
-	elif Input.is_action_just_pressed("LEFT"):
-		dx -= 1
-	elif Input.is_action_just_pressed("RIGHT"):
-		dx += 1
-	elif Input.is_action_just_pressed("UP"):
-		dy -= 1
-	if dx != 0 or dy != 0:
-		ControlManager.move(dx, dy)
+	if $Tutorial.get_child_count() > 0: return
 	
 	ControlManager.onDrawing()
+	
+	if debugMode:
+		var dx = 0
+		var dy = 0
+		if Input.is_action_just_pressed("DOWN"):
+			dy += 1
+		elif Input.is_action_just_pressed("LEFT"):
+			dx -= 1
+		elif Input.is_action_just_pressed("RIGHT"):
+			dx += 1
+		elif Input.is_action_just_pressed("UP"):
+			dy -= 1
+		if dx != 0 or dy != 0:
+			ControlManager.move(dx, dy)
 		
-	if Input.is_action_just_pressed("save"):
-		saveToFile()
-	if Input.is_action_just_pressed("saveFile"):
-		saveToLevelFile()
+		if Input.is_action_just_pressed("save"):
+			saveToFile()
+		if Input.is_action_just_pressed("saveFile"):
+			saveToLevelFile()
 
 func _input(event):
 	if curLevel == null: return
+	if $Tutorial.get_child_count() > 0: return
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	elif event.is_action("Move"):
 		ControlManager.onStartDrawWithMove(event.is_pressed())
 	#elif event is InputEventMouseMotion:
 		#ControlManager.onDrawing()
 
 	
 func _on_undo_btn_pressed():
+	Global.playSoundEffect("undo")
 	ControlManager.undo()
 	
 func _on_restart_btn_pressed():
+	Global.playSoundEffect("undo")
 	var cnt = gameMap.map.size()
 	for i in range(cnt):
 		ControlManager.undo()
@@ -135,6 +154,7 @@ func exit_level():
 
 func win():
 	clearScene()
+	Global.playSoundEffect("success")
 	$AnimationPlayer.play("exit")
 	await $AnimationPlayer.animation_finished
 	Main.Instance.changeToNextLevel()

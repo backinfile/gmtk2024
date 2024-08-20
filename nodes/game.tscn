@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://boep8bgfii2rd"]
+[gd_scene load_steps=19 format=3 uid="uid://boep8bgfii2rd"]
 
 [ext_resource type="Script" path="res://scirpts/Game.gd" id="1_ulm38"]
 [ext_resource type="Resource" uid="uid://delvd5bgybpdh" path="res://resources/levels/LevelEditor.tres" id="2_ve5hi"]
 [ext_resource type="Texture2D" uid="uid://d2o1yvxd2stlc" path="res://assets/img/undo-outline.svg" id="3_fokoy"]
-[ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="3_k6uad"]
+[ext_resource type="PackedScene" uid="uid://bwdc1kfd2665f" path="res://nodes/anchor.tscn" id="4_c2dr1"]
 [ext_resource type="PackedScene" uid="uid://b6u4tpfesljfb" path="res://nodes/dotline.tscn" id="4_nylqt"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_yq66u"]
 [ext_resource type="Texture2D" uid="uid://lbskj8228415" path="res://assets/img/refresh-outline.svg" id="5_n6xo1"]
@@ -15,6 +15,22 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="InputEventKey" id="InputEventKey_drl1d"]
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="Shortcut" id="Shortcut_p66lr"]
+events = [SubResource("InputEventKey_drl1d")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c862t"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_mf83k"]
+events = [SubResource("InputEventKey_c862t")]
 
 [sub_resource type="Animation" id="Animation_m2cf2"]
 length = 0.001
@@ -286,6 +302,7 @@ layout_mode = 0
 anchors_preset = 0
 
 [node name="HoverDotlines" type="Control" parent="WorkSpace/Box"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -293,16 +310,9 @@ offset_bottom = 40.0
 [node name="Dotline" parent="WorkSpace/Box" instance=ExtResource("4_nylqt")]
 visible = false
 
-[node name="Anchor" type="TextureRect" parent="WorkSpace"]
-visible = false
-modulate = Color(0.184314, 0.0352941, 0.988235, 1)
+[node name="Anchor" parent="WorkSpace" instance=ExtResource("4_c2dr1")]
+self_modulate = Color(0.777033, 0.904492, 0.187454, 1)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 50.0
-offset_bottom = 50.0
-texture = ExtResource("3_k6uad")
-expand_mode = 1
 
 [node name="White" type="Panel" parent="WorkSpace"]
 self_modulate = Color(1, 1, 1, 0)
@@ -347,9 +357,11 @@ mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="OptionPanel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -438,7 +450,9 @@ offset_left = 870.0
 offset_top = 140.0
 offset_right = 934.0
 offset_bottom = 204.0
+focus_mode = 0
 theme_type_variation = &"FlatButton"
+shortcut = SubResource("Shortcut_p66lr")
 icon_alignment = 1
 script = ExtResource("4_yq66u")
 
@@ -468,7 +482,9 @@ offset_left = 980.0
 offset_top = 138.0
 offset_right = 1044.0
 offset_bottom = 202.0
+focus_mode = 0
 theme_type_variation = &"FlatButton"
+shortcut = SubResource("Shortcut_mf83k")
 icon_alignment = 1
 script = ExtResource("4_yq66u")
 
@@ -494,10 +510,11 @@ stretch_mode = 3
 
 [node name="ReturnBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1190.0
-offset_top = 20.0
-offset_right = 1254.0
-offset_bottom = 84.0
+offset_left = 1090.0
+offset_top = 138.0
+offset_right = 1154.0
+offset_bottom = 202.0
+focus_mode = 0
 theme_type_variation = &"FlatButton"
 icon_alignment = 1
 script = ExtResource("4_yq66u")
@@ -526,6 +543,15 @@ stretch_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_073er")
 }
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]

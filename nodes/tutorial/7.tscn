@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2f1lukk2t7v3"]
+
+[ext_resource type="Texture2D" uid="uid://56yeme77dtpg" path="res://nodes/tutorial/assets/71.png" id="1_41iit"]
+[ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="1_g8r7v"]
+[ext_resource type="Texture2D" uid="uid://bwepwmm426rci" path="res://nodes/tutorial/assets/72.png" id="2_xarqv"]
+[ext_resource type="Texture2D" uid="uid://dw053qtxrpu8u" path="res://nodes/tutorial/assets/73.png" id="3_kr230"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m8t6"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_88lo5"]
+frames = 3
+frame_0/texture = ExtResource("1_41iit")
+frame_1/texture = ExtResource("2_xarqv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_kr230")
+frame_2/duration = 1.0
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mask" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4m8t6")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.788235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -130.0
+offset_right = 250.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 180.0
+texture = SubResource("AnimatedTexture_88lo5")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 20.0
+offset_right = 480.0
+offset_bottom = 180.0
+theme_type_variation = &"TutorialLabel"
+text = "From now on, You can rotate shapes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Continue" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"WhiteFlatButton"
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+script = ExtResource("1_g8r7v")
+
+[connection signal="pressed" from="Panel/Continue" to="." method="queue_free"]

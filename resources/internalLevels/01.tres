@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://qfxtgvd6pmg4"]
+[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://qfxtgvd6pmg4"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_a0h1n"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_dojqa"]
+[ext_resource type="PackedScene" uid="uid://d1nixrikutobm" path="res://nodes/tutorial/3.tscn" id="3_3jkn0"]
+[ext_resource type="PackedScene" uid="uid://krlcv8fklo5c" path="res://nodes/tutorial/1.tscn" id="3_7m30b"]
+[ext_resource type="PackedScene" uid="uid://vfw78wecq17u" path="res://nodes/tutorial/2.tscn" id="4_yr1jq"]
 
 [sub_resource type="Resource" id="Resource_8lurh"]
 script = ExtResource("1_a0h1n")
@@ -18,5 +21,6 @@ shapes = Array[ExtResource("1_a0h1n")]([SubResource("Resource_5y6v2")])
 shapesCount = Array[int]([1])
 goal = SubResource("Resource_8lurh")
 width = 4
-height = 8
+height = 4
 canRotate = false
+tutorial = Array[PackedScene]([ExtResource("3_3jkn0"), ExtResource("4_yr1jq"), ExtResource("3_7m30b")])

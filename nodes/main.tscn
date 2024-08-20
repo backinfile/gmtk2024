@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=13 format=3 uid="uid://3muo0hh6ic2t"]
 
 [ext_resource type="Script" path="res://scirpts/main.gd" id="1_u3gaw"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
 [ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_bnuot"]
+[ext_resource type="Resource" uid="uid://b4wkt02pagwuu" path="res://resources/levels/Sandbox.tres" id="2_p7j4d"]
 [ext_resource type="Texture2D" uid="uid://2qp6er017h64" path="res://assets/img/title.png" id="3_rht5u"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_7l2p2"]
 [ext_resource type="PackedScene" uid="uid://boep8bgfii2rd" path="res://nodes/game.tscn" id="5_h8pe4"]
+[ext_resource type="AudioStream" uid="uid://d3fe2i46dlwlf" path="res://assets/audio/Chris Zabriskie - Reappear - 03 Out of the Skies, Under the Earth.ogg" id="8_qeibp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkof"]
 bg_color = Color(1, 1, 1, 1)
@@ -47,7 +49,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.713726), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 0.852, 0.76, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3axky"]
@@ -64,6 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u3gaw")
+sandbox_level = ExtResource("2_p7j4d")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -118,7 +121,7 @@ text = "Play"
 script = ExtResource("4_7l2p2")
 
 [node name="Panel" type="Panel" parent="Title/Button"]
-modulate = Color(1, 1, 1, 0.713726)
+modulate = Color(1, 0.936658, 0.897283, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -148,10 +151,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -43.0
-offset_top = 75.0
-offset_right = 43.0
-offset_bottom = 117.0
+offset_left = -52.0
+offset_top = 50.0
+offset_right = 52.0
+offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_fonts/font = ExtResource("2_bnuot")
@@ -162,21 +165,60 @@ vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="Levels"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = 200.0
-offset_right = -100.0
-offset_bottom = -100.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -220.0
+offset_right = 500.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 8
+columns = 10
+
+[node name="Sandbox" type="Button" parent="Levels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -120.0
+offset_right = 75.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(75, 40)
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 20
+text = "Sandbox"
+script = ExtResource("4_7l2p2")
+
+[node name="Panel" type="Panel" parent="Levels/Sandbox"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fkof")
 
 [node name="Game" parent="." instance=ExtResource("5_h8pe4")]
 visible = false
 layout_mode = 1
+curLevel = null
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qeibp")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="Title/Button" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="Levels/Sandbox" to="." method="changeToSandbox"]

@@ -32,13 +32,16 @@ static func refresh():
 		if index == 0:
 			Game.Instance.curSelectedShape = node
 			btn.selected = true
+			Global.select_color = Global.COLORS[0]
 			WorkspaceRenderManager.refreshHoverDotline()
 		print(node.shape.curShape.area)
 	
 static func on_select(node:ShapeNode):
 	var index = node.optionIndex
+	Global.select_color = Global.COLORS[index % Global.COLORS.size()]
 	var btn = optionBtnList[node.optionIndex]
 	if Game.Instance.curSelectedShape == node:
+		return
 		Game.Instance.curSelectedShape = null
 		btn.selected = false
 		print("lose curSelectedShape to ", index)

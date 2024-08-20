@@ -84,7 +84,7 @@ func recreateShape():
 			line.clear_points()
 			line.joint_mode = Line2D.LINE_JOINT_ROUND
 			line.width = 5
-			line.default_color = Color.BLACK
+			line.default_color = Global.select_color
 			line.closed = true
 			for p in outline:
 				line.add_point(p * size)
@@ -107,19 +107,20 @@ func getPolygonByDur(dur:int):
 	var mid = getUnitSize() / 2;
 	var polygon = []
 	polygon.append(Vector2(mid, mid))
+	var offset = 0.5
 	match dur:
 		Shape.DUR.UP: 
-			polygon.append(Vector2(0, 0))
-			polygon.append(Vector2(size, 0))
+			polygon.append(Vector2(0 - offset, 0 - offset))
+			polygon.append(Vector2(size + offset, 0 - offset))
 		Shape.DUR.LEFT: 
-			polygon.append(Vector2(0, 0))
-			polygon.append(Vector2(0, size))
+			polygon.append(Vector2(0 - offset, 0 - offset))
+			polygon.append(Vector2(0 - offset, size + offset))
 		Shape.DUR.DOWN: 
-			polygon.append(Vector2(size, size))
-			polygon.append(Vector2(0, size))
+			polygon.append(Vector2(size + offset, size + offset))
+			polygon.append(Vector2(0 - offset, size + offset))
 		Shape.DUR.RIGHT: 
-			polygon.append(Vector2(size, size))
-			polygon.append(Vector2(size, 0))
+			polygon.append(Vector2(size + offset, size + offset))
+			polygon.append(Vector2(size + offset, 0 - offset))
 	p.polygon = polygon
 	return p
 

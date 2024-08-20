@@ -1,6 +1,8 @@
 class_name Main
 extends Control
 
+@export var sandbox_level: Level
+
 static var Instance:Main;
 var curLevelIndex = -1
 var levelPaths = []
@@ -52,19 +54,28 @@ func changeToGameScene(levelIndex:int, anim: bool = true):
 	print("changeToGameScene levelPath ", levelPath)
 	
 	var level = ResourceLoader.load(levelPath)
-	$Game.setLevel(level)
+	$Game.setLevel(level, curLevelIndex + 1)
 	if anim: changeScene($Game)
 
 func changeToNextLevel():
 	savedIndex = max(savedIndex, curLevelIndex)
-	completeLevels.append(curLevelIndex)
+	if curLevelIndex not in completeLevels:
+		completeLevels.append(curLevelIndex)
 	save_game()
 	if curLevelIndex + 1 < levelPaths.size():
 		changeToGameScene(curLevelIndex + 1, false)
 	else:
 		changeToTitleScene()
 
+func changeToSandbox():
+	curLevelIndex = -1
+	$Game.setLevel(sandbox_level)
+	changeScene($Game)
+
 func _on_start_game_btn_pressed():
+	if not completeLevels:
+		changeToGameScene(0, true)
+		return
 	changeToSelectLevelScene()
 
 func loadLevelBtns():
@@ -73,7 +84,8 @@ func loadLevelBtns():
 		var levelFilePaths = Array(dir.get_files())
 		var container = $Levels/GridContainer
 		for i in range(levelFilePaths.size()):
-			var fileName = levelFilePaths[i]
+			var fileName:String = levelFilePaths[i]
+			if not fileName.ends_with(".tres"): continue
 			var path = "res://resources/internalLevels/" + fileName
 			levelPaths.append(path)
 			var levelEntry = preload("res://nodes/level_entry_btn.tscn").instantiate()
@@ -90,6 +102,7 @@ func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var json_string = JSON.stringify({"completeLevels": completeLevels})
 	save_file.store_line(json_string)
+	print("save_game = ", completeLevels)
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -104,3 +117,4 @@ func load_game():
 		completeLevels.clear()
 		for level in node_data["completeLevels"]:
 			completeLevels.append(int(level))
+		print("load save = ", completeLevels)

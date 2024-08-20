@@ -4,18 +4,20 @@ var UNIT_SIZE = 50;
 var UNIT_SIZE_2 = 50;
 var UNIT_EDGE = 1;
 
-var workspace_dotline_color = Color.BLUE
-var workspace_dotline_width = 20
+var workspace_dotline_color := Color(0, 0, 0, .5)
+var workspace_dotline_width := 20
+var workspace_outline_color := Color("609CD8")
+var select_color: Color
 
 var workspace_rotate_angle_offset = 45
 
 var COLORS = [
-	Color.from_hsv(0, 1, .8),
-	Color.from_hsv(.1, 1, .8),
-	Color.from_hsv(.3, 1, .8),
-	Color.from_hsv(.4, 1, .8),
-	Color.from_hsv(0.5, 1, .8),
-	Color.from_hsv(0.7, 1, .8),
+	Color("719FD5"),
+	Color("D96564"),
+	Color("D8894E"),
+	Color("CF67A4"),
+	Color("8BC567"),
+	Color("71C6C8"),
 ]
 
 @onready var shape_node_tscn:PackedScene = load("res://nodes/shape_node.tscn");
@@ -104,3 +106,8 @@ func toVector2i(v:Vector2i):
 
 func div(v: Vector2i, v2:Vector2i) -> Vector2i:
 	return Vector2i(v.x / v2.x, v.y / v2.y)
+
+func playSoundEffect(name: String):
+	print(name)
+	SoundEffectPlayer.stream = load("res://assets/audio/%s.mp3" % name)
+	SoundEffectPlayer.play() 

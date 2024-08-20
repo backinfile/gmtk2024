@@ -28,6 +28,7 @@ static var drawingPosition:Vector2i = Vector2i(-1, -1):
 		var anchor = Game.Instance.workSpaceRotateAnchor
 		if value.x >= 0:
 			anchor.visible = true
+			anchor.self_modulate = Global.select_color
 			anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(value) - anchor.size / 2
 		else: anchor.visible = false
 		drawingPosition = value
@@ -51,6 +52,7 @@ static func onDrawStart(start):
 				Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
 			else:
 				Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
+			Global.playSoundEffect("draw")
 		return
 	
 	if drawing:
@@ -60,6 +62,7 @@ static func onDrawStart(start):
 		if Game.Instance.curOperationShape:
 			Game.Instance.curOperationShape.borderVisible = false
 		Input.set_custom_mouse_cursor(null)
+		Global.playSoundEffect("draw_complete")
 		
 		if GoalRenderManger.isWin():
 			print("check win = true");
@@ -78,25 +81,34 @@ static func onStartDrawWithMove(start:bool):
 	if start:
 		dragStartMouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
 		Input.set_custom_mouse_cursor(cursor_move, 0, Vector2(11, 11))
-	else:
-		if drawing:
+	elif drawing:
+		if Game.Instance.canRotateShape:
 			Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
 		else:
 			Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
-			
+	else:
+		Input.set_custom_mouse_cursor(null)
 
+static var lastScale = 1;
+static var lastRotateAngle = 0;
 static func onDrawing():
+	if Game.Instance.curLevel == null: return
 	if true: # draw hover dotlion
 		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
 		if drawing:
 			hoverDotlines.visible = false
 		elif Game.Instance.curSelectedShape:
 			var p = WorkspaceRenderManager.getMousePositionOnWorkspace()
+			var anchor = Game.Instance.workSpaceRotateAnchor
 			if Game.Instance.gameMap and Game.Instance.gameMap.contains(p):
 				hoverDotlines.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p)
 				hoverDotlines.visible = true
+				anchor.visible = true
+				anchor.self_modulate = Global.select_color
+				anchor.global_position = WorkspaceRenderManager.getWorldPositionByWorkspacePosition(p) - anchor.size / 2
 			else:
 				hoverDotlines.visible = false
+				anchor.visible = false
 	
 	if !drawing: return
 	if Game.Instance.curOperationShape == null: return
@@ -118,7 +130,8 @@ static func onDrawing():
 			shapeNode.shape.position = drawingPosition - lastNegOffset
 			shapeNode.updatePosition()
 			WorkspaceRenderManager.refreshShapeBoolean()
-			Game.Instance.workSpaceDotline.visible = false
+			refreshDotline()
+			#Game.Instance.workSpaceDotline.visible = false
 		return
 	
 	# check angle
@@ -178,9 +191,13 @@ static func onDrawing():
 		shapeNode.shape.position = position
 		shapeNode.updatePosition()
 		WorkspaceRenderManager.refreshShapeBoolean()
-		refreshDotline(angle, scale)
+		lastScale = scale
+		lastRotateAngle = angle
+		refreshDotline()
 
-static func refreshDotline(angle, scale):
+static func refreshDotline():
+	var angle = lastRotateAngle
+	var scale = lastScale
 	if true:
 		var factor = 2 if abs(angle) == 45 or abs(angle) == 135 else sqrt(2)
 		var startPos = drawingPosition * Global.UNIT_SIZE
