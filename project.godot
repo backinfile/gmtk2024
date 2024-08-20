@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scirpts/Global.gd"
 ShapeUtils="*res://scirpts/ShapeUtils.gd"
+SoundEffectPlayer="*res://nodes/sound_effect_player.tscn"
 
 [display]
 
