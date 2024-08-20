@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=12 format=3 uid="uid://3muo0hh6ic2t"]
 
 [ext_resource type="Script" path="res://scirpts/main.gd" id="1_u3gaw"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
-[ext_resource type="FontFile" uid="uid://bqgxi4rkhbn7b" path="res://assets/font/Nunito-Regular.ttf" id="2_bnuot"]
 [ext_resource type="Resource" uid="uid://b4wkt02pagwuu" path="res://resources/levels/Sandbox.tres" id="2_p7j4d"]
 [ext_resource type="Texture2D" uid="uid://2qp6er017h64" path="res://assets/img/title.png" id="3_rht5u"]
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_7l2p2"]
@@ -157,8 +156,7 @@ offset_right = 52.0
 offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_fonts/font = ExtResource("2_bnuot")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 30
 text = "Levels"
 horizontal_alignment = 1
 vertical_alignment = 1

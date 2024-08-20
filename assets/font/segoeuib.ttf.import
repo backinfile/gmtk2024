@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b4lakxlpmjyei"
-path="res://.godot/imported/Nunito-Bold.ttf-d821dcac05f50d3eaa0d94ea6984daa7.fontdata"
+uid="uid://cq2dtprnnwymm"
+path="res://.godot/imported/segoeuib.ttf-658c69f907b6a434e75f2b990643a8e9.fontdata"
 
 [deps]
 
-source_file="res://assets/font/Nunito-Bold.ttf"
-dest_files=["res://.godot/imported/Nunito-Bold.ttf-d821dcac05f50d3eaa0d94ea6984daa7.fontdata"]
+source_file="res://assets/font/segoeuib.ttf"
+dest_files=["res://.godot/imported/segoeuib.ttf-658c69f907b6a434e75f2b990643a8e9.fontdata"]
 
 [params]
 

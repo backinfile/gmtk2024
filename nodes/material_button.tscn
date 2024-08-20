@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scirpts/node/MeterialButton.gd" id="1_u0emv"]
 [ext_resource type="Texture2D" uid="uid://ccimc7b01fhei" path="res://assets/img/circle.svg" id="2_qsgv1"]
-[ext_resource type="FontFile" uid="uid://b4lakxlpmjyei" path="res://assets/font/Nunito-Bold.ttf" id="3_y1f4y"]
+[ext_resource type="FontFile" uid="uid://cq2dtprnnwymm" path="res://assets/font/segoeuib.ttf" id="3_uj5mh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2emx"]
 bg_color = Color(1, 1, 1, 0)
@@ -86,15 +86,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 4.0
-offset_bottom = 9.0
+offset_left = -5.0
+offset_top = -11.5
+offset_right = 5.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_y1f4y")
+theme_override_fonts/font = ExtResource("3_uj5mh")
 theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
-vertical_alignment = 1
