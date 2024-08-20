@@ -540,6 +540,15 @@ libraries = {
 "": SubResource("AnimationLibrary_073er")
 }
 
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="UndoBtn" to="." method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="ReturnBtn" to="." method="_on_return_btn_pressed"]

@@ -8,3 +8,4 @@ extends Resource
 @export var width = 5;
 @export var height = 5;
 @export var canRotate = true
+@export var tutorial:Array[PackedScene];

@@ -60,6 +60,11 @@ func setLevel(level:Level, levelNumber:int = -1):
 		goalText.text = "Goal " + str(levelNumber)
 	else:
 		goalText.text = "Goal"
+	
+	Global.clear_children($Tutorial)
+	if level.tutorial:
+		for t in level.tutorial:
+			$Tutorial.add_child(t.instantiate())
 
 func _process(delta):
 	if curLevel == null: return
