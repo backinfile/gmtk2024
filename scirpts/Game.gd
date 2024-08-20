@@ -100,7 +100,7 @@ func _input(event):
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	elif event.is_action("Move"):
 		ControlManager.onStartDrawWithMove(event.is_pressed())
 	#elif event is InputEventMouseMotion:
 		#ControlManager.onDrawing()
