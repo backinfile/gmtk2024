@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="Level" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_4guti"]
-[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_d3dqd"]
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_1unpa"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_w4cjv"]
 
-[sub_resource type="Resource" id="Resource_dq5tm"]
-script = ExtResource("1_4guti")
-area = Array[Vector3i]([Vector3i(3, 2, 2), Vector3i(3, 2, 3), Vector3i(4, 2, 2), Vector3i(4, 2, 1), Vector3i(4, 3, 1), Vector3i(3, 3, 3), Vector3i(6, 3, 0), Vector3i(5, 3, 0), Vector3i(6, 3, 1), Vector3i(5, 3, 1), Vector3i(5, 3, 3), Vector3i(4, 3, 3), Vector3i(5, 3, 2), Vector3i(2, 3, 0), Vector3i(3, 3, 1), Vector3i(2, 3, 1), Vector3i(2, 3, 3), Vector3i(1, 3, 3), Vector3i(1, 3, 0), Vector3i(2, 3, 2), Vector3i(4, 4, 0), Vector3i(3, 4, 0), Vector3i(5, 4, 1), Vector3i(3, 4, 1), Vector3i(4, 4, 3), Vector3i(2, 4, 3)])
+[sub_resource type="Resource" id="Resource_eai86"]
+script = ExtResource("1_1unpa")
+area = Array[Vector3i]([Vector3i(4, 4, 1), Vector3i(3, 4, 3), Vector3i(4, 4, 0), Vector3i(4, 3, 2), Vector3i(4, 3, 3), Vector3i(3, 3, 1), Vector3i(3, 3, 2), Vector3i(3, 4, 0)])
 
-[sub_resource type="Resource" id="Resource_hcev0"]
-script = ExtResource("1_4guti")
+[sub_resource type="Resource" id="Resource_on65w"]
+script = ExtResource("1_1unpa")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 3)])
+
+[sub_resource type="Resource" id="Resource_vor31"]
+script = ExtResource("1_1unpa")
 area = Array[Vector3i]([Vector3i(-1, 0, 3), Vector3i(0, 0, 1), Vector3i(1, 0, 1), Vector3i(0, 0, 3)])
 
-[sub_resource type="Resource" id="Resource_vgngd"]
-script = ExtResource("1_4guti")
-area = Array[Vector3i]([Vector3i(0, 0, 1)])
-
 [resource]
-script = ExtResource("2_d3dqd")
+script = ExtResource("2_w4cjv")
 id = 1
-shapes = Array[ExtResource("1_4guti")]([SubResource("Resource_hcev0"), SubResource("Resource_vgngd")])
-shapesCount = Array[int]([1, 3])
-goal = SubResource("Resource_dq5tm")
+shapes = Array[ExtResource("1_1unpa")]([SubResource("Resource_on65w"), SubResource("Resource_vor31")])
+shapesCount = Array[int]([3, 1])
+goal = SubResource("Resource_eai86")
 width = 8
 height = 8
 canRotate = true
