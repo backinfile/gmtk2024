@@ -38,7 +38,7 @@ static func refresh():
 	
 static func on_select(node:ShapeNode):
 	var index = node.optionIndex
-	Global.select_color = Global.COLORS[index]
+	Global.select_color = Global.COLORS[index % Global.COLORS.size()]
 	var btn = optionBtnList[node.optionIndex]
 	if Game.Instance.curSelectedShape == node:
 		Game.Instance.curSelectedShape = null
