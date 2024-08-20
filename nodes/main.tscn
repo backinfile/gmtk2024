@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3muo0hh6ic2t"]
+[gd_scene load_steps=13 format=3 uid="uid://3muo0hh6ic2t"]
 
 [ext_resource type="Script" path="res://scirpts/main.gd" id="1_u3gaw"]
 [ext_resource type="Texture2D" uid="uid://dd8l11mc2b3pp" path="res://assets/img/bg.svg" id="1_y543v"]
@@ -218,10 +218,8 @@ layout_mode = 1
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_qeibp")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
-
-[node name="SoundEffectPlayer" parent="." instance=ExtResource("9_krgw1")]
 
 [connection signal="pressed" from="Title/Button" to="." method="_on_start_game_btn_pressed"]
 [connection signal="pressed" from="Levels/Sandbox" to="." method="changeToSandbox"]
