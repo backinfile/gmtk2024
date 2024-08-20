@@ -56,6 +56,7 @@ static func removeNodeFromWorkspace(shape:ShapeNode):
 
 static func refresh():
 	shapeBoolCache.clear()
+	ControlManager.dragMode = false
 	var gameMap = Game.Instance.gameMap;
 	#var Box = Game.Instance.workSpace.get_node("Box");
 	#Box.size = Game.Instance.gameMap.mapSize() * Global.UNIT_SIZE + Vector2(Global.UNIT_EDGE, Global.UNIT_EDGE)
