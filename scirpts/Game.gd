@@ -36,7 +36,6 @@ func _ready():
 		if curLevel != null:
 			setLevel(curLevel)
 		debugMode = true
-		curLevel = null
 		
 
 func setLevel(level:Level, levelNumber:int = -1):
