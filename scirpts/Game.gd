@@ -91,9 +91,11 @@ func _input(event):
 
 	
 func _on_undo_btn_pressed():
+	Global.playSoundEffect("undo")
 	ControlManager.undo()
 	
 func _on_restart_btn_pressed():
+	Global.playSoundEffect("undo")
 	var cnt = gameMap.map.size()
 	for i in range(cnt):
 		ControlManager.undo()
