@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=15 format=3 uid="uid://b4wkt02pagwuu"]
+[gd_resource type="Resource" script_class="Level" load_steps=12 format=3 uid="uid://b4wkt02pagwuu"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_3moom"]
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="3_gb0qq"]
@@ -7,9 +7,6 @@
 [ext_resource type="Resource" uid="uid://bwoqhxcycpcgt" path="res://hourglass.tres" id="6_diwpo"]
 [ext_resource type="Resource" uid="uid://xiomnwvkwfku" path="res://resources/shapes/twoDiamonds.tres" id="7_8ddrv"]
 [ext_resource type="Resource" uid="uid://bprhgomwhlflq" path="res://resources/shapes/TriLeftDown.tres" id="8_s1ii4"]
-[ext_resource type="Resource" uid="uid://ck3t2lp7gdyl0" path="res://resources/shapes/TriRightDown.tres" id="9_b2ley"]
-[ext_resource type="Resource" uid="uid://oele2fqnuu25" path="res://resources/shapes/TriRightUp.tres" id="10_yp0x3"]
-[ext_resource type="Resource" uid="uid://bjhhy3v0g0o0n" path="res://resources/shapes/TriLeftUp.tres" id="11_i7jgd"]
 [ext_resource type="Resource" uid="uid://libogbwbmcxb" path="res://resources/shapes/notch.tres" id="12_oy74f"]
 [ext_resource type="Resource" uid="uid://jf5ysycf4vxy" path="res://resources/shapes/windmill.tres" id="13_mg14v"]
 [ext_resource type="Resource" uid="uid://dhn3wolv7f4cn" path="res://resources/shapes/hollow.tres" id="14_bgksm"]
@@ -21,7 +18,7 @@ area = Array[Vector3i]([])
 [resource]
 script = ExtResource("2_3moom")
 id = 1
-shapes = Array[ExtResource("3_gb0qq")]([ExtResource("4_c4xgk"), ExtResource("5_jaobf"), ExtResource("6_diwpo"), ExtResource("7_8ddrv"), ExtResource("8_s1ii4"), ExtResource("9_b2ley"), ExtResource("10_yp0x3"), ExtResource("11_i7jgd"), ExtResource("12_oy74f"), ExtResource("13_mg14v"), ExtResource("14_bgksm")])
+shapes = Array[ExtResource("3_gb0qq")]([ExtResource("4_c4xgk"), ExtResource("5_jaobf"), ExtResource("6_diwpo"), ExtResource("7_8ddrv"), ExtResource("8_s1ii4"), ExtResource("12_oy74f"), ExtResource("13_mg14v"), ExtResource("14_bgksm")])
 shapesCount = Array[int]([99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99])
 goal = SubResource("Resource_vxma0")
 width = 8

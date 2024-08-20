@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scirpts/ui/transition_button.gd" id="4_7l2p2"]
 [ext_resource type="PackedScene" uid="uid://boep8bgfii2rd" path="res://nodes/game.tscn" id="5_h8pe4"]
 [ext_resource type="AudioStream" uid="uid://d3fe2i46dlwlf" path="res://assets/audio/Chris Zabriskie - Reappear - 03 Out of the Skies, Under the Earth.ogg" id="8_qeibp"]
-[ext_resource type="PackedScene" uid="uid://bvgoo5iva6sjg" path="res://nodes/sound_effect_player.tscn" id="9_krgw1"]
+[ext_resource type="PackedScene" path="res://nodes/sound_effect_player.tscn" id="9_krgw1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkof"]
 bg_color = Color(1, 1, 1, 1)

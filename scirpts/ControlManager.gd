@@ -81,12 +81,13 @@ static func onStartDrawWithMove(start:bool):
 	if start:
 		dragStartMouse = WorkspaceRenderManager.getMousePositionOnWorkspace()
 		Input.set_custom_mouse_cursor(cursor_move, 0, Vector2(11, 11))
-	else:
-		if drawing:
+	elif drawing:
+		if Game.Instance.canRotateShape:
 			Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
 		else:
 			Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
-			
+	else:
+		Input.set_custom_mouse_cursor(null)
 
 static func onDrawing():
 	if true: # draw hover dotlion
