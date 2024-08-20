@@ -52,6 +52,7 @@ static func onDrawStart(start):
 				Input.set_custom_mouse_cursor(cursor_expand_rotate, 0, Vector2(11, 11))
 			else:
 				Input.set_custom_mouse_cursor(cursor_expand, 0, Vector2(11, 11))
+			Global.playSoundEffect("draw")
 		return
 	
 	if drawing:
@@ -61,6 +62,7 @@ static func onDrawStart(start):
 		if Game.Instance.curOperationShape:
 			Game.Instance.curOperationShape.borderVisible = false
 		Input.set_custom_mouse_cursor(null)
+		Global.playSoundEffect("draw_complete")
 		
 		if GoalRenderManger.isWin():
 			print("check win = true");
