@@ -84,7 +84,8 @@ func loadLevelBtns():
 		var levelFilePaths = Array(dir.get_files())
 		var container = $Levels/GridContainer
 		for i in range(levelFilePaths.size()):
-			var fileName = levelFilePaths[i]
+			var fileName:String = levelFilePaths[i]
+			if not fileName.ends_with(".tres"): continue
 			var path = "res://resources/internalLevels/" + fileName
 			levelPaths.append(path)
 			var levelEntry = preload("res://nodes/level_entry_btn.tscn").instantiate()
