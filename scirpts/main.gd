@@ -85,6 +85,7 @@ func loadLevelBtns():
 		var container = $Levels/GridContainer
 		for i in range(levelFilePaths.size()):
 			var fileName:String = levelFilePaths[i]
+			fileName = fileName.trim_suffix(".remap")
 			if not fileName.ends_with(".tres"): continue
 			var path = "res://resources/internalLevels/" + fileName
 			levelPaths.append(path)
