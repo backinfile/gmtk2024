@@ -36,6 +36,7 @@ func _ready():
 		if curLevel != null:
 			setLevel(curLevel)
 		debugMode = true
+		curLevel = null
 		
 
 func setLevel(level:Level, levelNumber:int = -1):
@@ -68,6 +69,7 @@ func setLevel(level:Level, levelNumber:int = -1):
 
 func _process(delta):
 	if curLevel == null: return
+	if $Tutorial.get_child_count() > 0: return
 	
 	var dx = 0
 	var dy = 0
@@ -91,6 +93,8 @@ func _process(delta):
 
 func _input(event):
 	if curLevel == null: return
+	if $Tutorial.get_child_count() > 0: return
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		ControlManager.onDrawStart(event.is_pressed())
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
