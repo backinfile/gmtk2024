@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://b58ulx3b8tsp0"]
+[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://b58ulx3b8tsp0"]
 
 [ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_nas1c"]
 [ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_0usuv"]
+[ext_resource type="PackedScene" uid="uid://b2f1lukk2t7v3" path="res://nodes/tutorial/7.tscn" id="3_g3sux"]
 
 [sub_resource type="Resource" id="Resource_xwj2l"]
 script = ExtResource("1_nas1c")
@@ -20,3 +21,4 @@ goal = SubResource("Resource_xwj2l")
 width = 4
 height = 4
 canRotate = true
+tutorial = Array[PackedScene]([ExtResource("3_g3sux")])
