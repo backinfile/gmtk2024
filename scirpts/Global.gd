@@ -4,7 +4,7 @@ var UNIT_SIZE = 50;
 var UNIT_SIZE_2 = 50;
 var UNIT_EDGE = 1;
 
-var workspace_dotline_color := Color("719FD5")
+var workspace_dotline_color := Color(0, 0, 0, .5)
 var workspace_dotline_width := 20
 var workspace_outline_color := Color("609CD8")
 var select_color: Color
