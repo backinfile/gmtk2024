@@ -84,7 +84,7 @@ static func refresh():
 		line.add_point(Vector2(gameMap.width * Global.UNIT_SIZE + Global.UNIT_EDGE, y * Global.UNIT_SIZE + Global.UNIT_EDGE))
 		Grids.add_child(line)
 	
-	Game.Instance.workSpaceDotline.default_color = Global.workspace_dotline_color
+	Game.Instance.workSpaceDotline.default_color = Global.select_color
 	Game.Instance.workSpaceDotline.clear_points()
 	Game.Instance.workSpaceDotline.width = Global.workspace_dotline_width
 	
@@ -176,7 +176,7 @@ static func refreshHoverDotline():
 		line.clear_points()
 		line.joint_mode = Line2D.LINE_JOINT_ROUND
 		line.width = 5
-		line.default_color = Color.GRAY
+		line.default_color = Global.select_color
 		line.closed = true
 		for p in outline:
 			line.add_point(p * size)

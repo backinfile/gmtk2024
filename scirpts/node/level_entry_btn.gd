@@ -3,7 +3,10 @@ extends TransitionButton
 var levelPath:String;
 var nextLevelPath;
 var index:int;
-var complete = false
+var complete = false:
+	set(value):
+		complete = value
+		if complete: add_theme_color_override("font_color", Color("ED5D5D"))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

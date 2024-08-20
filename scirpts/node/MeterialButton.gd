@@ -33,6 +33,7 @@ var color: Color:
 		assert(node, "please set node first")
 		$Ring.self_modulate = color
 		$Border.modulate = color
+		$Ring/Count.modulate = color
 		count_label.modulate = color
 		node.triangle_color = color
 

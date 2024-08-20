@@ -1,6 +1,8 @@
 class_name Main
 extends Control
 
+@export var sandbox_level: Level
+
 static var Instance:Main;
 var curLevelIndex = -1
 var levelPaths = []
@@ -63,6 +65,11 @@ func changeToNextLevel():
 		changeToGameScene(curLevelIndex + 1, false)
 	else:
 		changeToTitleScene()
+
+func changeToSandbox():
+	curLevelIndex = -1
+	$Game.setLevel(sandbox_level)
+	changeScene($Game)
 
 func _on_start_game_btn_pressed():
 	changeToSelectLevelScene()

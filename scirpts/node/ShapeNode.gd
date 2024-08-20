@@ -84,7 +84,7 @@ func recreateShape():
 			line.clear_points()
 			line.joint_mode = Line2D.LINE_JOINT_ROUND
 			line.width = 5
-			line.default_color = Color.BLACK
+			line.default_color = Global.select_color
 			line.closed = true
 			for p in outline:
 				line.add_point(p * size)
