@@ -40,6 +40,13 @@ func _ready():
 		
 
 func setLevel(level:Level, levelNumber:int = -1):
+	curLevel = null
+	if true:
+		Global.clear_children($Tutorial)
+		if level.tutorial:
+			for t in level.tutorial:
+				$Tutorial.add_child(t.instantiate())
+	
 	$AnimationPlayer.play("enter")
 	curLevel = level
 	curOperationShape = null
@@ -62,10 +69,6 @@ func setLevel(level:Level, levelNumber:int = -1):
 	else:
 		goalText.text = "Goal"
 	
-	Global.clear_children($Tutorial)
-	if level.tutorial:
-		for t in level.tutorial:
-			$Tutorial.add_child(t.instantiate())
 
 func _process(delta):
 	if curLevel == null: return

@@ -214,6 +214,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1fkof")
 [node name="Game" parent="." instance=ExtResource("5_h8pe4")]
 visible = false
 layout_mode = 1
+curLevel = null
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_qeibp")

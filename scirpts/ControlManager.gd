@@ -92,6 +92,7 @@ static func onStartDrawWithMove(start:bool):
 static var lastScale = 1;
 static var lastRotateAngle = 0;
 static func onDrawing():
+	if Game.Instance.curLevel == null: return
 	if true: # draw hover dotlion
 		var hoverDotlines = Game.Instance.workSpaceHoverDotlines
 		if drawing:
