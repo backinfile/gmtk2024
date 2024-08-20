@@ -87,4 +87,4 @@ theme_override_font_sizes/font_size = 20
 text = "Continue"
 script = ExtResource("1_g8r7v")
 
-[connection signal="pressed" from="Panel/Continue" to="." method="hide"]
+[connection signal="pressed" from="Panel/Continue" to="." method="queue_free"]

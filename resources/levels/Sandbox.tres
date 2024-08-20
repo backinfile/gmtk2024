@@ -24,3 +24,4 @@ goal = SubResource("Resource_vxma0")
 width = 8
 height = 8
 canRotate = true
+tutorial = Array[PackedScene]([])
