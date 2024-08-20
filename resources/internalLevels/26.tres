@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scirpts/logic/Shape.gd" id="1_fse64"]
+[ext_resource type="Script" path="res://scirpts/logic/Level.gd" id="2_5noxe"]
+
+[sub_resource type="Resource" id="Resource_qetbm"]
+script = ExtResource("1_fse64")
+area = Array[Vector3i]([Vector3i(2, 2, 0), Vector3i(3, 2, 0), Vector3i(4, 2, 0), Vector3i(2, 2, 3), Vector3i(4, 2, 3), Vector3i(5, 2, 0), Vector3i(3, 2, 1), Vector3i(5, 2, 1), Vector3i(2, 5, 2), Vector3i(3, 5, 2), Vector3i(4, 5, 2), Vector3i(2, 5, 3), Vector3i(4, 5, 3), Vector3i(5, 5, 2), Vector3i(3, 5, 1), Vector3i(5, 5, 1), Vector3i(5, 3, 1), Vector3i(5, 3, 2), Vector3i(4, 3, 2), Vector3i(4, 3, 3), Vector3i(3, 3, 1), Vector3i(3, 3, 2), Vector3i(2, 3, 2), Vector3i(2, 3, 3), Vector3i(5, 4, 0), Vector3i(5, 4, 1), Vector3i(4, 4, 3), Vector3i(4, 4, 0), Vector3i(2, 4, 3), Vector3i(2, 4, 0), Vector3i(3, 4, 0), Vector3i(3, 4, 1)])
+
+[sub_resource type="Resource" id="Resource_5kdp3"]
+script = ExtResource("1_fse64")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 2)])
+
+[sub_resource type="Resource" id="Resource_uj410"]
+script = ExtResource("1_fse64")
+area = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 3)])
+
+[sub_resource type="Resource" id="Resource_g38fq"]
+script = ExtResource("1_fse64")
+area = Array[Vector3i]([Vector3i(0, 0, 1)])
+
+[resource]
+script = ExtResource("2_5noxe")
+id = 1
+shapes = Array[ExtResource("1_fse64")]([SubResource("Resource_5kdp3"), SubResource("Resource_uj410"), SubResource("Resource_g38fq")])
+shapesCount = Array[int]([1, 1, 1])
+goal = SubResource("Resource_qetbm")
+width = 8
+height = 8
+canRotate = true
+tutorial = Array[PackedScene]([])
