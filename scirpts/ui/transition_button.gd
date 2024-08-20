@@ -27,3 +27,6 @@ var state: DrawMode:
 
 func _draw() -> void:
 	state = get_draw_mode()
+
+func _pressed() -> void:
+	Global.playSoundEffect("button")
