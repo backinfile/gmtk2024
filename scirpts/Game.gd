@@ -153,6 +153,8 @@ func exit_level():
 
 func win():
 	clearScene()
+	Main.Instance.saveCurLevel()
+	Main.Instance.refreshLevelBtn()
 	Global.playSoundEffect("success")
 	$AnimationPlayer.play("exit")
 	await $AnimationPlayer.animation_finished

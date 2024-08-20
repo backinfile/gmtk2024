@@ -9,7 +9,6 @@ var levelPaths = []
 var levelBtns = []
 var curScene: Control
 
-var savedIndex = -1;
 var completeLevels = []
 
 func _init():
@@ -57,11 +56,13 @@ func changeToGameScene(levelIndex:int, anim: bool = true):
 	$Game.setLevel(level, curLevelIndex + 1)
 	if anim: changeScene($Game)
 
-func changeToNextLevel():
-	savedIndex = max(savedIndex, curLevelIndex)
+func saveCurLevel():
 	if curLevelIndex not in completeLevels:
 		completeLevels.append(curLevelIndex)
 	save_game()
+
+func changeToNextLevel():
+	saveCurLevel()
 	if curLevelIndex + 1 < levelPaths.size():
 		changeToGameScene(curLevelIndex + 1, false)
 	else:
