@@ -1,5 +1,0 @@
-Click the button on the left to select the shape you want to draw.
-Hold down the mouse on the workbench to zoom the shape. Release the mouse to draw it.
-The overlapping part between the drawn shape and the existing shapes will disappear.
-Try to draw the target shape!
-From now on, shapes can be rotated.
